@@ -1,6 +1,6 @@
 {% comment %}
   pass arguments:
-    product,
+  product,
 {% endcomment %}
 {% if product != blank %}
   <div class="product-widget" handle="{{ product.handle }}">
@@ -35,7 +35,11 @@
               {{ 'cart20.svg' | inline_asset_content }}
               {% capture form_id %}product-snippet-form-{{ product.id }}{% endcapture %}
               {% form 'product', product, id: form_id, class: 'product-snippet-form hidden', novalidate: 'novalidate' %}
-                <input type="hidden" name="form_type" value="{{ product }}">
+                <input
+                  type="hidden"
+                  name="form_type"
+                  value="{{ product }}"
+                >
                 <input
                   class="card-variant-id"
                   type="hidden"
@@ -53,25 +57,50 @@
                 >
               {% endform %}
             </span>
-            <input type="checkbox" class="selected-pro" name="properties[_isrecommended]" form="{{ form_id }}" checked>
+            <input
+              type="checkbox"
+              class="selected-pro"
+              name="properties[_isrecommended]"
+              form="{{ form_id }}"
+              checked
+            >
           {% endif %}
-          <like-button  data-variant="{{ product.selected_or_first_available_variant.id }}" data-product="{{ product.id }}">
-            <a role="link" aria-disabled="true" class="pro-like" handle="{{ product.handle }}">
-              {{ 'like20.svg' | inline_asset_content }}
-            </a>
-          </like-button>
-          {% comment %}
-          {% endcomment %}
-          {% if settings.quick_view %}
-            <a role="link" aria-disabled="true" class="viewer-eye" pro-handle="{{ product.handle }}">
-              {{ 'eye-icon.png' | asset_url | img_tag }}
-            </a>
-          {% endif %}
-          {% if settings.comparison %}
-            <a role="link" aria-disabled="true" class="pro-compare" handle="{{ product.handle }}">
-              {% render 'icons', icon_type: 'compare' %}
-            </a>
-          {% endif %}
+          <div class="pro-widgets-right">
+            <like-button
+              data-variant="{{ product.selected_or_first_available_variant.id }}"
+              data-product="{{ product.id }}"
+            >
+              <a
+                role="link"
+                aria-disabled="true"
+                class="pro-like"
+                handle="{{ product.handle }}"
+              >
+                {{ 'like20.svg' | inline_asset_content }}
+              </a>
+            </like-button>
+            {% if settings.quick_view %}
+              <a
+                role="link"
+                aria-disabled="true"
+                class="viewer-eye"
+                pro-handle="{{ product.handle }}"
+              >
+                {{ 'eye-icon.png' | asset_url | img_tag }}
+              </a>
+            {% endif %}
+            {% if settings.comparison %}
+              <a
+                role="link"
+                aria-disabled="true"
+                class="pro-compare"
+                handle="{{ product.handle }}"
+              >
+                {% render 'icons', icon_type: 'compare' %}
+              </a>
+            {% endif %}
+          </div>
+
           {% if product.compare_at_price > product.price %}
             {% assign pMax = product.compare_at_price %}
             {% assign percen = product.price | times: 100 | divided_by: product.compare_at_price %}
@@ -96,7 +125,13 @@
                       {% endfor %}
                     {% else %}
                       {%- for value in option.values -%}
-                        <div id="{{ value }}" data-variant="{{ value }}" class="var-box tilli">{{ value }}</div>
+                        <div
+                          id="{{ value }}"
+                          data-variant="{{ value }}"
+                          class="var-box tilli"
+                        >
+                          {{ value }}
+                        </div>
                       {% endfor %}
                     {% endif %}
                   </div>

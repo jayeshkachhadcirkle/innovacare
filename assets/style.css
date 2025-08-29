@@ -1311,11 +1311,11 @@ del {
   left: 5px;
 }
 
-.pro-like {
+/* .pro-like {
   position: absolute;
   top: 15px;
   right: 15px;
-}
+} */
 
 .pro-colors {
   position: absolute;
@@ -4921,16 +4921,27 @@ button[disabled] {
   border: 3px solid #000 !important;
 }
 
-.viewer-eye {
+/* .viewer-eye {
   position: absolute;
   top: 37px;
   right: 12px;
-}
+} */
 
-.pro-compare {
+/* .pro-compare {
   position: absolute;
   top: 60px;
   right: 14px;
+} */
+
+.pro-widgets-right {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;  
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+  align-items: center;
 }
 
 /* quick view style */

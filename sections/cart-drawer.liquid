@@ -10,9 +10,6 @@
 
 {% assign all_subs = "true" %}
   {% for i in cart.items %}
-  {% comment %} {% if i.selling_plan_allocation.selling_plan.name | contains: "every" %}
-            {% assign all_subs = "false" %}
-      {% endif %} {% endcomment %}
   {% if i.selling_plan_allocation.selling_plan.name == blank %}
     {% assign all_subs = "false" %}
   {% endif %}
@@ -163,11 +160,9 @@
               <span class="sliderShip round"></span>
             </label>
             <select
-              name="sub_select"
-              id="sub_select"
-              class="sub_select">
+              name="sub_select" id="sub_select" class="sub_select">
               <option value="">Select Frequancy</option>
-              <option value="1920139402,1920303242">Every 2 week</option>
+              <option value="1920139402,1920303242">Every 2 week </option>
               <option value="1920172170,1920336010">Every 1 Month</option>
               <option value="1920204938,1920368778">Every 2 Month</option>
             </select>
