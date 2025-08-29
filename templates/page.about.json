@@ -1,0 +1,54 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+
+{
+  "sections": {
+    "main": {
+      "type": "about-sec1",
+      "settings": {
+        "title": "Our Story",
+          "sub_title": "We were there to help you!",
+          "content": "<p>Innovacare is a Norwegian player in health, skin, beauty and wellness. With over 20 years of experience in the field of pharmacy, it was the joy in the field of skin that formed the basis for Innovacare.no.</p><p>Ever since 2012, we have helped people who have not found help elsewhere, but achieved fantastic results after using our expertise and our products.</p><p>Our interdisciplinary team consists of trained experts in the field of pharmacy, skin and podiatry. By launching our products and services online, we have made it even easier for you to get the help you need. We want a close collaboration with our customers, and it is important to us that you feel taken care of and receive the help you need.</p>",
+          "image": "shopify://shop_images/ab1.jpg"
+      }
+    },
+    "about-sec2": {
+        "type": "about-sec2",
+        "settings": {
+          "title": "Our Vision",
+          "sub_title": "Health in beauty",
+          "content": "<p>Skin is our passion, and our vision is to be able to offer the customer a solution to any skin problem. We have talked to the consumer, listened to your needs, what you need help with, and what you expect from a skin care series.</p><p>We believe that every skin problem can be solved with the right and professional help. Everyone in our expert team is ready to help you with your skin problem, and find the best treatment to give you beautiful skin and well-being. By helping countless customers with their skin problems, we can refer to reviews from several satisfied customers who have achieved good results with our products.</p>"
+        }
+      },
+      "about-sec3": {
+        "type": "about-sec3",
+        "settings": {
+          "title": "Products",
+          "content": "<p>With us you will find a large selection of products from well-known brands, as well as new and innovative products. The most important thing for us is to deliver you safe quality products that give you the experience of effect, security and well-being. All our products meet strict quality requirements. In addition, the products are analyzed by our own professionals and health professionals, we examine everything from ingredients, quality and results before it gets a place in our range.</p><p>We can also tell you that none of our products have been tested on animals.</p><p>We are proud that our products are recommended by professional environments such as skin departments in hospitals, dermatologists, nurses, pharmacies and patient organizations that we work with.</p><p>In our range you will find specially adapted products for face, body, hand, foot, dental care, skin care, hair products and nails. In order to offer you the best products, we constantly follow trends and research within the various product categories. It is with us that you will find the best and the latest products on the market.</p>",
+          "image": "shopify://shop_images/product.jpg"
+        }
+      },
+      "about-sec4": {
+        "type": "about-sec4",
+        "settings": {
+          "title1": "Our Customers",
+          "content1": "<p>The reason we came into being was to help you. Offer our expertise and use our expertise to help you in the best possible way. You are special and important to us, and we go to great lengths to be able to offer you what you need. All our customers are equally important to us. Our customer group consists of private individuals, skin departments in hospitals, nurses, pharmacies and patient organizations. By having such a large customer group, we have acquired expertise in a broad field, and learned from each and every one who is part of our customer group.</p><p>By being part of our customer group, you should feel that you are getting that little extra. You will experience that you are received by people with expertise, that we find a solution to your problems, that you easily get in touch with us, and that we are always here for you as a customer.</p><p><strong>Do you want to contact us to solve your problems?</strong><br/>We are here for you, and want to give you the best experience in terms of good prices, selection and professional service from professionals</p>",
+          "title2": "Customer Service",
+          "content2": "<p>In order for us to be able to help our customers in the best possible way, we are available by e-mail and telephone. When you call, you will talk to a knowledgeable expert. We listen to the problems you have and help you in the best possible way. It is important to us that you feel seen and understood. During the conversation, we will familiarize yourself with what you need help with. Finally, we will make a recommendation in relation to what you need help with.</p><p>We recommend signing up for our newsletter. It is through newsletters that you receive the best customer benefits, discount codes and are invited to exclusive events.</p><p>Feel free to send us an e-mail with feedback, product wishes, or anything else you have on your mind. Nothing is more important to us than you (or satisfied customers). </p>"
+        }
+      }
+  },
+  "order": [
+    "main",
+    "about-sec2",
+    "about-sec3",
+    "about-sec4"
+  ]
+}

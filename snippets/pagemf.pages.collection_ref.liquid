@@ -1,0 +1,9 @@
+{% if page.metafields["pagemf"]["collection_ref"] != blank %}
+  <div class="custom-field custom-field__collection-ref custom-field__type--collection-reference">
+    <h3 class="custom-field--title">Collection Ref</h3>
+    <div class="custom-field--value">
+{{ page.metafields["pagemf"]["collection_ref"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

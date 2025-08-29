@@ -1,0 +1,61 @@
+<!-- selling plan set up for subscription -->
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign selling_plan_grp = product.selling_plan_groups.first %}
+{% if selling_plan_grp.name != 'preorder' and current_variant.available %}
+<div class="sub-custom-con" {{ block.shopify_attributes }}>
+  <subscribe-jk>
+    {% if current_variant.selling_plan_allocations != blank %}
+      <div class="purchase-ops">
+        <div class="rad-con">
+          <input class="subscribe-radio" type="radio" id="single" {% if block.settings.default_status %}{% else %} checked {% endif %}>
+          <label class="subscribe-label" for="single">One Time Purchase</label>
+          <h5 class="pricer">{{ current_variant.price | money }}</h5>
+        </div>
+        <div class="rad-con">
+          <input
+            class="subscribe-radio subscribe-inp"
+            type="radio"
+            id="subscribe-in{{ selling_plan_grp.id }}"
+            {% if block.settings.default_status %}
+              checked
+            {% endif %}
+          >
+          <label class="subscribe-label" for="subscribe-in{{ selling_plan_grp.id }}">
+            {{- selling_plan_grp.name }}
+            {{ block.settings.plan_desc }}
+            <div class="frequency">
+              <p>Frequency:</p>
+              <select
+                class="ops-select"
+                name="selling_plan"
+                form="{{ product_form }}"
+              >
+                {% for option in current_variant.selling_plan_allocations %}
+                  {% assign seal_price = option.price_adjustments.first.price %}
+                  {% assign discount = current_variant.price
+                    | minus: seal_price
+                    | times: 100.0
+                    | divided_by: current_variant.price
+                    | round
+                  %}
+                  <option
+                    data-less-price="{{ seal_price | money }}"
+                    value="{{ option.selling_plan.id }}"
+                  >
+                    {{ option.selling_plan.name }}
+                    {% if discount > 0 %}( Get {{ discount }}% Off ){% endif %}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          </label>
+          <h5 class="pricer">
+            <span> {{ current_variant.selling_plan_allocations.first.price_adjustments.first.price | money }} </span>
+            &nbsp <del>{{ current_variant.price | money }}</del>
+          </h5>
+        </div>
+      </div>
+    {% endif %}
+  </subscribe-jk>
+</div>
+{% endif %}

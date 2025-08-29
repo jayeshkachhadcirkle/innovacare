@@ -1,0 +1,66 @@
+<div {{ block.shopify_attributes }}>
+                <p class="line-item-property__field" >
+                  <label for="instruction">Instruction : </label>
+                  <input
+                    id="instruction"
+                    type="text"
+                    name="properties[_instruction]"
+                    form="{{ form_id }}"
+                    maxlength="50"
+                    placeholder="Give Special Instruction if Any.."
+                  >
+                </p>
+                <div class="product-form__item product-form__item--logo">
+                <label for="File">Upload File</label>
+                <input id="File" type="file" name="properties[_file]" class="product-form__input" form="{{ form_id }}">
+                </div>
+                <p class="line-item-property__field">
+                  <label for="male">Male</label>
+                  <input id="male" type="radio" name="properties[_gender]" value="Male" form="{{ form_id }}"> 
+                  <label for="female">Female</label>
+                  <input id="female" type="radio" name="properties[_gender]" value="Female" form="{{ form_id }}">
+                </p>
+
+              <p class="line-item-property__field">
+                <label>Drop Select</label><br>
+                <select id="dropselect" name="properties[_dropselect]" form="{{ form_id }}">
+                  <option value="Select">Select</option>
+                  <option value="Smart">Smart</option>
+                  <option value="Slim">Slim</option>
+                  <option value="Crop">Crop</option>
+                  <option value="Jumbo">Jumbo</option>
+                </select>
+              </p>
+              <p class="line-item-property__field">
+                <input type="hidden" name="properties[_checkmate]" value="No" form="{{ form_id }}" >
+                <input id="checkmate" type="checkbox" name="properties[_checkmate]" value="Yes" form="{{ form_id }}">
+                <label for="checkmate">checkmate</label>
+              </p>
+
+              <p class="line-item-property__field">
+                <label>Multi Check </label><br>
+                <input type="checkbox" id="Smart" hidden-data="multicheck" onchange="fillHidden('multicheck')" value="Smart"><label for="Smart">Smart</label><br>
+                <input type="checkbox" id="Slim" hidden-data="multicheck" onchange="fillHidden('multicheck')" value="Slim"><label for="Slim">Slim</label><br>
+                <input type="checkbox" id="Crop" hidden-data="multicheck" onchange="fillHidden('multicheck')" value="Crop"><label for="Crop">Crop</label><br>
+                <input type="checkbox" id="Jumbo" hidden-data="multicheck" onchange="fillHidden('multicheck')" value="Jumbo"><label for="Jumbo">Jumbo</label><br>
+                <input type="hidden" id="multicheck" name="properties[_multicheck]" form="{{ form_id }}">
+                <script>
+                  function fillHidden(hiddenname) {
+                  var checkboxes = document.querySelectorAll('[hidden-data="'+hiddenname+'"]');
+                  var hiddenfield = document.getElementById(hiddenname);
+                  hiddenfield.value = ""
+                  var i;
+                  for (i = 0; i < checkboxes.length; i++) {
+                    var x = checkboxes[i];
+                    if(x.checked){
+                      if(hiddenfield.value==""){
+                        hiddenfield.value = x.value;
+                        }else{
+                        hiddenfield.value = hiddenfield.value + ", " + x.value; 
+                        } 
+                      }
+                    }
+                  }
+                </script>
+              </p>
+              </div>

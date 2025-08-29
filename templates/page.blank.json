@@ -1,0 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "blank-page",
+      "disabled": true,
+      "settings": {
+        "meta": "<p>DT: {{ page.metafields.pagemf.date_time | metafield_tag }}</p><p>Dimension: {{ page.metafields.pagemf.dimension | metafield_tag }}</p><p>TextDtaa: {{ page.metafields.pagemf.multiline_text | metafield_tag }}</p><p>Volume: {{ page.metafields.pagemf.volume | metafield_tag }}</p><p>Number: {{ page.metafields.pagemf.number.value }}</p><p>Rating: {{ page.metafields.pagemf.rating | metafield_tag }}<br/>MetaObject: {{ page.metafields.pagemf.metaobj_ref.value.weight.value }}</p>",
+        "pro": "{{ page.metafields.pagemf.product_ref.value }}"
+      }
+    },
+    "test_section_jk_PjQMrG": {
+      "type": "test-section-jk",
+      "name": "Test Section JK",
+      "settings": {
+        "menu": "",
+        "exclude_collection": []
+      }
+    }
+  },
+  "order": [
+    "main",
+    "test_section_jk_PjQMrG"
+  ]
+}

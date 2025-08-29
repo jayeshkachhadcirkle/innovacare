@@ -1,0 +1,9 @@
+{% if page.metafields["pagemf"]["page_ref"] != blank %}
+  <div class="custom-field custom-field__page-ref custom-field__type--page-reference">
+    <h3 class="custom-field--title">Page Ref</h3>
+    <div class="custom-field--value">
+{{ page.metafields["pagemf"]["page_ref"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

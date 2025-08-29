@@ -1,0 +1,6 @@
+
+<ul>
+{% for item in product.metafields["shopify--discovery--product_recommendation"]["complementary_products"].value %}
+<li><a href="{{ item.url }}" class="metafield-product_reference">{{ item.title }}</a></li>
+{% endfor %}
+</ul>

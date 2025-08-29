@@ -1,0 +1,125 @@
+<div class="container">
+  <h2>Its Variants Pagination</h2>
+
+  {%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+  {%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last | replace:'\/','/' | replace:'%20',' ' | replace:'\u0026','&' -%}
+
+  Page URL:  {{ pageUrl }}  <br>
+
+  {%  assign params = pageUrl |  split: "?" %}
+
+  {% assign pageNO = 1 %}
+  {% if params.size > 1 %}
+    {% assign queryString = params[1] %}
+    {% assign queryParams = queryString | split: "&" %}
+
+    {% for param in queryParams %}
+      {% assign keyValue = param | split: "=" %}
+      {% assign paramName = keyValue[0] %}
+      {% assign paramValue = keyValue[1] | url_decode %} 
+      {% if paramName == 'page' %}
+        {% assign pageNO = paramValue | times: 1 %}
+      {% endif %}
+    {% endfor %}
+    {% else %}
+  {% endif %}
+  
+  <br>
+    {% assign limit = 5 %}
+    {% assign offsetter = pageNO | times: limit | minus: limit %}
+  
+    -The value of page is: {{ pageNO }}-<br>
+     Limit:{{ limit }} <br>
+     Offset: {{ offsetter }} <br>
+     {% assign my_value = request.query_parameters.my_param %}
+    <p>The value of my_param is: {{ request.path }}</p>
+  <br>
+  <br>
+
+  {% assign allApparelsPros = collection.products %}
+    {{ allApparelsPros.size }} Apparels Products
+  <br>
+
+  {% for product in allApparelsPros %}
+    {% assign allApparelsVariants = allApparelsVariants | concat: product.variants %}
+  {% endfor %}
+
+  {% comment %} {{ allApparelsVariants.size }} Apparels Variants {% endcomment %}
+
+  <div class="product-row">
+     {% for v in allApparelsVariants offset: offsetter limit: limit %}
+      {% render 'var-card', variant: v, form_id: 'ffff' %}
+    {% endfor %} 
+  </div>
+  
+  {% comment %} Prev and Next and Number for pagination {% endcomment %}
+  {% assign totalVars = allApparelsVariants.size %}
+  {% assign totalPages = totalVars | divided_by: limit %}
+  {% assign reminder = totalVars |  modulo: limit %}
+  {% if reminder > 0 %}
+    {% assign totalPages = totalPages | plus: 1 %}
+  {% endif %}
+  
+  <div class="pagination">
+    {% if pageNO > 1 %}
+      {% assign pp = pageNO | minus: 1 %}
+      <a href="?page={{ pp }}" class="prev-button"><</a>
+    {% endif %}
+
+    {% for i in (1..totalPages) %}
+      {% if i == pageNO %}
+        <span class="current-page page-badge">{{ i }}</span> 
+      {% else %}
+        <a href="?page={{ i }}" class="page-number page-badge">{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if pageNO < totalPages %}
+      {% assign np = pageNO | plus: 1 %}
+      <a href="?page={{ np }}" class="next-button">></a>
+    {% endif %}
+  </div>
+
+</div>
+
+{%  style  %}
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        gap: 10px;
+    }
+    .page-badge {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #333;
+    }
+    .current-page {
+        background-color: #333;
+        color: #fff;
+        font-weight: bold;
+    }
+    .prev-button, .next-button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+{% endstyle %}
+
+{% schema %}
+    {
+      "name": "Variants Pagination",
+      "settings": [],
+      "presets": [
+        {
+          "name": "Variants Pagination"
+        }
+      ]
+    }
+{% endschema %}

@@ -1,0 +1,291 @@
+{% if settings.comparison %}
+  <my-compare-element>
+    <span class="open-compare">
+      {% render 'icons', icon_type: 'compare' %}
+    </span>
+    <div class="compare-container">
+      <h4>Compare Products</h4>
+      <div class="compare-box"></div>
+      <div style="margin-top: 50px;">
+        <button class="clear-compare">Clear All</button>
+        <a href="/pages/comparison"><button>Compare All</button></a>
+      </div>
+    </div>
+  </my-compare-element>
+{% endif %}
+
+<footer class="innovacare-footer footer-style-one">
+  <div class="container">
+    {% if section.blocks.size > 0 %}
+      <div class="footer-top flex pt-50 pb-50">
+        <div class="footer-left flex">
+          {% for block in section.blocks limit: 2 %}
+            <div class="footer-column">
+              <div class="footer-widget">
+                {% case block.type %}
+                  {% when 'footer-block-about' %}
+                    <div {{ block.shopify_attributes }}>
+                      {% if block.settings['block-desc'] != blank %}
+                        {{ shop.metafields.clients.count }} Happy Customers.<br>
+                        <p>{{ block.settings['block-desc'] }}</p>
+                      {% endif %}
+                      {% if block.settings.socialcheck %}
+                        <div class="footer-social pt-30">
+                          <ul class="flex align-center">
+                            {% if settings['instagram-link'] != blank %}
+                              <li>
+                                <a href="{{ settings.instagram-link }}" target="_blank">
+                                  {%- render 'icons', icon_type: 'instagram' -%}
+                                </a>
+                              </li>
+                            {% endif %}
+                            {% if settings['facebook-link'] != blank %}
+                              <li>
+                                <a href="{{ settings.facebook-link }}" target="_blank">
+                                  {%- render 'icons', icon_type: 'facebook' -%}
+                                </a>
+                              </li>
+                            {% endif %}
+                            {% if settings['twitter-link'] != blank %}
+                              <li>
+                                <a href="{{ settings.twitter-link }}" target="_blank">
+                                  {%- render 'icons', icon_type: 'twitter' -%}
+                                </a>
+                              </li>
+                            {% endif %}
+                            {% if settings['pinterest-link'] != blank %}
+                              <li>
+                                <a href="{{ settings.pinterest-link }}" target="_blank">
+                                  {%- render 'icons', icon_type: 'pinterest' -%}
+                                </a>
+                              </li>
+                            {% endif %}
+                            <li>&nbsp</li>
+                          </ul>
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% when 'footer-block-menu' %}
+                    {% if block.settings['linklist-picked'] != blank %}
+                      <div {{ block.shopify_attributes }}>
+                        <h4 class="pb-20">
+                          {{ block.settings['block-heading'] | default: block.settings['linklist-picked'].title }}
+                        </h4>
+                        <ul>
+                          {% for link in block.settings['linklist-picked'].links %}
+                            <li>
+                              <a
+                                {% if link.url.size > 1 %}
+                                  href="{{ link.url }}"
+                                {% else %}
+                                  role="link" aria-disabled="true"
+                                {% endif %}
+                              >
+                                {{- link.title -}}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    {% endif %}
+                  {% else %}
+
+                {% endcase %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="footer-right flex">
+          {% for block in section.blocks offset: 2 %}
+            <div class="footer-column">
+              <div class="footer-widget">
+                {% case block.type %}
+                  {% when 'footer-block-about' %}
+                    <div {{ block.shopify_attributes }}>
+                      {% if block.settings['block-desc'] != blank %}
+                        {{ shop.metafields.clients.count }} Happy Customers.<br>
+                        <p>{{ block.settings['block-desc'] }}</p>
+                      {% endif %}
+                      {% if block.settings.socialcheck %}
+                        <div class="footer-social pt-30">
+                          <ul class="flex align-center">
+                            <li>
+                              <a href="{{ settings.instagram-link }}" target="_blank">
+                                {%- render 'icons', icon_type: 'instagram' -%}
+                              </a>
+                            </li>
+                            <li>
+                              <a href="{{ settings.facebook-link }}" target="_blank">
+                                {%- render 'icons', icon_type: 'facebook' -%}
+                              </a>
+                            </li>
+                            <li>
+                              <a href="{{ settings.twitter-link }}" target="_blank">
+                                {%- render 'icons', icon_type: 'twitter' -%}
+                              </a>
+                            </li>
+                            <li>
+                              <a href="{{ settings.pinterest-link }}" target="_blank">
+                                {%- render 'icons', icon_type: 'pinterest' -%}
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% when 'footer-block-menu' %}
+                    <div {{ block.shopify_attributes }}>
+                      {% if block.settings['linklist-picked'] != blank %}
+                        <h4 class="pb-20">
+                          {{ block.settings['block-heading'] | default: block.settings['linklist-picked'].title }}
+                        </h4>
+                        <ul>
+                          {% for link in block.settings['linklist-picked'].links %}
+                            <li>
+                              <a
+                                {% if link.url.size > 1 %}
+                                  href="{{ link.url }}"
+                                {% else %}
+                                  role="link" aria-disabled="true"
+                                {% endif %}
+                              >
+                                {{- link.title -}}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </div>
+                  {% else %}
+
+                {% endcase %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="align-center flex footer-bottom justify-between pt-30 pb-30">
+      <div class="footer-copyright">
+        <p>
+          © {{ 'now' | date: '%Y' }}
+          {{ shop.name }}
+          {{ 'layout.footer.Allrights' | t }}
+        </p>
+      </div>
+
+      {% if section.settings.payimg1 != blank
+        or section.settings.payimg2 != blank
+        or section.settings.payimg3 != blank
+      %}
+        <div class="footer-payment">
+          <ul class="flex justify-center align-center playment-links">
+            {% comment %}
+              {% for i in section.settings %}
+                {% assign str = "pay" | append: forloop.index %}
+                {% if i contains "payimg" %}
+                    {{ i }}
+
+                  {% endif %}
+              {% endfor %}
+            {% endcomment %}
+            {% for i in (1..3) %}
+              {%- capture imgid -%}payimg{{ i }}{%- endcapture -%}
+              {%- capture linkid -%}pay{{ i }}link{%- endcapture -%}
+              {% if section.settings[imgid] != blank %}
+                <li>
+                  <a
+                    {% if section.settings[imgid].size > 1 %}
+                      href="{{ section.settings[linkid] }}" target="_blank"
+                    {% else %}
+                      role="link" aria-disabled="true"
+                    {% endif %}
+                  >
+                    {{- section.settings[imgid] | img_url | img_tag: 'pay' -}}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "blocks": [
+    {
+      "name": "Footer Blocks About",
+      "type": "footer-block-about",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "block-desc",
+          "label": "Footer Left Text"
+        },
+        {
+          "type": "checkbox",
+          "id": "socialcheck",
+          "label": "Social icon",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "Footer Blocks Menu",
+      "type": "footer-block-menu",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "block-heading",
+          "label": "Block Heading"
+        },
+        {
+          "type": "link_list",
+          "id": "linklist-picked",
+          "label": "Select Menu"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "payimg1",
+      "label": "Pay Option 1"
+    },
+    {
+      "type": "url",
+      "id": "pay1link",
+      "label": "Pay 1 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "payimg2",
+      "label": "Pay Option 2"
+    },
+    {
+      "type": "url",
+      "id": "pay2link",
+      "label": "Pay 2 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "payimg3",
+      "label": "Pay Option 3"
+    },
+    {
+      "type": "url",
+      "id": "pay3link",
+      "label": "Pay 3 Link"
+    }
+  ],
+  "presets": []
+}
+{% endschema %}

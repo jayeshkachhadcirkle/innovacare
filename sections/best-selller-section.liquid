@@ -1,0 +1,96 @@
+{% if section.settings.switch == 'products' %}
+  {% assign allpros = section.settings.selected-products %}
+{% else %}
+  {% assign allpros = section.settings.collectionPicked.products %}
+{% endif %}
+
+{% if allpros != blank %}
+  <section class="best-selller-section">
+    <div class="container">
+      <div class="section-title flex align-end justify-between">
+        <h2>
+          {% if section.settings.change_title != blank %}
+            {{ section.settings.change_title }}
+          {% else %}
+            {% if section.settings.switch %}
+              Featured Products
+            {% else %}
+              {{ section.settings.collectionPicked.title }}
+            {% endif %}
+          {% endif %}
+        </h2>
+        {% if section.settings.show_all_bt %}
+          <a href="{{ section.settings.show-all | default: "collections/all" }}" class="link-btn align-center">
+            Show All &nbsp
+            {{ 'showAll.svg' | asset_url | img_tag: 'showall' }}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="best-seller-slider product-row">
+        {% for this_product in allpros %}
+          {% assign product = all_products[this_product.handle] %}
+          {% render 'product', product: product %}
+        {% endfor %}
+      </div>
+    </div>
+    {% comment %}
+    {% endcomment %}
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Featured Section",
+  "settings": [
+     {
+      "type": "select",
+      "id": "switch",
+      "label": "Mode: ",
+       "options": [
+         {
+           "label": "Collection",
+           "value": "collection"
+         },
+         {
+           "label": "Products",
+           "value": "products"
+         }
+       ],
+      "default":"collection"
+    },
+    {
+      "type": "collection",
+      "id": "collectionPicked",
+      "label": "Pick Collection"
+    },
+    {
+      "type": "product_list",
+      "id": "selected-products",
+      "label": "Select Products",
+      "limit": 15
+    },
+    {
+      "type": "inline_richtext",
+      "id": "change_title",
+      "label": "Change Section Title"
+    },
+     {
+       "type": "checkbox",
+       "id": "show_all_bt",
+       "label": "Show All Button On/Off",
+       "default":true
+     },
+    {
+      "type": "url",
+      "id": "show-all",
+      "label": "Show All Button Link",
+    }
+  ],
+  "presets": [
+    {
+      "name":"Featured Section"
+    }
+  ]
+}
+{% endschema %}

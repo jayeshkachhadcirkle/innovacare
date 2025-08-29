@@ -1,0 +1,181 @@
+<div class="custom-fields-section v2">
+  
+    {% if resource_type == "products" %}
+    <div class="custom-fields-section__products">
+      {% for block in blocks %}
+      {% if block.type contains "cf_" %}
+      <div {{ block.shopify_attributes }} class="custom-fields-section__item
+                  custom-fields-section__item--{{ block.type }}
+                  custom-fields-section__item--{{ block.type }}--{{ block.settings.key }}
+                  {% if block.settings.cols != blank %}{{ "cf-width-" | append: block.settings.cols | append: "-of-12" }}{% else %}cf-width-12-of-12{% endif %}">
+        {% case block.settings.key %}
+                  {% when "shopify--discovery--product_search_boost.queries" %}
+            {% render "shopify--discovery--product_search_boost.products.queries", block:block %}
+                  {% when "shopify--discovery--product_recommendation.related_products" %}
+            {% render "shopify--discovery--product_recommendation.products.related_products", block:block %}
+                  {% when "shopify--discovery--product_recommendation.related_products_display" %}
+            {% render "shopify--discovery--product_recommendation.products.related_products_display", block:block %}
+                  {% when "shopify--discovery--product_recommendation.complementary_products" %}
+            {% render "shopify--discovery--product_recommendation.products.complementary_products", block:block %}
+                  {% when "reviews.rating" %}
+            {% render "reviews.products.rating", block:block %}
+                  {% when "reviews.rating_count" %}
+            {% render "reviews.products.rating_count", block:block %}
+                  {% when "preorder.pre" %}
+            {% render "preorder.products.pre", block:block %}
+                  {% when "custom.expiry_date" %}
+            {% render "custom.products.expiry_date", block:block %}
+                  {% when "custom_fields.quote" %}
+            {% render "custom_fields.products.quote", block:block %}
+                  {% when "custom_fields.protabs" %}
+            {% render "custom_fields.products.protabs", block:block %}
+                  {% when "custom_fields.product_mf_collection" %}
+            {% render "custom_fields.products.product_mf_collection", block:block %}
+                  {% when "custom_fields.img_with_text" %}
+            {% render "custom_fields.products.img_with_text", block:block %}
+                  {% when "custom_fields.just_img_pro" %}
+            {% render "custom_fields.products.just_img_pro", block:block %}
+        
+        {% endcase %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  
+    {% if resource_type == "pages" %}
+    <div class="custom-fields-section__pages">
+      {% for block in blocks %}
+      {% if block.type contains "cf_" %}
+      <div {{ block.shopify_attributes }} class="custom-fields-section__item
+                  custom-fields-section__item--{{ block.type }}
+                  custom-fields-section__item--{{ block.type }}--{{ block.settings.key }}
+                  {% if block.settings.cols != blank %}{{ "cf-width-" | append: block.settings.cols | append: "-of-12" }}{% else %}cf-width-12-of-12{% endif %}">
+        {% case block.settings.key %}
+                  {% when "pagemf.video_mf" %}
+            {% render "pagemf.pages.video_mf", block:block %}
+                  {% when "pagemf.date_time" %}
+            {% render "pagemf.pages.date_time", block:block %}
+                  {% when "pagemf.dimension" %}
+            {% render "pagemf.pages.dimension", block:block %}
+                  {% when "pagemf.volume" %}
+            {% render "pagemf.pages.volume", block:block %}
+                  {% when "pagemf.number" %}
+            {% render "pagemf.pages.number", block:block %}
+                  {% when "pagemf.rating" %}
+            {% render "pagemf.pages.rating", block:block %}
+                  {% when "pagemf.file_pick" %}
+            {% render "pagemf.pages.file_pick", block:block %}
+                  {% when "pagemf.page_ref" %}
+            {% render "pagemf.pages.page_ref", block:block %}
+                  {% when "pagemf.product_ref" %}
+            {% render "pagemf.pages.product_ref", block:block %}
+                  {% when "pagemf.pro_variant_pick" %}
+            {% render "pagemf.pages.pro_variant_pick", block:block %}
+                  {% when "pagemf.collection_ref" %}
+            {% render "pagemf.pages.collection_ref", block:block %}
+                  {% when "pagemf.link_to" %}
+            {% render "pagemf.pages.link_to", block:block %}
+                  {% when "pagemf.multiline_text" %}
+            {% render "pagemf.pages.multiline_text", block:block %}
+                  {% when "pagemf.bool_mf" %}
+            {% render "pagemf.pages.bool_mf", block:block %}
+                  {% when "pagemf.json_mf" %}
+            {% render "pagemf.pages.json_mf", block:block %}
+                  {% when "pagemf.richtext" %}
+            {% render "pagemf.pages.richtext", block:block %}
+                  {% when "pagemf.file_multi" %}
+            {% render "pagemf.pages.file_multi", block:block %}
+                  {% when "pagemf.multi_product_select" %}
+            {% render "pagemf.pages.multi_product_select", block:block %}
+        
+        {% endcase %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  
+    {% if resource_type == "collections" %}
+    <div class="custom-fields-section__collections">
+      {% for block in blocks %}
+      {% if block.type contains "cf_" %}
+      <div {{ block.shopify_attributes }} class="custom-fields-section__item
+                  custom-fields-section__item--{{ block.type }}
+                  custom-fields-section__item--{{ block.type }}--{{ block.settings.key }}
+                  {% if block.settings.cols != blank %}{{ "cf-width-" | append: block.settings.cols | append: "-of-12" }}{% else %}cf-width-12-of-12{% endif %}">
+        {% case block.settings.key %}
+                  {% when "custom.collection_for" %}
+            {% render "custom.collections.collection_for", block:block %}
+        
+        {% endcase %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  
+    {% if resource_type == "customers" %}
+    <div class="custom-fields-section__customers">
+      {% for block in blocks %}
+      {% if block.type contains "cf_" %}
+      <div {{ block.shopify_attributes }} class="custom-fields-section__item
+                  custom-fields-section__item--{{ block.type }}
+                  custom-fields-section__item--{{ block.type }}--{{ block.settings.key }}
+                  {% if block.settings.cols != blank %}{{ "cf-width-" | append: block.settings.cols | append: "-of-12" }}{% else %}cf-width-12-of-12{% endif %}">
+        {% case block.settings.key %}
+                  {% when "custom.personalised_data_set_jk" %}
+            {% render "custom.customers.personalised_data_set_jk", block:block %}
+        
+        {% endcase %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  
+    {% if resource_type == "articles" %}
+    <div class="custom-fields-section__articles">
+      {% for block in blocks %}
+      {% if block.type contains "cf_" %}
+      <div {{ block.shopify_attributes }} class="custom-fields-section__item
+                  custom-fields-section__item--{{ block.type }}
+                  custom-fields-section__item--{{ block.type }}--{{ block.settings.key }}
+                  {% if block.settings.cols != blank %}{{ "cf-width-" | append: block.settings.cols | append: "-of-12" }}{% else %}cf-width-12-of-12{% endif %}">
+        {% case block.settings.key %}
+                  {% when "custom_fields.articollection" %}
+            {% render "custom_fields.articles.articollection", block:block %}
+        
+        {% endcase %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  
+    {% if resource_type == "shop" %}
+    <div class="custom-fields-section__shop">
+      {% for block in blocks %}
+      {% if block.type contains "cf_" %}
+      <div {{ block.shopify_attributes }} class="custom-fields-section__item
+                  custom-fields-section__item--{{ block.type }}
+                  custom-fields-section__item--{{ block.type }}--{{ block.settings.key }}
+                  {% if block.settings.cols != blank %}{{ "cf-width-" | append: block.settings.cols | append: "-of-12" }}{% else %}cf-width-12-of-12{% endif %}">
+        {% case block.settings.key %}
+                  {% when "custom_fields.select_ops" %}
+            {% render "custom_fields.shop.select_ops", block:block %}
+                  {% when "custom_fields.pro_ref" %}
+            {% render "custom_fields.shop.pro_ref", block:block %}
+                  {% when "custom_fields.rich_ref" %}
+            {% render "custom_fields.shop.rich_ref", block:block %}
+                  {% when "custom_fields.img_text" %}
+            {% render "custom_fields.shop.img_text", block:block %}
+        
+        {% endcase %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  
+</div>

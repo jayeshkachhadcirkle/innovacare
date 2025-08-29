@@ -1,0 +1,11 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+  <head>
+    {{ content_for_header }}
+  </head>
+  <body class="template-{{ template | split: '.' | first }} body">
+       <div class="wrapper">
+      {{ content_for_layout }}
+       </div>
+  </body>
+</html>

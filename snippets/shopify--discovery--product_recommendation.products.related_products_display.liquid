@@ -1,0 +1,9 @@
+{% if product.metafields["shopify--discovery--product_recommendation"]["related_products_display"] != blank %}
+  <div class="custom-field custom-field__related-products-display custom-field__type--single-line-text-field">
+    <h3 class="custom-field--title">Related products settings</h3>
+    <div class="custom-field--value">
+      {{ product.metafields["shopify--discovery--product_recommendation"]["related_products_display"] }}
+
+    </div>
+  </div>
+{% endif %}

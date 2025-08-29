@@ -1,0 +1,34 @@
+{% assign allKlairs = section.settings.collectionPicked.products %}
+
+<section class="best-selller-section">
+  <div class="container">
+    <div class="section-title flex align-end justify-between">
+      <h2>{{ 'Featured Products' }}</h2>
+      <a href="/collections/all" class="link-btn align-center">
+        Show All
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="12" viewBox="0 0 32 12" fill="none">
+          <path d="M32 6L24 0L26 5H0V7H26L24 12L32 6Z" fill="#121212" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="best-seller-slider product-row">
+      {% for product in section.settings.productslist %}
+        {% render 'product', product: product %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Selected Products",
+  "settings": [
+    {
+      "type": "product_list",
+      "id": "productslist",
+      "label": "Select Products"
+    }
+  ]
+}
+{% endschema %}

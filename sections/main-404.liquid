@@ -1,0 +1,57 @@
+<style>
+
+    .container404 {
+    /* max-width: 100%; */
+    width: 100%;
+    margin: 50px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+    padding: 0 37px;
+  }
+
+      .error-container {
+        text-align: center;
+        margin: 50px;
+        width: 80%;
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        padding: 20px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .error-message {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .continue-button {
+        text-decoration: none;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      .continue-button:hover {
+        background-color: #0056b3;
+      }
+</style>
+
+<div class="container404">
+  <div class="error-container">
+    <div class="error-message">
+      <h1>404 - Page Not Found</h1>
+    </div>
+    <a href="{{ routes.root_url }}"><button>Continue Shopping</button></a>
+  </div>
+</div>

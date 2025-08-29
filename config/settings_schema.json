@@ -1,0 +1,179 @@
+[
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Favicon"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon-Image"
+      }
+    ]
+  },
+  {
+    "name": "Social Links",
+    "settings": [
+      {
+        "type": "url",
+        "id": "instagram-link",
+        "label": "Instagram Link"
+      },
+      {
+        "type": "url",
+        "id": "facebook-link",
+        "label": "Facebook Link"
+      },
+      {
+        "type": "url",
+        "id": "twitter-link",
+        "label": "Twitter Link"
+      },
+      {
+        "type": "url",
+        "id": "pinterest-link",
+        "label": "Pinterest Link"
+      }
+    ]
+  },
+  {
+    "name": "Static Data",
+    "settings": [
+      {
+        "type": "number",
+        "id": "tel2",
+        "label": "Phone No 2"
+      }
+    ]
+  },
+  {
+    "name": "Product Card",
+    "settings": [
+      {
+        "type": "checkbox",
+        "label": "Show Quick View",
+        "id": "quick_view",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "label": "Show Comparison",
+        "id": "comparison",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Cart Recommendation",
+    "settings": [
+      {
+      "type": "text",
+      "id": "reco_title",
+      "label": "Recommendation Title"
+      },
+      {
+        "type": "select",
+        "id": "reco_mode",
+        "label": "Recommendation Mode",
+        "default": "lastadded",
+        "options": [
+          {
+            "label": "Selected Products",
+            "value": "selected"
+          },
+          {
+            "label": "Last Added",
+            "value": "lastadded"
+          }
+        ]
+      },
+      {
+        "type": "product_list",
+        "id": "reco_products",
+        "label": "Product for Recommendation"
+      },
+      {
+        "type": "product_list",
+        "id": "stop_recos",
+        "label": "Exclude Recommendation Based On"
+      }
+    ]
+  },
+  {
+    "name": "Shipping Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Free Shipping Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_free_limit",
+        "label": "Show Free Shipping Bar",
+        "default":true
+      },
+      {
+        "type": "range",
+        "id": "free_limit",
+        "label": "Free Shipping Limit",
+        "min": 100,
+        "max": 2000,
+        "step": 50,
+        "default":500
+      },
+      {
+        "type": "inline_richtext",
+        "id": "free_title",
+        "label": "Free Shipping Bar Title",
+        "info": "Use $$ for Remaining amount and %% to show Cart Limit.."
+      },
+      {
+        "type": "inline_richtext",
+        "id": "limit_reach",
+        "label": "Limit Reached Text"
+      },
+      {
+        "type": "header",
+        "content": "Shipping Charge Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_charge",
+        "label": "Shipping Charge Applicable"
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_auto",
+        "label": "Auto Charge"
+      },
+      {
+        "type": "product",
+        "id": "shipping_charge_pro",
+        "label": "Shipping Charge Product"
+      }
+    ]
+  },
+  {
+    "name": "Offer Product",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "offer_active",
+        "label": "Activate Offer",
+        "default":true
+      },
+      {
+        "type": "collection",
+        "id": "offer_collection",
+        "label": "Offer Collection"
+      },
+      {
+        "type": "product",
+        "id": "offer_product",
+        "label": "Offer Product"
+      }
+    ]
+  }
+]

@@ -1,0 +1,92 @@
+{% if product.metafields["custom_fields"]["protabs"] != blank %}
+{% style %}
+{{ block.settings.title_font | font_face }}
+#block-{{ block.id }} {
+  --margin-top: {{ block.settings.margin_top }}rem;
+  --margin-bottom: {{ block.settings.margin_bottom }}rem;
+  --title-font-size: {{ block.settings.title_font_size }}px;
+  {% if block.settings.title_font_custom != blank %}
+  --title-font-family: {{ block.settings.title_font.family }};
+  --title-font-weight: {{ block.settings.title_font.weight }};
+  --title-font-style: {{ block.settings.title_font.style }};
+  {% endif %}
+  --title-font-color: {{ block.settings.title_font_color }};
+  --title-padding: {{ block.settings.title_padding }};
+  --body-padding: {{ block.settings.body_padding }};
+  --body-font-size: {{ block.settings.body_font_size }}px;
+  --body-font-color: {{ block.settings.body_font_color }};
+  margin-top: var(--margin-top);
+  margin-bottom: var(--margin-bottom);
+}
+
+#block-{{ block.id }} .tab-labels .cf-tab {
+  {% if block.settings.title_font_size != blank %}font-size: var(--title-font-size);{% endif %}
+  {% if block.settings.title_font_custom != blank %}
+  font-family: var(--title-font-family) !important;
+  font-style: var(--title-font-style) !important;
+  font-weight: var(--title-font-weight) !important;
+  {% endif %}
+  {% if block.settings.title_padding != blank %}padding: var(--title-padding);{% endif %}
+  {% if block.settings.title_font_color != blank %}color: var(--title-font-color);{% endif %}
+}
+
+#block-{{ block.id }} .cf-widget-item {
+  {% if block.settings.body_padding != blank %}padding: var(--body-padding);{% endif %}
+}
+
+#block-{{ block.id }} .cf-widget-item .inner {
+  {% if block.settings.body_font_size != blank %}font-size: var(--body-font-size);{% endif %}
+  {% if block.settings.body_font_color != blank %}color: var(--body-font-color);{% endif %}
+}
+
+{% if block.settings.section_title_text != blank %}
+#block-{{ block.id }} .cf-widget-section-title {
+  {% if block.settings.section_title_margin_bottom != blank %}margin-bottom: {{ block.settings.section_title_margin_bottom }}em;{% endif %}
+}
+{% endif %}
+
+{% if block.settings.section_title_color != blank %}
+#block-{{ block.id }} .cf-widget-section-title {{ block.settings.section_title_tag }}{
+  color: {{ block.settings.section_title_color }};
+}
+{% endif %}
+
+{% endstyle %}
+<div class="cf-widget-protabs cf-widget__tabs-v2 cf-auto-init" id="block-{{ block.id }}"
+     data-dynamic_height="{% if block.settings.widget_dynamic_height %}1{% else %}0{% endif %}"
+     data-height_speed="{{ block.settings.widget_height_speed }}"
+     data-fade_speed="{{ block.settings.widget_fade_speed }}">
+  {% if block.settings.section_title_text != blank %}
+  <div class="cf-widget-section-title">
+    <{{ block.settings.section_title_tag }} class="cf-widget-sectiont-title__text">{{ block.settings.section_title_text }}</{{ block.settings.section_title_tag }}>
+  </div>
+  {% endif %}
+  <div class="cf-widget-items-wrapper">
+    <div class="tab-labels tab-labels--hidden">
+      {% for item in product.metafields["custom_fields"]["protabs"] %}
+      <span class="cf-tab" data-index="{{ forloop.index0 }}">
+        {{ item.title }}
+      </span>
+      {% endfor %}
+    </div>
+    <div class="tab-contents-container">
+      {% for item in product.metafields["custom_fields"]["protabs"] %}
+      <span class="cf-tab cf-tab--pseudo" data-index="{{ forloop.index0 }}">
+        {{ item.title }}
+      </span>
+      <div class="cf-widget-item" data-index="{{ forloop.index0 }}">
+        <div class="inner">
+          
+            {% if item.body != blank %}
+            <div class="cf-widget-field cf-widget-field__body cf-widget-field--html">
+              {{ item.body }}
+            </div>
+            {% endif %}
+          
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}

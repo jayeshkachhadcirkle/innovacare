@@ -1,0 +1,42 @@
+{% comment %}
+  {% render 'cart-recommendation', product_id:product.id, limit:10 frm:"drawer" %}
+{% endcomment %}
+
+{% assign selected = settings.reco_products %}
+
+{% for incart in cart.items %}
+  {% assign selected = selected | reject: 'id', incart.product.id %}
+{% endfor %}
+<br>
+    <div>
+      <h5>{{ settings.reco_title }}</h5>
+      <div class="cart-reco-container" mode="{{ settings.reco_mode }}"  >
+        <div
+          class="product-recommendations-carter"
+          data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product_id }}&limit={{ limit }}&intent=related"
+          selected-count="{{ selected.size }}"
+        >
+          {%- if recommendations.performed? and recommendations.products_count > 0 and settings.reco_mode == "lastadded" -%}
+            <div class="product-row flex cart-reco-container-row cart-reco-container-row-{{ frm }}" reco-count="{{ recommendations.products_count }}">
+              {% for product in recommendations.products %}
+                {% render 'product', product: product %}
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="product-row flex cart-reco-container-row cart-reco-container-row-{{ frm }}">
+                {% for product in selected %}
+                    {% if product.available %}
+                        {% render 'product', product: product %}
+                    {% endif %}
+                {% endfor %}
+              </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+
+{% javascript %}
+
+  
+{% endjavascript %}

@@ -1,0 +1,221 @@
+<section class="cart-page-wrapper">
+  {%- assign product_form_id = 'product-form-' | append: section.id -%}
+  <div class="container container-cart">
+    <div class="cart-heading text-center pt-70 pb-70">
+      <h2>{{ 'cart.general.title' | t }}</h2>
+      {% render 'free-shipping-bar' %}
+    </div>
+    {% if cart != empty %}
+      <div class="cart-tabl-section flex">
+        <div class="cart-table-lft">
+          <div class="cart-table-layout">
+            <div class="cart-table-head flex">
+              <div class="cart-head">{{ 'cart.general.title_mini' | t }}</div>
+              <button id="update_cart" form="cart" style="display:none;">{{ 'cart.general.submit' | t }}</button>
+            </div>
+            <form
+              action="{{ routes.cart_url }}"
+              id="Cart-Form"
+              class="cart__contents cart-drawer__form"
+              method="post"
+            >
+              <div class="cart-tabl-body" id="cartbody" total="{{ cart.total_price }}">
+                {% for item in cart.items %}
+                  <div class="cart-tble-row flex all-items-cart">
+                    <div class="cart-col-left flex">
+                      <div class="cart-col-img">
+                        <a href="{{ item.product.url }}" class="cart-img">
+                          {% if item.variant.featured_image != blank %}
+                            {{ item.variant.featured_image | img_url: 'medium' | img_tag }}
+                          {% else %}
+                            {{ item.product.featured_image | img_url: 'medium' | img_tag }}
+                          {% endif %}
+                        </a>
+                      </div>
+                      <div class="cart-pro-detail">
+                        <div class="cart-pro-inner">
+                          <div class="cart-title">
+                            {{ item.title | link_to: item.product.url }}
+                            <p style="color: blue;">
+                              {% if item.selling_plan_allocation.selling_plan.name != blank %}
+                                ( {{ item.selling_plan_allocation.selling_plan.name }} )
+                              {% endif %}
+                            </p>
+                          </div>
+                          <div class="price flex">
+                            <ins>{{ item.price | money_with_currency }}</ins>
+                          </div>
+                          {% assign properties_size = item.properties | size %}
+                          {% if properties_size > 0 %}
+                            <div>
+                              {% if item.properties._instruction.size > 1 %}
+                                <p>Instruction : {{ item.properties._instruction }}</p>
+                              {% endif %}
+                              {% if item.properties._file.size > 1 %}
+                                <p>File : {{ item.properties._file }}</p>
+                              {% endif %}
+                              {% if item.properties._gender %}
+                                <p>Gender : {{ item.properties._gender }}</p>
+                              {% endif %}
+                              {% if item.properties._dropselect.size > 1 %}
+                                <p>DropDown : {{ item.properties._dropselect }}</p>
+                              {% endif %}
+                              {% if item.properties._checkmate.size > 1 %}
+                                <p>Check : {{ item.properties._checkmate }}</p>
+                              {% endif %}
+                              {% if item.properties._multicheck.size > 1 %}
+                                <p>Multi Check : {{ item.properties._multicheck }}</p>
+                              {% endif %}
+                            </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cart-col-right flex">
+                      <div class="cart-qntty-col">
+                        <cart-qty-manager item-key="{{ item.key }}" variant="{{ item.variant_id }}">
+                          <div
+                            class="qtyAdjust  {% if item.variant_id == settings.offer_product.first_available_variant.id %} hidden {% endif %}"
+                            bundled="{{ item.properties['_isRecommended'] }}"
+                            bundleId="{{ item.properties['_bundleId'] }}"
+                          >
+                            <input
+                              type="number"
+                              min="01"
+                              value="{{ item.quantity }}"
+                              item-key="{{ item.key }}"
+                              name="updates[]"
+                              class="tc item-quantity get-qty"
+                              variant="{{ item.variant_id }}"
+                              data-index="{{ forloop.index }}"
+                              form="Cart-Form"
+                            >
+                            <button type="submit" class="adjust cart-minus nostyle-bt" name="minus" form="Cart-Form">
+                              {% render 'icons', icon_type: 'minus' %}
+                            </button>
+                            <button type="submit" class="adjust cart-plus nostyle-bt" name="plus" form="Cart-Form">
+                              {% render 'icons', icon_type: 'plus' %}
+                            </button>
+                          </div>
+                          <div class="remove-btn item-remove-btn-main">
+                            {% render 'icons', icon_type: 'delete_btn' %}
+                          </div>
+                          <div class="qty-error"></div>
+                        </cart-qty-manager>
+                      </div>
+                      {% comment %} <div class="cart-price-col"></div> {% endcomment %}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </form>
+          </div>
+          <a
+            href="{% if section.settings.continue_btn != blank %}{{ section.settings.continue_btn }} {% else %} {{ routes.all_products_collection_url }}{% endif %} "
+            class="link-btn align-center"
+          >
+            {{ 'cart.general.continue_shopping' | t }}
+            {% render 'icons', icon_type: 'right_arrow32' %}
+          </a>
+        </div>
+        <div class="cart-table-right">
+          <div class="order-summery">
+            <div class="order-title">{{ 'cart.general.summary' | t }}</div>
+            <ul class="order-details">
+              <li>
+                <div class="od-lbl" id="cart-items">{{ cart.item_count }} items</div>
+                <div class="od-lbl bold cart-prices">
+                  <p id="cart-subtotal">{{ cart.total_price | money }}</p>
+                </div>
+              </li>
+              <li>
+                <div class="od-lbl">{{ 'cart.general.shipping' | t }}</div>
+                <div class="od-lbl bold cart-prices"><p>Free</p></div>
+              </li>
+              <li>
+                <div class="od-lbl">{{ 'cart.general.tax1' | t }}</div>
+                <div class="od-lbl bold cart-prices">
+                  <p id="total-price">{{ cart.total_price | money }}</p>
+                </div>
+              </li>
+              <li>
+                <div class="od-lbl">{{ 'cart.general.tax' | t }}</div>
+                {% assign tax_amt = cart.original_total_price | minus: cart.items_subtotal_price %}
+                <div class="od-lbl bold cart-prices">
+                  <p id="cart-tax">{{ tax_amt | money }}</p>
+                </div>
+              </li>
+              <li>
+                <div class="od-lbl">{{ 'cart.general.tax2' | t }}</div>
+                <div class="od-lbl bold cart-prices">
+                  <p id="original-total-cart">{{ cart.original_total_price | money }}</p>
+                </div>
+              </li>
+            </ul>
+            <div class="order-footer text-center">
+              <p>{{- 'cart.general.note' | t -}}</p>
+              <a href="/checkout"
+                ><button class="btn checkout-btn" name="checkout" form="cart">
+                  {{ 'cart.general.checkout' | t }}
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% if cart.item_count > 0 %}
+        <div class="main-cart-recommendor" template="{{ template }}">
+          {% capture reco_stopped %}{% for i in settings.stop_recos %}{{ i.id }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}{% endcapture %}
+          {% capture reco_pros %}{% for i in cart.items %}{% if reco_stopped contains i.product_id %}{% else %}{{ i.product_id }}{% if forloop.last %}{% else %},{% endif %}{% endif %}{% endfor %}{% endcapture %}
+          {% assign reco_pro_sort = reco_pros | split: ',' %}
+          {% assign final_reco_product = reco_pro_sort.first %}
+
+          {% render 'cart-recommendation', product_id: final_reco_product, limit: 10, frm: 'main' %}
+        </div>
+      {% endif %}
+
+    {% else %}
+      <div class="cart-heading text-center pt-70 pb-70">
+        <div class="mini_cart_body_inner" style="border: 1px solid #eee;">
+          <div class="empty_cart">
+            <h3>{{ 'cart.general.empty_note' | t }}</h3>
+            <a href="{% if section.settings.continue_btn != blank %}{{ section.settings.continue_btn }} {% else %} {{ routes.all_products_collection_url }}{% endif %} ">
+              <button class="btn-primary">{{ 'cart.general.continue_shopping' | t }}</button>
+            </a>
+            <p>
+              {{ 'cart.general.have_account' | t }}
+              <a style="color: var(--red);" href="{{ routes.account_login_url }}">{{ 'cart.general.login' | t }}</a>
+            </p>
+            <p>or</p>
+            <p>
+              {{ 'cart.general.create_account' | t }}
+              <a style="color: var(--red);" href="{{ routes.account_register_url }}">{{ 'cart.general.signup' | t }}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Section name",
+  "settings": [
+    {
+      "type": "url",
+      "id": "continue_btn",
+      "label": "Continue TO"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', (event) => {
+    recommendationFetch();
+  });
+{% endjavascript %}

@@ -1,0 +1,66 @@
+{% if section.settings.switch and section.settings.collection_select != blank %}
+  {% assign colls = section.settings.collection_select %}
+{% else %}
+  {% assign colls = collections %}
+{% endif %}
+
+<section class="collections-section">
+  <div class="container">
+    <h2 class="collections-title">{{ section.settings.section_title | default: 'Collections' }}</h2>
+    <div class="collections">
+      {% paginate collections by section.settings.paginate_count %}
+        {% for collection in collections %}
+           {% render 'collection-card', collection:collection %}
+        {% endfor %}
+
+        <div class="pagination-wrapperjk">
+          {%- if paginate.pages > 1 -%}
+            {% render 'pagination', paginate: paginate, anchor: '' %}
+          {%- endif -%}
+        </div>
+      {% endpaginate %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Section name",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Collections"
+    },
+    {
+      "type": "checkbox",
+      "id": "switch",
+      "label": "Modes : All Collection / Selected"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_select",
+      "label": "Selects Collections"
+    },
+    {
+      "type": "range",
+      "id": "paginate_count",
+      "label": "Collections Per Page",
+      "min": 5,
+      "max": 50,
+      "default":5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_count",
+      "label": "Show Products Count"
+    }
+  ],
+  "presets": [
+    {
+      "name":"Collection List"
+    }
+  ]
+}
+{% endschema %}

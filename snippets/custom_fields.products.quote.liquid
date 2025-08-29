@@ -1,0 +1,93 @@
+{% if product.metafields["custom_fields"]["quote"] != blank %}
+{% style %}
+{% if block.settings.quote_font_custom != blank %}
+{{ block.settings.quote_font | font_face }}
+{% endif %}
+
+#block-{{ block.id }} {
+  --margin-top: {{ block.settings.margin_top }}rem;
+  --margin-bottom: {{ block.settings.margin_bottom }}rem;
+  --quote-font-size: {{ block.settings.quote_font_size }}px;
+  {% if block.settings.quote_font_custom != blank %}
+  --quote-font-family: {{ block.settings.quote_font.family }};
+  --quote-font-weight: {{ block.settings.quote_font.weight }};
+  --quote-font-style: {{ block.settings.quote_font.style }};
+  {% endif %}
+  --quote-font-color: {{ block.settings.quote_font_color }};
+  --quote-line-height: {{ block.settings.quote_line_height }}em;
+  --author-font-size: {{ block.settings.author_font_size }}px;
+  --author-font-color: {{ block.settings.author_font_color }};
+  --author-margin-bottom: {{ block.settings.author_margin_bottom }}px;
+  margin-top: var(--margin-top);
+  margin-bottom: var(--margin-bottom);
+}
+
+#block-{{ block.id }} .cf-widget-field__quote {
+  {% if block.settings.quote_font_size != blank %}font-size: var(--quote-font-size);{% endif %}
+  {% if block.settings.quote_font_custom != blank %}
+  font-family: var(--quote-font-family) !important;
+  font-style: var(--quote-font-style) !important;
+  font-weight: var(--quote-font-weight) !important;
+  {% endif %}
+  {% if block.settings.quote_font_color != blank %}color: var(--quote-font-color);{% endif %}
+  {% if block.settings.quote_line_height != blank %}line-height: var(--quote-line-height);{% endif %}
+}
+
+#block-{{ block.id }} .cf-widget-field__author {
+  {% if block.settings.author_font_size != blank %}font-size: var(--author-font-size);{% endif %}
+  {% if block.settings.author_font_color != blank %}color: var(--author-font-color);{% endif %}
+  {% if block.settings.author_margin_bottom != blank %}margin-bottom: var(--author-margin-bottom);{% endif %}
+}
+
+{% if block.settings.section_title_text != blank %}
+#block-{{ block.id }} .cf-widget-section-title {
+  {% if block.settings.section_title_margin_bottom != blank %}margin-bottom: {{ block.settings.section_title_margin_bottom }}em;{% endif %}
+}
+{% endif %}
+
+{% if block.settings.section_title_color != blank %}
+#block-{{ block.id }} .cf-widget-section-title {{ block.settings.section_title_tag }}{
+  color: {{ block.settings.section_title_color }};
+}
+{% endif %}
+
+{% endstyle %}
+<div class="cf-widget-quote cf-widget__testimonials-v2 cf-auto-init" id="block-{{ block.id }}"
+     data-hide_arrows="{% if block.settings.widget_hide_arrows %}1{% else %}0{% endif %}"
+     data-hide_pager="{% if block.settings.widget_hide_pager %}1{% else %}0{% endif %}"
+     data-randomize="{% if block.settings.widget_randomize %}1{% else %}0{% endif %}"
+     data-interval="{{ block.settings.widget_interval | times: 1000 }}"
+     data-variable_height="{% if block.settings.widget_variable_height %}1{% else %}0{% endif %}"
+     data-animate_speed="{{ block.settings.widget_animate_speed }}">
+  {% if block.settings.section_title_text != blank %}
+  <div class="cf-widget-section-title">
+    <{{ block.settings.section_title_tag }} class="cf-widget-sectiont-title__text">{{ block.settings.section_title_text }}</{{ block.settings.section_title_tag }}>
+  </div>
+  {% endif %}
+  <div class="cf-widget-items-wrapper cf-slider">
+    <div class="cf-slides-wrapper">
+      {% for item in product.metafields["custom_fields"]["quote"] %}
+      <div class="cf-widget-item cf-slide">
+        <div class="inner">
+          <div class="inner-padding">
+            
+              {% if item.quote != blank %}
+              <div class="cf-widget-field cf-widget-field__quote cf-widget-field--text">
+                <h3> {{ item.quote }}</h3>
+              </div>
+              {% endif %}
+            
+              {% if item.author != blank %}
+              <div class="cf-widget-field cf-widget-field__author cf-widget-field--text">
+                <h5> {{ item.author }} </h5>
+              </div>
+              {% endif %}
+            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}

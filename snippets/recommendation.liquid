@@ -1,0 +1,76 @@
+{% comment %}
+  need arguments =
+    limit,
+    recommendation_title,
+{% endcomment %}
+{% assign bundle = 'now' | date: '%N' | handleize %}
+<div
+  id="recommendor"
+  class="product-recommendations"
+  data-limit="{{ limit }}"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ limit }}&intent=related"
+>
+  {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    <div class="section-title flex align-center">
+      <h2>{{ recommendation_title }}</h2>
+    </div>
+    {% assign r_total = 0 %}
+    <div
+      class="product-row flex"
+      bundleId="{{ bundle }}"
+      bundledPro="{% for product in recommendations.products %}{{ product.first_available_variant.id }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}"
+    >
+      {% for product in recommendations.products %}
+        {% render 'product', product: product %}
+        {% assign p = product.price | money_without_currency %}
+        {% assign r_total = r_total | plus: p %}
+      {% endfor %}
+    </div>
+    <div class="pt-30 text-center">
+      <button id="reco_submit" class="btn-primary">BUY NOW @ {{ r_total }}</button>
+    </div>
+  {%- endif -%}
+</div>
+
+{% javascript %}
+  const products = [];
+  const productRecommendationsSection = document.querySelector('.product-recommendations');
+
+  const handleIntersection = (entries, observer) => {
+    if (!entries[0].isIntersecting) return;
+
+    observer.unobserve(productRecommendationsSection);
+    const url = productRecommendationsSection.dataset.url;
+    let limit = parseInt(productRecommendationsSection.dataset.limit);
+    for (let i = 0; i < limit; i++) {
+      productRecommendationsSection.innerHTML += `
+      <div>
+        <div class="skeleton" style="height:300px;width:200px;margin:4px;"></div>
+        <div class="skeleton" style="height:20px;width:180px;margin:4px;"></div>
+        <div class="skeleton" style="height:20px;width:150px;margin:4px;"></div>
+        <div class="skeleton" style="height:20px;width:180px;margin:4px;"></div>
+      </div>
+      `
+    }
+    // productRecommendationsSection.innerHTML = `<div class="spin-wrapper spinner demo3"></div>`
+    fetch(url)
+      .then(response => response.text())
+      .then(text => {
+        // console.log(text);
+        const html = document.createElement('div');
+        html.innerHTML = text;
+        const recommendations = html.querySelector('.product-recommendations');
+        if (recommendations && recommendations.innerHTML.trim().length) {
+          productRecommendationsSection.innerHTML = recommendations.innerHTML;
+        }else{
+          productRecommendationsSection.innerHTML = "";
+        }
+        // recommendationPost();
+      })
+      .catch(e => {
+        console.error(e);
+      });
+  };
+  const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 0px 0px'});
+  observer.observe(productRecommendationsSection);
+{% endjavascript %}

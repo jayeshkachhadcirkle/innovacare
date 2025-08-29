@@ -1,0 +1,9 @@
+{% if page.metafields["pagemf"]["link_to"] != blank %}
+  <div class="custom-field custom-field__link-to custom-field__type--url">
+    <h3 class="custom-field--title">Link To</h3>
+    <div class="custom-field--value">
+{{ page.metafields["pagemf"]["link_to"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,109 @@
+{% assign results = predictive_search.resources.products.size | plus: predictive_search.resources.collections.size | plus: predictive_search.resources.pages.size | plus: predictive_search.resources.articles.size %}
+
+<div class="predictive-search-results-replace" limit="{{ section.settings.search_limit }}" scope="{{ section.settings.limit_scope }}"></div>
+<div id="predictive-search-results" class="predictive-search-results">
+{%- if predictive_search.performed and results > 0 -%}
+        {{ results }} {{ 'search.results' | t }}
+      {%- if predictive_search.resources.products.size > 0 -%}
+        <h4>{{ 'search.products' | t }}</h4>
+        <div class="search-type products-s" >
+        {%- for product in predictive_search.resources.products -%}
+          <div class="search-product">
+            <a href="{{ product.url }}" class="tiles">
+              {% if product.featured_image != blank %}
+            {{ product.featured_image | image_url: "50x50" | img_tag }}
+                {% else %}
+                <img src="{{ 'placer.svg' | asset_url }}" height="80px" width="80px" >
+              {% endif %}
+                  <h5>{{ product.title }}</h5>
+            </a>
+              <like-button  data-variant="{{ product.selected_or_first_available_variant.id }}" data-product="{{ product.id }}">
+              <a role="link" aria-disabled="true" class="pro-like" handle="{{ product.handle }}">
+                {{ 'like20.svg' | inline_asset_content }}
+              </a>
+            </like-button data-variant="{{ product.selected_or_first_available_variant.id }}" data-product="{{ product.id }}">
+        </div>
+        {%- endfor -%}
+          </div>
+      {%- endif -%}
+  
+      {%- if predictive_search.resources.collections.size > 0 -%}
+        <h4>{{ 'search.collections' | t }}</h4>
+        <div class="search-type collections-s" >
+          {% for collection in predictive_search.resources.collections %}
+            <a href="{{ collection.url }}" class="tiles" >
+                {% if collection.featured_image != blank %}
+              {{ collection.featured_image | image_url: width: 50, height: 50 | img_tag }}
+                {% else %}
+                 <img src="{{ 'placer.svg' | asset_url }}" height="80px" width="80px" >
+              {% endif %}
+               <h5>{{ collection.title }}</h5>
+            </a>
+          {% endfor %}
+        </div>
+      {%- endif -%}
+
+      {%- if predictive_search.resources.articles.size > 0 -%}
+        <h3>{{ 'search.articles' | t }}</h3>
+      
+        <div class="search-type article-s" >
+          {% for article in predictive_search.resources.articles %}
+            <a href="{{ article.url }}" class="tiles" style="flex-direction:column;">
+               <h5>{{ article.title }}</h5>
+               <p>Published @ {{ article.published_at | date: '%B %d, %Y' }}</p>
+            </a>
+          {% endfor %}
+        </div>
+      {%- endif -%}
+
+      {%- if predictive_search.resources.pages.size > 0 -%}
+        <h3>{{ 'search.pages' | t }}</h3>
+        <div class="search-type pages-s" >
+        {%- for page in predictive_search.resources.pages -%}
+          <a id="{{ page.id }}" class="tiles" href="{{ page.url }}" style="flex-direction:column;">
+             <h5>{{ page.title }}</h5>
+             <p>Published @ {{ page.published_at }}</p>
+          </a>
+        {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  {% else %}
+  <p style="margin-left:5px; margin-top:5px;">{{ 'search.notfound' | t }}</p>
+{%- endif -%}
+
+
+
+{% schema %}
+{
+  "name": "Predictive Search",
+  "settings": [
+    {
+        "type": "radio",
+        "id": "limit_scope",
+        "label": "Apply Search Limit",
+        "options": [
+          {
+            "label": "Total Limit",
+            "value": "all"
+          },
+          {
+            "label": "Per Type Limit",
+            "value": "each"
+          }
+        ],
+        "default": "each"
+      },
+      {
+        "type": "range",
+        "id": "search_limit",
+        "label": "Search Result Limit",
+        "default":5,
+        "min": 1,
+        "max": 10,
+      }
+  
+  ]
+}
+{% endschema %}
+

@@ -1,0 +1,41 @@
+<div class="container">
+<h1>Product Comparison </h1>
+
+  <div class="compare-pg-con">
+    <div class="compare-pg-box">
+      
+    </div>
+  </div>  
+</div>
+
+{% javascript %}
+  document.addEventListener("DOMContentLoaded", (e) => {
+    let pros = localStorage.getItem("compares").split(",");
+    console.log(pros);
+    let box = document.getElementsByClassName('compare-pg-box')[0]
+    for(let i = 0; i < 3; i++){
+      let proSec = document.createElement('div');
+      proSec.classList.add('compare-prod');
+      box.appendChild(proSec);
+      fetch("/products/" + pros[i] + "?view=product-main-wrap")
+        .then((response) => response.text())
+        .then((data) => {
+          let doc = new DOMParser().parseFromString(data, "text/html");
+          proSec.innerHTML = doc.getElementsByClassName("compare-prod")[0].innerHTML
+        })
+    }
+
+    setTimeout(function(){
+      productMediaSlider();
+      // productVertyMediaSlider() 
+      manualVariantListeners();
+    },2500)
+  })
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Compare Products Section",
+    "settings": []
+  }
+{% endschema %}

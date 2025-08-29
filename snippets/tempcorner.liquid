@@ -1,0 +1,14 @@
+{% style %}
+ .template-name-display { 
+     display: none;
+    background: #f5f5c5;
+    border: 1px solid #CCC;
+    padding: 3px;
+    font-weight: 600;
+    z-index: 1000;
+    position: fixed;
+    bottom: 5px;
+}
+{% endstyle %}
+
+<p class="template-name-display" template="{{ template }}" > [ {{ template }} ] </p>

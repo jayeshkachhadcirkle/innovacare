@@ -1,0 +1,48 @@
+{% if section.settings.title != blank or section.settings.image != blank %}
+  <section class="about-two-col">
+    <div class="container">
+      <div class="flex about-row  row-reverse">
+        <div class="about-left-col">
+          <div class="about-left-inner pt-50 pb-50">
+            {% if section.settings.title != blank %}
+              <div class="section-title">
+                <h2>{{ section.settings.title }}</h2>
+              </div>
+            {% endif %}
+            {{ section.settings.content }}
+          </div>
+        </div>
+        {% if section.settings.image != blank %}
+          <div class="about-right-col">
+            <div class="about-media">
+              {{ section.settings.image | img_url: 'large' | img_tag }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+{% schema %}
+{
+  "name": "About Section 3",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+    },
+
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

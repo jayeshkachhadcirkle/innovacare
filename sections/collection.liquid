@@ -1,0 +1,212 @@
+<section class="collections-section filter-applied-on">
+  <div class="container">
+    <div class="collection-banner">
+      <div>
+        <h2>{{ collection.title }}</h2>
+        {% if collection.metafields.custom.collection_for %}
+          <p>Collection Designed For: {{ collection.metafields.custom.collection_for }}</p>
+        {% endif %}
+      </div>
+      <div class="img-con">
+        {% if collection.featured_image %}
+          {{ collection.featured_image | img_url: 'large' | img_tag: collection.title }}
+        {% else %}
+          {{ 'collection-4' | placeholder_svg_tag }}
+        {% endif %}
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    {% if collection.all_products_count > 0 %}
+      {% assign n = section.settings.product_toshow %}
+      {%- paginate collection.products by n -%}
+        {% render 'facets',
+          results: collection,
+          enable_filtering: section.settings.enable_filtering,
+          enable_sorting: section.settings.enable_sorting,
+          paginate: paginate
+        %}
+        <div class="product-grid-container">
+          <div id="AjaxinateContainer" class="AjaxinateContainer" hasmore="1">
+            <ul id="product-grid" class="product-row pro-grid-wrapper">
+              {% for product in collection.products %}
+                {% render 'product', product: product %}
+              {% endfor %}
+            </ul>
+          </div>
+          <div
+            id="AjaxinatePagination"
+            class="AjaxinatePagination"
+            style="display: flex; justify-content: center;"
+            infinite="{% if section.settings.infinite_scroll %}1{% else %}0{% endif %}"
+            count="{{ collection.all_products_count }}"
+            paginateby="{{ section.settings.product_toshow }}"
+            current="1"
+          >
+            {% if paginate.next %}
+              <button id="load-more-btn" class="load-more btn" next-page="{{ paginate.next.url }}" lastpage="1">
+                Load More.
+              </button>
+            {% endif %}
+          </div>
+        </div>
+      {%- endpaginate -%}
+
+    {% else %}
+      {% render 'message', message: 'No Products Found in the Collection' %}
+    {% endif %}
+  </div>
+</section>
+
+{% javascript %}
+  const box = document.getElementsByClassName('AjaxinatePagination')[0];
+  let loadMoreBt = document.getElementById('load-more-btn');
+  const facetForm = document.getElementById('FacetFiltersForm');
+  facetForm.addEventListener('change', function (e) {
+    // for pagination
+    observer.observe(box);
+    box.setAttribute('current', 1);
+    box.style.display = 'flex';
+    e.preventDefault();
+    let formData = new FormData(facetForm);
+    let queryFromForm = new URLSearchParams(formData).toString();
+    console.log(queryFromForm);
+    applyFilter(`?${queryFromForm}`);
+  });
+
+  let results = parseInt(document.getElementById('ProductCountDesktop').getAttribute('pro-count'));
+  let per_page = parseInt(document.getElementsByClassName('AjaxinatePagination')[0].getAttribute('paginateby'));
+  let pages = Math.ceil(results / per_page);
+  let arr = [];
+
+  for (let i = 1; i <= pages; i++) {
+    arr.push(i);
+  }
+  // console.log(arr)
+
+  let enableInfinite = parseInt(box.getAttribute('infinite'));
+  let countResult = document.getElementById('ProductCountDesktop').getAttribute('pro-count');
+  box.setAttribute('count', countResult);
+  pages = Math.ceil(countResult / per_page);
+
+  let observer = new IntersectionObserver((arr) => {
+    if (enableInfinite) {
+      for (const entry of arr) {
+        if (entry.isIntersecting) {
+          let newpage = parseInt(box.getAttribute('current')) + 1;
+          box.setAttribute('current', newpage);
+          console.log(newpage);
+          let cc = parseInt(document.getElementById('ProductCountDesktop').getAttribute('pro-count'));
+          fetchNewPage(newpage, cc, per_page, observer);
+        }
+      }
+    } else {
+      observer.unobserve(box);
+      console.log('False');
+    }
+  });
+  observer.observe(box);
+
+  function fetchNewPage(pageNo, results, perPage, observer) {
+    observer.unobserve(box);
+    // console.log("Function : " + pageNo  + " " + results + " " + perPage);
+    let pages2 = Math.ceil(results / per_page);
+    if (document.getElementById('load-more-btn')) {
+      let url = document.getElementById('load-more-btn').getAttribute('next-page');
+      console.log(url);
+      for (let i = 0; i < per_page; i++) {
+        let loader = document.createElement('div')
+        loader.classList.add('pro-loader')
+        loader.innerHTML = `
+            <div class="skeleton" style="height:300px;width:250px;margin:10px;"></div>
+            <div class="skeleton" style="height:20px;width:180px;margin:10px;"></div>
+            <div class="skeleton" style="height:20px;width:150px;margin:10px;"></div>
+            <div class="skeleton" style="height:20px;width:200px;margin:10px;"></div>
+        `
+        document.getElementsByClassName('AjaxinateContainer')[0].getElementsByClassName('product-row')[0].appendChild(loader)
+      }
+      fetch(url)
+        .then((res) => res.text())
+        .then((data) => {
+          let doc = new DOMParser().parseFromString(data, 'text/html');
+          let proCards = doc
+            .getElementsByClassName('AjaxinateContainer')[0]
+            .getElementsByClassName('product-row')[0].querySelectorAll('.product-widget');
+            document.querySelectorAll('.pro-loader').forEach(function(l, index){
+              if(proCards[index]){
+                l.replaceWith(proCards[index])
+              }else{
+                l.remove();
+              }
+            })
+          box.innerHTML = doc.getElementsByClassName('AjaxinatePagination')[0].innerHTML;
+          setTimeout(() => {
+            observer.observe(box);
+          }, 800);
+        });
+    }
+    if (pageNo <= pages2 && results >= perPage) {
+      console.log('Continue');
+    } else {
+      console.log('Got Else Observ');
+      observer.unobserve(box);
+      box.style.display = 'none';
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    if (event.target.matches('#load-more-btn')) {
+      console.log('Clicked LBT');
+      let newpage = parseInt(box.getAttribute('current')) + 1;
+      box.setAttribute('current', newpage);
+      let cc = parseInt(document.getElementById('ProductCountDesktop').getAttribute('pro-count'));
+      fetchNewPage(newpage, cc, per_page, observer);
+    }
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Collection Section",
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "range",
+      "id": "product_toshow",
+      "label": "Number of Product Per Page",
+      "default": 10,
+      "min": 5,
+      "max": 50
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_scroll",
+      "label": "Infinite Scroll",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Filter Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Enable Sorting",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "Enable Filter",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

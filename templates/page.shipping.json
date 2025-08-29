@@ -1,0 +1,200 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_kU9RE4": {
+          "type": "data_block",
+          "settings": {
+            "title": "DELIVERY",
+            "content": "<p>We only deliver to cities in Norway, except Svalbard and Jan Mayen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_kU9RE4"
+      ],
+      "settings": {
+        "title": "Shipping and Delivery Conditions",
+        "withbg": false
+      }
+    },
+    "split_section_38bL6y": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_96NnQk": {
+          "type": "data_block",
+          "settings": {
+            "title": "ADDRESS",
+            "content": "<p>A prerequisite for delivery to take place without delays or problems, is that we have your complete and correct address and postcode. It is your responsibility to ensure that in connection with an order we always have the correct address where you can receive a shipment.</p>"
+          }
+        },
+        "data_block_GMjVLi": {
+          "type": "data_block",
+          "settings": {
+            "title": "QUALITY ASSURANCE",
+            "content": "<p>Conditions such as Extremely high or low temperatures can degrade the quality of cosmetic products. To avoid delivery conditions that may impair the quality of our products, we send out products only as parcel post, and this is done by Posten Norge AS.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_96NnQk",
+        "data_block_GMjVLi"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_rbTJJd": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_Bh449g": {
+          "type": "data_block",
+          "settings": {
+            "title": "COST OF SHIPPING",
+            "content": "<p>The price of shipping varies according to the items you order and where you want it delivered.</p><h5><strong>Free Delivery:</strong></h5><h5></h5><p>If you shop for more than NOK 400, we do not charge the shipping costs for the shipment.</p><p>We use Bring as a transport supplier</p><p>If you shop for less than NOK 400, you pay the shipping costs yourself according to Bring's current rates and you can choose between these delivery methods:</p><ul><li><strong>Bring Climate Neutral service package -</strong>  The package is delivered to your nearest post office / post in store, where you pick up the package yourself. When the package has arrived, you will be notified by Bring / Posten via text message, e-mail or pick-up message in the mailbox.</li><li><strong>Posten's package in the mailbox -</strong> The package is delivered directly to your mailbox, possibly to the nearest collection point if it does not fit in the mailbox.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_Bh449g"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": true
+      }
+    },
+    "split_section_YQTk7c": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_efHNdm": {
+          "type": "data_block",
+          "settings": {
+            "title": "DELIVERY TIME",
+            "content": "<p>The goods are delivered approx. 2-8 working days after you have ordered depending on where you live in the country. This is an estimated delivery time, and something both we and our logistics partners are working to fulfill. However, we make a reservation that delivery time in certain periods - such as. around Christmas time and during the public holidays, can be a bit longer.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_efHNdm"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_CUgDrC": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_TQbJzD": {
+          "type": "data_block",
+          "settings": {
+            "title": "UNCOLLECTED PACKAGES",
+            "content": "<p>Parcels remain in the post office for 14 days before being sent back to the sender. We encourage you to order delivery home at the door <a href=\"http://127.0.0.1:5500/shipping.html#\">via this link</a> if you see that it will be difficult for you to pick up the package at the post office within the deadline. If the package is not picked up by the deadline, we will have to charge you for the cost in connection with the return shipping to us, as well as for the cost of new dispatch to you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_TQbJzD"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "slider_image_section_XXUF49": {
+      "type": "slider-image-section",
+      "blocks": {
+        "add_image_W9hHwR": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img4.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_N66JzF": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img3.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_xUThFQ": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img5.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_TFXwqX": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img6.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_X7Ff7t": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img1.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_Wp97f8": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img2.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "add_image_W9hHwR",
+        "add_image_N66JzF",
+        "add_image_xUThFQ",
+        "add_image_TFXwqX",
+        "add_image_X7Ff7t",
+        "add_image_Wp97f8"
+      ],
+      "name": "Slider Images Section",
+      "settings": {
+        "title": "@innovacare",
+        "link": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "split_section_38bL6y",
+    "split_section_rbTJJd",
+    "split_section_YQTk7c",
+    "split_section_CUgDrC",
+    "slider_image_section_XXUF49"
+  ]
+}

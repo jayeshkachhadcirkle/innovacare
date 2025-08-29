@@ -1,0 +1,34 @@
+<section class="user-section">
+  <div class="container">
+    <div class="user-cover">
+      <div class="user-inner-box bgcolor4">
+        <h2 class="account-title">{{ 'customer.register.title' | t }}</h2>
+        {% comment %}
+        This form must use 'create_customer'
+        {% endcomment %}
+        <div class="form-wrap">
+          {% form 'create_customer' %}
+          {{ form.errors | default_errors }}
+          <div class="form-group">
+            <input type="text" name="customer[full_name]" id="FullName" placeholder="{{ 'customer.register.full_name' | t }}" {% if form.full_name %}value="{{ form.full_name }}"{% endif %} autocapitalize="words" autofocus>
+          </div>
+          {% comment %}
+            JK
+          <div class="form-group">
+            <input type="date" name="customer[metafields][customer][bd]" id="bd" placeholder="Date Of Birth"  autocapitalize="words" autofocus>
+          </div>
+          {% endcomment %}
+          <div class="form-group">
+            <input type="email" name="customer[email]" id="Email" placeholder="{{ 'customer.register.email' | t }}" {% if form.errors contains "email" %} class="error"{% elsif form.email %} value="{{ form.email }}"{% endif %} autocomplete="off" autocapitalize="off">
+          </div>
+          <div class="form-group">
+            <input type="password" name="customer[password]" id="CreatePassword" placeholder="{{ 'customer.register.password' | t }}" {% if form.errors contains "password" %} class="error"{% endif %}>
+          </div>
+          <div class="button"> <button type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">{{ 'customer.register.submit' | t }}</button></div>
+          {% endform %}
+        </div>
+        <p><a href="/account/login">{{ 'customer.register.already_account' | t }}</a></p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,241 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "home_banner_section_JVEiWW": {
+      "type": "home-banner-section",
+      "blocks": {
+        "banner_image_jF4BpE": {
+          "type": "banner-image",
+          "settings": {
+            "image-id": "shopify://shop_images/media-img3.png",
+            "image_link": ""
+          }
+        },
+        "banner_image_g6GaYe": {
+          "type": "banner-image",
+          "settings": {
+            "image-id": "shopify://shop_images/media-img1.png",
+            "image_link": ""
+          }
+        },
+        "banner_image_98yAfK": {
+          "type": "banner-image",
+          "settings": {
+            "image-id": "shopify://shop_images/media-img2.png",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "banner_image_jF4BpE",
+        "banner_image_g6GaYe",
+        "banner_image_98yAfK"
+      ],
+      "settings": {}
+    },
+    "best_selller_section_iNBFhX": {
+      "type": "best-selller-section",
+      "custom_css": [],
+      "settings": {
+        "switch": "collection",
+        "collectionPicked": "klairs",
+        "selected-products": [
+          "bud-1",
+          "gift-1",
+          "bud-5"
+        ],
+        "change_title": "",
+        "show_all_bt": true,
+        "show-all": ""
+      }
+    },
+    "hero_image_section_DA43pr": {
+      "type": "hero-image-section",
+      "name": "Hero Image Section",
+      "settings": {
+        "hero-title": "<strong>ESPA </strong>Skincare",
+        "hero-desc": "NATURAL BEAUTY INNER CLAM",
+        "hero-image": "shopify://shop_images/skincare-banner.png",
+        "link": "",
+        "right-back": "shopify://shop_images/skincare-right.png",
+        "badge_image": "shopify://shop_images/sale.png",
+        "show-discount": true
+      }
+    },
+    "best_selller_section_VfGxje": {
+      "type": "best-selller-section",
+      "settings": {
+        "switch": "products",
+        "collectionPicked": "",
+        "selected-products": [
+          "klairs-midnight-blue-calming-cream-60-ml-1",
+          "klairs-midnight-blue-calming-cream-60-ml-3",
+          "monitor-3",
+          "monitor-4",
+          "monitor-5",
+          "t-shirt",
+          "shoes"
+        ],
+        "change_title": "",
+        "show_all_bt": true,
+        "show-all": ""
+      }
+    },
+    "slider_image_section_FT4x7Y": {
+      "type": "slider-image-section",
+      "blocks": {
+        "add_image_yKMTN6": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img1.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_PeHi7L": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img2.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_nPB7rb": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/ab1.jpg",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_LRfDyC": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img4.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_8q7Y6N": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img3.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_rtg9YH": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img5.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_Amyba3": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img6.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_ihVzmU": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img1.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_4CjDH6": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/slider-img2.png",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_nt4ML4": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "image-id": "shopify://shop_images/ab1.jpg",
+            "imageLink": ""
+          },
+          "blocks": {}
+        },
+        "add_image_83Ty8h": {
+          "type": "add-image",
+          "name": "Add Image Block",
+          "settings": {
+            "imageLink": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "add_image_yKMTN6",
+        "add_image_PeHi7L",
+        "add_image_nPB7rb",
+        "add_image_LRfDyC",
+        "add_image_8q7Y6N",
+        "add_image_rtg9YH",
+        "add_image_Amyba3",
+        "add_image_ihVzmU",
+        "add_image_4CjDH6",
+        "add_image_nt4ML4",
+        "add_image_83Ty8h"
+      ],
+      "name": "Slider Images Section",
+      "settings": {
+        "title": "@innovacare",
+        "link": ""
+      }
+    },
+    "test_section_jk_4xhNct": {
+      "type": "test-section-jk",
+      "disabled": true,
+      "name": "Test Section JK",
+      "settings": {
+        "menu": "",
+        "exclude_collection": []
+      }
+    },
+    "1751017276fb738b56": {
+      "type": "apps",
+      "settings": {}
+    },
+    "17513465987474bdfd": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": [
+    "home_banner_section_JVEiWW",
+    "best_selller_section_iNBFhX",
+    "hero_image_section_DA43pr",
+    "best_selller_section_VfGxje",
+    "slider_image_section_FT4x7Y",
+    "test_section_jk_4xhNct",
+    "1751017276fb738b56",
+    "17513465987474bdfd"
+  ]
+}

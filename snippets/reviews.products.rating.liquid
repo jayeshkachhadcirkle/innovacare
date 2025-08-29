@@ -1,0 +1,9 @@
+{% if product.metafields["reviews"]["rating"] != blank %}
+  <div class="custom-field custom-field__rating custom-field__type--rating">
+    <h3 class="custom-field--title">Product rating</h3>
+    <div class="custom-field--value">
+{{ product.metafields["reviews"]["rating"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

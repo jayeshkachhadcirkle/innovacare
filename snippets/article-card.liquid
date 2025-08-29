@@ -1,0 +1,19 @@
+{% comment %}
+  give object: article
+  
+{% endcomment %}
+
+<div class="article">
+  {% if article.image %}
+    <a class="imga" href="{{ article.url }}">
+      {{ article.image | img_url: 'large' | img_tag: article.title }}
+    </a>
+  {% endif %}
+  <a class="article-title-a" href="{{ article.url }}">
+    <div class="article-title">{{ article.title }}</div>
+  </a>
+  <p>
+    {{ article.author }} . {{ article.published_at | date: '%b %d, %Y' -}}
+    {{- article.excerpt }}
+  </p>
+</div>

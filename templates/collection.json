@@ -1,0 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "collection",
+      "disabled": true,
+      "settings": {
+        "product_toshow": 10,
+        "infinite_scroll": true,
+        "enable_sorting": true,
+        "enable_filtering": true
+      }
+    },
+    "variants_pagination_iiPYzP": {
+      "type": "variants-pagination",
+      "name": "Variants Pagination",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "variants_pagination_iiPYzP"
+  ]
+}

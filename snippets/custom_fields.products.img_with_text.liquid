@@ -1,0 +1,157 @@
+{% if product.metafields["custom_fields"]["img_with_text"] != blank %}
+{% style %}
+
+{% if block.settings.title_font_custom != blank %}{{ block.settings.title_font | font_face }}{% endif %}
+
+#block-{{ block.id }} {
+  {% if block.settings.title_font_custom != blank %}
+  --title-font-weight: {{ block.settings.title_font.weight }};
+  --title-font-style: {{ block.settings.title_font.style }};
+  --title-font-family: {{ block.settings.title_font.family }};
+  {% endif %}
+  --margin-top: {{ block.settings.margin_top }}rem;
+  --margin-bottom: {{ block.settings.margin_bottom }}rem;
+  --title-font-size: {{ block.settings.title_font_size }}px;
+  --title-font-color: {{ block.settings.title_font_color }};
+  --title-line-height: {{ block.settings.title_line_height }}em;
+  --title-margin-bottom: {{ block.settings.title_margin_bottom }}rem;
+  --body-padding: {{ block.settings.body_padding }};
+  --body-font-size: {{ block.settings.body_font_size }}px;
+  --body-font-color: {{ block.settings.body_font_color }};
+  --body-margin-bottom: {{ block.settings.body_margin_bottom }}rem;
+  --link-padding: {{ block.settings.link_padding }};
+  --link-bg-color: {{ block.settings.link_bg_color }};
+  --link-hover-bg-color: {{ block.settings.link_hover_bg_color }};
+  --link-border: {{ block.settings.link_border }};
+  --link-border-radius: {{ block.settings.link_border_radius }};
+  --link-font-color: {{ block.settings.link_font_color }};
+  --link-hover-font-color: {{ block.settings.link_hover_font_color }};
+  --link-font-size: {{ block.settings.link_font_size }}px;
+  --image-border: {{ block.settings.image_border }};
+  --image-border-radius: {{ block.settings.image_border_radius }};
+  --image-box-shadow: {{ block.settings.image_box_shadow }};
+  --image-width: {{ block.settings.image_width }}px;
+  --inner-width: {{ block.settings.inner_width }}px;
+  --item-margin-bottom: {{ block.settings.item_margin_bottom }}rem;
+  {% if block.settings.margin_top != blank %}margin-top: var(--margin-top);{% endif %}
+  {% if block.settings.margin_bottom != blank %}margin-bottom: var(--margin-bottom);{% endif %}
+}
+
+#block-{{ block.id }} .cf-widget-items-wrapper {
+  max-width: var(--inner-width);
+}
+
+{% if block.settings.center != blank %}
+#block-{{ block.id }} .cf-widget-field {
+  text-align: center !important;
+}
+{% endif %}
+
+#block-{{ block.id }} .cf-widget-item {
+  margin-bottom: var(--item-margin-bottom);
+}
+
+#block-{{ block.id }} .cf-widget-item:last-child {
+  margin-bottom: 0;
+}
+
+#block-{{ block.id }} .cf-widget-field__title {
+  {% if block.settings.title_font_size != blank %}font-size: var(--title-font-size);{% endif %}
+  {% if block.settings.title_line_height != blank %}line-height: var(--title-line-height);{% endif %}
+  {% if block.settings.title_font_color != blank %}color: var(--title-font-color);{% endif %}
+  {% if block.settings.title_margin_bottom != blank %}margin-bottom: var(--title-margin-bottom);{% endif %}
+  {% if block.settings.title_font_custom != blank %}
+  font-weight: var(--title-font-weight) !important;
+  font-style: var(--title-font-style) !important;
+  font-family: var(--title-font-family) !important;
+  {% endif %}
+}
+
+#block-{{ block.id }} .cf-widget-field__body {
+  {% if block.settings.body_font_size != blank %}font-size: var(--body-font-size);{% endif %}
+  {% if block.settings.body_font_color != blank %}color: var(--body-font-color);{% endif %}
+  {% if block.settings.body_margin_bottom != blank %}margin-bottom: var(--body-margin-bottom);{% endif %}
+}
+
+#block-{{ block.id }} .cf-widget-field__link a {
+  {% if block.settings.link_font_size != blank %}font-size: var(--link-font-size);{% endif %}
+  {% if block.settings.link_font_color != blank %}color: var(--link-font-color);{% endif %}
+  {% if block.settings.link_bg_color != blank %}background-color: var(--link-bg-color);{% endif %}
+  {% if block.settings.link_padding != blank %}padding: var(--link-padding);{% endif %}
+  {% if block.settings.link_border != blank %}border: var(--link-border);{% endif %}
+  {% if block.settings.link_border_radius != blank %}border-radius: var(--link-border-radius);{% endif %}
+}
+
+#block-{{ block.id }} .cf-widget-field__link a:hover {
+  {% if block.settings.link_hover_bg_color != blank %}background-color: var(--link-hover-bg-color);{% endif %}
+  {% if block.settings.link_hover_font_color != blank %}color: var(--link-hover-font-color);{% endif %}
+}
+
+#block-{{ block.id }} img {
+  {% if block.settings.image_border != blank %}border: var(--image-border);{% endif %}
+  {% if block.settings.image_border_radius != blank %}border-radius: var(--image-border-radius);{% endif %}
+  {% if block.settings.image_box_shadow != blank %}box-shadow: var(--image-box-shadow);{% endif %}
+}
+
+#block-{{ block.id }} .cf-column:first-child {
+  {% if block.settings.image_width != blank %}max-width: var(--image-width);{% endif %}
+}
+
+{% if block.settings.section_title_text != blank %}
+#block-{{ block.id }} .cf-widget-section-title {
+  {% if block.settings.section_title_margin_bottom != blank %}margin-bottom: {{ block.settings.section_title_margin_bottom }}em;{% endif %}
+}
+{% endif %}
+
+{% if block.settings.section_title_color != blank %}
+#block-{{ block.id }} .cf-widget-section-title {{ block.settings.section_title_tag }}{
+  color: {{ block.settings.section_title_color }};
+}
+{% endif %}
+
+{% endstyle %}
+<div class="cf-widget-img-with-text cf-widget__image-next-to-text-v2 cf-layout--{{ block.settings.layout }}" id="block-{{ block.id }}">
+  {% if block.settings.section_title_text != blank %}
+  <div class="cf-widget-section-title">
+    <{{ block.settings.section_title_tag }} class="cf-widget-sectiont-title__text">{{ block.settings.section_title_text }}</{{ block.settings.section_title_tag }}>
+  </div>
+  {% endif %}
+  <div class="cf-widget-items-wrapper">
+    {% for item in product.metafields["custom_fields"]["img_with_text"] %}
+    <div class="cf-widget-item">
+      <div class="inner">
+        <div class="cf-column">
+          {% if item.image != blank %}
+          {% assign image_size = block.settings.image_width | append: "x" | append: block.settings.image_height %}
+          {% render "cf-image" with image: item.image, crop: block.settings.image_crop, size: image_size %}
+          {% endif %}
+        </div>
+        <div class="cf-column">
+          <div class="cf-column-inner">
+            
+              {% if item.title != blank %}
+              <div class="cf-widget-field cf-widget-field__title cf-widget-field--text">
+                {{ item.title }}
+              </div>
+              {% endif %}
+            
+              {% if item.body != blank %}
+              <div class="cf-widget-field cf-widget-field__body cf-widget-field--html">
+                {{ item.body }}
+              </div>
+              {% endif %}
+            
+              {% if item.link != blank %}
+              <div class="cf-widget-field cf-widget-field__link cf-widget-field--link">
+                {{ item.link }}
+              </div>
+              {% endif %}
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

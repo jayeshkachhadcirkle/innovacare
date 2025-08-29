@@ -1,0 +1,53 @@
+{% if product.metafields.custom_fields.product_mf_collection != blank %}
+  <div class="custom-field custom-field__product-mf-collection custom-field__type--field-collection-json">
+    <h3 class="custom-field--title">Product MF Collection</h3>
+    <div class="custom-field--value">
+      {% for item in product.metafields.custom_fields.product_mf_collection %}
+        <div class="fc-item fc-index--{{ forloop.index0 }}">
+          {% assign option = item.display_select %}
+          {% if option != blank %}
+            <div class="fc-field field__display-select field-type--text-list">
+              <h4 class="custom-field--title">Option: {{ option }}</h4>
+            </div>
+          {% endif %}
+
+          {% if option == 'Product' %}
+            {% if item.mfc_product != blank %}
+              <div class="bb">
+                {% assign sel_prods = item.mfc_product | split: '|' %}
+                <div class="product-row">
+                  {% for prod in sel_prods %}
+                    {% render 'product', product: all_products[prod] %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
+          {% elsif option == 'Image Text' %}
+            {% if item.mfc_img != blank %}
+              <div class="bb">
+                <div class="custom-field custom-field__just-img-pro custom-field__type--image">
+                  <p class="custom-field--title">
+                    {% if item.mfc_img_text != blank %}
+                      {{ item.mfc_img_text }}
+                    {% endif %}
+                  </p>
+                  <div class="custom-field--value">
+                    {% render 'cf-image' with image: item.mfc_img %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
+          {% elsif option == 'Link' %}
+            {% if item.mfc_url != blank %}
+              <div class="bb">
+                <h2><a href="{{ item["mfc_url"] }}">i Am Link</a></h2>
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

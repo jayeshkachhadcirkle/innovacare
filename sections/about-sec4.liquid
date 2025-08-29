@@ -1,0 +1,83 @@
+{% if section.settings.title1 != blank
+  or section.settings.content1 != blank
+  or section.settings.title2 != blank
+  or section.settings.content2 != blank
+%}
+  <section class="about-two-col-bottom pt-70 pb-70">
+    <div class="container">
+      <div class="flex about-two-col-bottom-row">
+        {% if section.settings.title1 != blank or section.settings.content1 != blank %}
+          <div class="about-col-half">
+            {% if section.settings.title1 != blank %}
+              <div class="section-title">
+                <h2>{{ section.settings.title1 }}</h2>
+              </div>
+            {% endif %}
+            {{ section.settings.content1 }}
+          </div>
+        {% endif %}
+        {% if section.settings.title2 != blank or section.settings.content2 != blank %}
+          <div class="about-col-half">
+            {% if section.settings.title2 != blank %}
+              <div class="section-title">
+                <h2>{{ section.settings.title2 }}</h2>
+              </div>
+            {% endif %}
+            {{ section.settings.content2 }}
+            {% if section.settings.show_mail %}
+              <p class="mail-par">
+                <strong
+                  ><a
+                    href="mailto:{{ section.settings.mail | default: shop.email }}"
+                    target="_blank"
+                  >
+                    {{- section.settings.mail | default: shop.email -}}
+                  </a></strong
+                >
+              </p>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+{% schema %}
+{
+  "name": "Section name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title1",
+    },
+    {
+      "type": "richtext",
+      "id": "content1",
+      "label": "Content 1",
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title2",
+    },
+    {
+      "type": "richtext",
+      "id": "content2",
+      "label": "Content 2",
+    },
+    {
+      "type": "checkbox",
+      "id": "show_mail",
+      "label": "Show Email",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "mail",
+      "label": "Different Email"
+    }
+
+  ]
+}
+{% endschema %}

@@ -1,0 +1,228 @@
+{% comment %}
+  Renders gift card recipient form.
+  Accepts:
+  - product: {Object} product object.
+  - form: {Object} the product form object.
+  - section: {Object} section to which this snippet belongs.
+
+  Usage:
+  {% render 'gift-card-recipient-form', product: product, form: form, section: section %}
+{% endcomment %}
+
+<div class="customer">
+  {%- assign gift_card_recipient_control_flag = 'properties[__shopify_send_gift_card_to_recipient]' -%}
+  <recipient-form
+    class="recipient-form"
+    data-section-id="{{ section.id }}"
+    data-product-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  >
+    <input
+      id="Recipient-checkbox-{{ section.id }}"
+      type="checkbox"
+      name="{{ gift_card_recipient_control_flag }}"
+      class="gc-checkbox"
+    >
+    <label class="recipient-checkbox " for="Recipient-checkbox-{{ section.id }}">
+      {{ 'square.svg' | inline_asset_content }}
+      {{- 'icon-checkmark.svg' | inline_asset_content -}}
+      <span>{{ 'recipient.form.checkbox' | t }}</span>
+    </label>
+    <div
+      class="product-form__recipient-error-message-wrapper"
+      role="alert"
+      {% unless form.errors %}
+        hidden
+      {% endunless %}
+    >
+      <h2 class="form__message" tabindex="-1" autofocus>
+        {{- 'icon-error.svg' | inline_asset_content -}}
+        <span class="error-message">Please adjust the following:</span>
+      </h2>
+
+      <ul>
+        {%- if form.errors -%}
+          {%- for field in form.errors -%}
+            <li>
+              {%- if field == 'form' -%}
+                {{ form.errors.messages[field] }}
+              {%- else -%}
+                <a href="#Recipient-{{ field }}-{{ section.id }}">
+                  {{ form.errors.messages[field] }}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    </div>
+    <p
+      id="Recipient-fields-live-region-{{ section.id }}"
+      class="visually-hidden"
+      role="status"
+    ></p>
+    <div class="recipient-fields" style="display: none;">
+      <hr>
+      <div class="recipient-fields__field">
+        <div class="field">
+          <label class="field__label" for="Recipient-email-{{ section.id }}">
+            <span class="recipient-email-label required">{{ 'recipient.form.email_label' | t }}</span>
+          </label>
+          <input
+            class="field__input field__input_email gc-recipient-input"
+            id="Recipient-email-{{ section.id }}"
+            type="email"
+            placeholder="{{ 'recipient.form.email' | t }}"
+            default-mail="{{ customer.email }}"
+            name="properties[Recipient email]"
+            value="{{ form.email }}"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="RecipientForm-email-error-{{ section.id }}"
+            {% endif %}
+            autocomplete="off"
+            pattern=".*@.+\..+"
+            disabled
+            required
+          >
+        </div>
+
+        <div
+          id="RecipientForm-email-error-{{ section.id }}"
+          class="form__message{% unless form.errors contains 'email' %} hidden{% endunless %}"
+        >
+          {{- 'icon-error.svg' | inline_asset_content -}}
+          <span class="error-message">
+            {%- if form.errors contains 'email' -%}
+              {{ form.errors.messages.email }}.
+            {%- endif -%}
+          </span>
+        </div>
+      </div>
+
+      <div class="recipient-fields__field">
+        <div class="field">
+          <label class="field__label" for="Recipient-name-{{ section.id }}">
+            {{- 'recipient.form.name_label' | t -}}
+          </label>
+          <input
+            class="field__input gc-recipient-input"
+            autocomplete="name"
+            type="text"
+            id="Recipient-name-{{ section.id }}"
+            name="properties[Recipient name]"
+            placeholder="{{ 'recipient.form.name' | t }}"
+            value="{{ form.name }}"
+            {% if form.errors contains 'name' %}
+              aria-invalid="true"
+              aria-describedby="RecipientForm-name-error-{{ section.id }}"
+            {% endif %}
+            disabled
+          >
+        </div>
+        <div
+          id="RecipientForm-name-error-{{ section.id }}"
+          class="form__message{% unless form.errors contains 'name' %} hidden{% endunless %}"
+        >
+          {{- 'icon-error.svg' | inline_asset_content -}}
+          <span class="error-message">
+            {%- if form.errors contains 'name' -%}
+              {{ form.errors.messages.name }}.
+            {%- endif -%}
+          </span>
+        </div>
+      </div>
+
+      <div class="recipient-fields__field">
+        {%- assign max_chars_message = 200 -%}
+        {%- assign max_chars_message_rendered = 'recipient.form.max_characters' | t: max_chars: max_chars_message -%}
+        {%- assign message_label_rendered = 'recipient.form.message_label' | t -%}
+        <div class="field">
+          <label class="form__label field__label" for="Recipient-message-{{ section.id }}">
+            {{ message_label_rendered }} {{ max_chars_message_rendered }}
+          </label>
+          <textarea
+            rows="10"
+            id="Recipient-message-{{ section.id }}"
+            class="text-area field__input gc-recipient-input"
+            name="properties[Message]"
+            maxlength="{{ max_chars_message }}"
+            placeholder="{{ 'recipient.form.message' | t }}"
+            aria-label="{{ message_label_rendered }} {{ max_chars_message_rendered }}"
+            {% if form.errors contains 'message' %}
+              aria-invalid="true"
+              aria-describedby="RecipientForm-message-error-{{ section.id }}"
+            {% endif %}
+          >{{ form.message }}</textarea>
+        </div>
+        <div
+          id="RecipientForm-message-error-{{ section.id }}"
+          class="form__message{% unless form.errors contains 'message' %} hidden{% endunless %}"
+        >
+          {{- 'icon-error.svg' | inline_asset_content -}}
+          <span class="error-message">
+            {%- if form.errors contains 'message' -%}
+              {{ form.errors.messages.message }}.
+            {%- endif -%}
+          </span>
+        </div>
+      </div>
+
+      <div class="recipient-fields__field">
+        <div class="field">
+           <label class="form__label field__label" for="Recipient-send-on-{{ section.id }}">
+            {{ 'recipient.form.send_on_label' | t }}
+          </label>
+          <input
+            disabled
+            class="field__input text-body gc-recipient-input"
+            autocomplete="send_on"
+            type="date"
+            id="Recipient-send-on-{{ section.id }}"
+            name="properties[Send on]"
+            placeholder="{{ 'recipient.form.send_on' | t }}"
+            pattern="\d{4}-\d{2}-\d{2}"
+            value="{{ form.send_on }}"
+            {% if form.errors contains 'send_on' %}
+              aria-invalid="true"
+              aria-describedby="RecipientForm-send_on-error-{{ section.id }}"
+            {% endif %}
+          >
+        </div>
+
+        <div
+          id="RecipientForm-send_on-error-{{ section.id }}"
+          class="form__message{% unless form.errors contains 'send_on' %} hidden{% endunless %}"
+        >
+          {{- 'icon-error.svg' | inline_asset_content -}}
+          <span class="error-message">
+            {%- if form.errors contains 'send_on' -%}
+              {{ form.errors.messages.send_on }}.
+            {%- endif -%}
+          </span>
+        </div>
+      </div>
+    </div>
+  </recipient-form>
+</div>
+
+{% javascript %}
+let cc = document.getElementsByClassName('gc-checkbox')[0]
+let gcon = document.getElementsByClassName('recipient-fields')[0]
+cc.addEventListener('change', function (e) {
+    if (cc.checked) {
+        cc.setAttribute('checked', false)
+        gcon.style.display = 'block'
+        Array.from(document.getElementsByClassName('gc-recipient-input')).forEach(function(i){
+            i.removeAttribute('disabled');
+        })
+    }
+    else {
+        gcon.style.display = 'none'
+        cc.setAttribute('checked', true)
+        Array.from(document.getElementsByClassName('gc-recipient-input')).forEach(function(i){
+            i.setAttribute('disabled', true);
+        })
+    }
+    console.log(cc.getAttribute('checked'));
+})
+{% endjavascript %}

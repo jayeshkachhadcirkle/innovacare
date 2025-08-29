@@ -1,0 +1,9 @@
+{% if product.metafields["custom"]["expiry_date"] != blank %}
+  <div class="custom-field custom-field__expiry-date custom-field__type--date">
+    <h3 class="custom-field--title">Expiry Date</h3>
+    <div class="custom-field--value">
+{{ product.metafields["custom"]["expiry_date"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

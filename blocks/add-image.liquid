@@ -1,0 +1,35 @@
+<div class="subscribe-inner">
+  <a {% if block.settings.imageLink != blank %}  href="{{ block.settings.imageLink }}" {% else %} role="link" aria-disabled="true" {% endif %}">
+    {% if block.settings['image-id'] != blank %}
+      <img
+        src="{{ block.settings.image-id | image_url: width: 300, height: 300 }}"
+        alt="{{ block.settings.image-id.alt }}"
+      >
+    {% else %}
+      {{ 'placer.svg' | asset_url | img_tag }}
+    {% endif %}
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "Add Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image-id",
+      "label": "Pick Image"
+    },
+    {
+      "type": "url",
+      "id": "imageLink",
+      "label": "Image Link"
+    }
+  ],
+  "presets": [
+    {
+      "name":"Add Image Block"
+    }
+  ]
+}
+{% endschema %}

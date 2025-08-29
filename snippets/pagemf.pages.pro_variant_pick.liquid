@@ -1,0 +1,9 @@
+{% if page.metafields["pagemf"]["pro_variant_pick"] != blank %}
+  <div class="custom-field custom-field__pro-variant-pick custom-field__type--variant-reference">
+    <h3 class="custom-field--title">Pro Variant Pick</h3>
+    <div class="custom-field--value">
+{{ page.metafields["pagemf"]["pro_variant_pick"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

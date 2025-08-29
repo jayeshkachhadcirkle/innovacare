@@ -1,0 +1,183 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "p_collections_r3TA7p": {
+          "type": "p_collections",
+          "settings": {}
+        },
+        "p_name_4aEHP3": {
+          "type": "p_name",
+          "settings": {
+            "p_name_font": "arimo_n4",
+            "p_name_fontsize": 35,
+            "p_name_weight": 700
+          }
+        },
+        "p_price_g4QDY6": {
+          "type": "p_price",
+          "settings": {
+            "p_price_toggle": true,
+            "p_2_color": "#666666"
+          }
+        },
+        "p_rating_NL7Tzz": {
+          "type": "p_rating",
+          "settings": {
+            "p_rating_count": true
+          }
+        },
+        "swish_formerly_wishlist_king_wishlist_button_block_dMNGpX": {
+          "type": "shopify://apps/swish-formerly-wishlist-king/blocks/wishlist-button-block/194f5011-a43c-4b22-b12e-eaf20dc4506a",
+          "disabled": true,
+          "settings": {
+            "button_style": "plain_accent_1",
+            "button_alignment": "center",
+            "button_content_alignment": "center",
+            "button_margin_top": 0,
+            "button_margin_bottom": 0,
+            "button_max_width": 0,
+            "button_padding_horizontal": 15,
+            "button_full_width": true,
+            "button_show_text": true,
+            "button_show_icon": true,
+            "icon_size": 18,
+            "icon_stroke_width": 1,
+            "icon_offset_vertical": 0
+          }
+        },
+        "p_varient_hV8MaR": {
+          "type": "p_varient",
+          "settings": {
+            "varient_style": "pills"
+          }
+        },
+        "selling_plan_mJnhqM": {
+          "type": "selling_plan",
+          "settings": {
+            "plan_desc": "<ul><li>First Line</li><li>Second Line</li><li>Third Line</li><li>Forth Line</li></ul>",
+            "default_status": true
+          }
+        },
+        "p_qty_cart_nQxHXU": {
+          "type": "p_qty_cart",
+          "name": "Buy Button",
+          "settings": {
+            "send_giftcard": true
+          }
+        },
+        "p_note_yeqWTB": {
+          "type": "p_note",
+          "settings": {
+            "p_note_text": "Fee included. <a href=\"/shipping-policy\" title=\"/shipping-policy\">Shipping</a> is calculated at checkout."
+          }
+        },
+        "p_property_f9Amzy": {
+          "type": "p_property",
+          "disabled": true,
+          "settings": {}
+        },
+        "p_details_Gq4QcQ": {
+          "type": "p_details",
+          "settings": {
+            "detail_use_title": "Product info:",
+            "detail_use_content": "{{ product.description }}",
+            "pro-look": "{% if product.metafields.custom.meta_object_ref %}\n  \n<div class=\"dive\">\n  {% assign drop = product.metafields.custom.meta_object_ref.value %}\n  Height : {{ drop.height }} <br>\n  Width : {{ drop.width }} <br>\n  Color : {{ drop.color }} <br>\n  Weight : {{ drop.weight }} <br>\n  Link: {{ drop.user_manual_link }}<br>\n</div>\n{% endif %}"
+          }
+        },
+        "p_details_wdB6QU": {
+          "type": "p_details",
+          "settings": {
+            "detail_use_title": "Use:",
+            "detail_use_content": "<p>Product Usage Text Block Se</p>",
+            "pro-look": ""
+          }
+        },
+        "p_details_tY9aaf": {
+          "type": "p_details",
+          "settings": {
+            "detail_use_title": "ingrediants:",
+            "detail_use_content": "{{ product.metafields.shopify[\"constitutive-ingredients\"] | metafield_tag: field: 'label' }}",
+            "pro-look": ""
+          }
+        },
+        "p_review_nwfgqP": {
+          "type": "p_review",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "p_collections_r3TA7p",
+        "p_name_4aEHP3",
+        "p_price_g4QDY6",
+        "p_rating_NL7Tzz",
+        "swish_formerly_wishlist_king_wishlist_button_block_dMNGpX",
+        "p_varient_hV8MaR",
+        "selling_plan_mJnhqM",
+        "p_qty_cart_nQxHXU",
+        "p_note_yeqWTB",
+        "p_property_f9Amzy",
+        "p_details_Gq4QcQ",
+        "p_details_wdB6QU",
+        "p_details_tY9aaf",
+        "p_review_nwfgqP"
+      ],
+      "settings": {
+        "buy_now": true,
+        "recommendation_on": true,
+        "recommendation_title": "Buy It With",
+        "recommendation_count": 3
+      }
+    },
+    "recently_viewed_Dtg9zr": {
+      "type": "recently-viewed",
+      "settings": {
+        "title": "Recently Viewed Products",
+        "p_limit": 5
+      }
+    },
+    "best_selller_section_jDNY33": {
+      "type": "best-selller-section",
+      "settings": {
+        "switch": "products",
+        "collectionPicked": "klairs",
+        "selected-products": [
+          "shoes",
+          "t-shirt",
+          "antique-drawers",
+          "bedside-table",
+          "biodegradable-cardboard-pots"
+        ],
+        "change_title": "Others did also buy",
+        "show_all_bt": true,
+        "show-all": ""
+      }
+    },
+    "metafields_section_kf4T9D": {
+      "type": "metafields-section",
+      "name": "Meta Fields trial",
+      "settings": {}
+    },
+    "17513459532566ee6d": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "recently_viewed_Dtg9zr",
+    "best_selller_section_jDNY33",
+    "metafields_section_kf4T9D",
+    "17513459532566ee6d"
+  ]
+}

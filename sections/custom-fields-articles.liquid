@@ -1,0 +1,48 @@
+{% render "blocks.custom_fields" with resource_type: "articles", blocks: section.blocks %}
+{% schema %}
+  {
+    "name": {
+        "en": "Custom Fields"
+    },
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "[View Documentation](https:\/\/custom-fields.docs.bonify.io\/)"
+        },
+        {
+            "type": "paragraph",
+            "content": "[Edit Custom Fields](https:\/\/customfields.bonify.io\/dashboard\/jayesh-cirkle.myshopify.com\/articles\/configure)"
+        }
+    ],
+    "templates": [
+        "article"
+    ],
+    "presets": [
+        {
+            "name": "Custom Fields",
+            "blocks": []
+        }
+    ],
+    "blocks": [
+        {
+            "type": "cf_f_cr",
+            "name": {
+                "en": "Collection Reference"
+            },
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "key",
+                    "label": "Select a Field",
+                    "options": [
+                        {
+                            "value": "custom_fields.articollection",
+                            "label": "articollection"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

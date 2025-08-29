@@ -1,0 +1,415 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_fdA7gF": {
+          "type": "data_block",
+          "settings": {
+            "title": "GENERALLY",
+            "content": "<p>This purchase is regulated by standard purchase and sale conditions for consumer purchases of goods over the Internet. Sales to consumers are regulated in the Consumer Purchases Act and the Right of Withdrawal Act, among other things.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_fdA7gF"
+      ],
+      "settings": {
+        "title": "Terms of Purchase and Payment",
+        "withbg": false
+      }
+    },
+    "split_section_wgtjQM": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_jFpjCy": {
+          "type": "data_block",
+          "settings": {
+            "title": "PARTENE",
+            "content": "<p>Seller</p><ul><li><strong>Company name:</strong> Innova Active AS</li><li><strong>Contact address:</strong> Hoffsveien 1a, 0275 Oslo</li><li><strong>E-mail:</strong> kundeservice@innova-active.no</li><li><strong>Telephone:</strong> 406 74 440</li><li><strong>Organization no .:</strong> 999 079 938</li></ul><p>The buyer is the person who places the order.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_jFpjCy"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_rD8fRb": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_QeUemg": {
+          "type": "data_block",
+          "settings": {
+            "title": "TRADE",
+            "content": "<p>The trade between buyer and seller consists of the information the seller provides about the purchase in the order solution in the online store (including information about the item's nature, quantity, quality, other properties, price and delivery conditions, etc.), any direct correspondence between the parties (eg e-mail) and these terms of sale.</p><p>In the event of a conflict between the information provided by the seller about the purchase in the ordering solution in the online store, direct correspondence between the parties and the terms in the terms of purchase and payment, direct correspondence between the parties and the information provided in the ordering solution precedes the terms of purchase and payment. .</p><p>The trade is binding on both parties when the buyer's order is received by the seller. However, one party is not bound by the agreement if there have been typing or typing errors in the offer from the seller in the ordering solution in the online store or in the buyer's order, and the other party realized or should have realized that such an error existed.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_QeUemg"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_WkDmnK": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_yfPB8q": {
+          "type": "data_block",
+          "settings": {
+            "title": "PRICES",
+            "content": "<p>The prices, which are stated in the online store, include VAT if the buyer does not choose to show prices without VAT or is registered as a user from a country outside Norway. Information about the total costs the buyer must pay, including all taxes (VAT and the like) and delivery costs (shipping, postage, invoice fee, packaging, etc.) as well as specification of the individual elements in the total price, is given in the order solution before ordering. (Deliveries of goods abroad, Svalbard or Jan Mayen shall be sold without the addition of VAT.)</p><p>For shipping costs see under <a href=\"http://127.0.0.1:5500/shipping.html\">Shipping and delivery conditions</a></p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_yfPB8q"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_AzPMrh": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_EPikQY": {
+          "type": "data_block",
+          "settings": {
+            "title": "RESERVATION",
+            "content": "<p>We reserve the right to make any technical problems that may arise in the online store and that such technical errors may also in rare cases occur in connection with stock and prices. Should it turn out in connection with a completed trade that it is based on incorrect information - e.g. that the product you have ordered is sold out, you will be contacted by us for a possible solution.</p>",
+            "content_html": ""
+          }
+        },
+        "data_block_kK4yJD": {
+          "type": "data_block",
+          "settings": {
+            "title": "ORDER CONFIRMATION",
+            "content": "<p>You will receive an order confirmation by e-mail immediately after the purchase has been completed. It is recommended that the buyer checks that the order confirmation matches the order in terms of quantity, item type, price, etc. If there is no correspondence between the order and the order confirmation, the buyer should contact the seller as soon as possible.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_EPikQY",
+        "data_block_kK4yJD"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": true
+      }
+    },
+    "split_section_e6r77A": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_gTUzc9": {
+          "type": "data_block",
+          "settings": {
+            "title": "PAYMENT",
+            "content": "<p>The seller can demand payment for the item from the time it is sent from the seller to the buyer. If the buyer uses a credit card or debit card when paying, the seller can reserve the purchase price on the card when ordering.</p><p>A credit card is a payment card where the settlement for the purchase takes place afterwards by the lender (credit card company) sending the cardholder an invoice with a demand for payment. A debit card is a payment card linked to a deposit account. Use of the card means that the user's account is debited and the amount is transferred to the payee's account.</p><p>When paying by credit card, the Credit Purchases etc. Act will apply.</p><p>The seller offers the following payment solutions:</p><ol><li>PayPal</li><li>Klarna<br/></li></ol><p>If you still want to pay by invoice, an invoice fee of NOK 75 will be added.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_gTUzc9"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_xNCzcj": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_j4UmfD": {
+          "type": "data_block",
+          "settings": {
+            "title": "LEVERING M.V.",
+            "content": "<p>Delivery of the item from the seller to the buyer takes place in the manner, at the place and at the time specified in the ordering solution in the online store. If the delivery time is not stated in the order solution or e-mail that accompanies the order confirmation, the seller must deliver the item to the buyer within a reasonable time and no later than 30 days after the order from the customer. The seller shall ensure that the goods are sent to the buyer, to the place of destination in a suitable manner and on normal terms for such transport. The place of destination is with the buyer unless otherwise agreed between the parties.</p><p>For shipping costs see under <a href=\"http://127.0.0.1:5500/shipping.html\">Shipping and delivery conditions</a></p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_j4UmfD"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_hiGpTf": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_AdEzpw": {
+          "type": "data_block",
+          "settings": {
+            "title": "ADDRESS",
+            "content": "<p>We reserve the right to make any technical problems that may arise in the online store and that such technical errors may also in rare cases occur in connection with stock and prices. Should it turn out in connection with a completed trade that it is based on incorrect information - e.g. that the product you have ordered is sold out, you will be contacted by us for a possible solution.</p>",
+            "content_html": ""
+          }
+        },
+        "data_block_JyezJ7": {
+          "type": "data_block",
+          "settings": {
+            "title": "THE RISK OF THE GOODS",
+            "content": "<p>The risk for the item passes to the buyer when the thing is taken over by the buyer in accordance with the agreement. If the delivery time has come and the buyer fails to take over an item that is made available to him or her under the agreement, the buyer himself still has the risk of loss or damage due to properties of the item.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_AdEzpw",
+        "data_block_JyezJ7"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_rnKbBr": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_WdpHjg": {
+          "type": "data_block",
+          "settings": {
+            "title": "RIGHT OF WITHDRAWAL",
+            "content": "<p>For the right of withdrawal, see under Exchange and return</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_WdpHjg"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_9C7HiA": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_RJhGF6": {
+          "type": "data_block",
+          "settings": {
+            "title": "EXAMINATION OF THE ITEM",
+            "content": "<p>When you receive the item, it is recommended that you as the buyer to a reasonable extent check whether it is in accordance with the order, whether it has been damaged during transport or if it is otherwise defective. If the item does not match the order or has defects, the buyer must notify the seller in the event of a complaint, cf. the section on \"Complaints in the event of defects and deadline for reporting claims in the event of delay\".</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_RJhGF6"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_kTfEhH": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_j6ff3T": {
+          "type": "data_block",
+          "settings": {
+            "title": "COMPLAINT IN THE EVENT OF DEFICIENCY AND DEADLINE FOR NOTIFYING CLAIMS IN THE EVENT OF DELAY",
+            "content": "<p>For complaints, see<a href=\"http://127.0.0.1:5500/return.html\">Exchange and return</a></p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_j6ff3T"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_3wapbe": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_YUdPN3": {
+          "type": "data_block",
+          "settings": {
+            "title": "BUYER'S RIGHTS IN THE EVENT OF DELAY",
+            "content": "<p>If the seller does not deliver the goods or delivers them too late in accordance with the agreement between the parties, and this is not due to the buyer or circumstances on the buyer's side, the buyer may, according to the rules in Chapter 5 of the Consumer Purchase Act, withhold the purchase price, demand fulfillment or terminate the agreement.</p><p><strong>Fulfillment :</strong> If the seller does not deliver the item at the time of delivery, the buyer can maintain the purchase and set a reasonable additional deadline for fulfillment from the seller. However, the buyer can not demand fulfillment if there is an obstacle that the seller can not overcome or if fulfillment will entail such a great inconvenience or cost for the seller that it is significantly disproportionate to the buyer's interest in the seller fulfilling.</p><p><strong>Cancellation :</strong> The buyer may terminate the agreement with the seller if the delay is significant or if the seller does not deliver the goods within the additional deadline for fulfillment set by the buyer. However, the buyer can not terminate the agreement while the additional deadline runs, unless the seller has said that he or she will not fulfill within the deadline.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_YUdPN3"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_VHWXyw": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_6QgmER": {
+          "type": "data_block",
+          "settings": {
+            "title": "BUYER'S RIGHTS IN THE EVENT OF DEFICIENCY",
+            "content": "<p>If the item has a defect and this is not due to the buyer or circumstances on the buyer's side, the buyer may, in accordance with the rules in the Consumer Purchase Act, Chapter 6, withhold the purchase price, choose between correction and re-delivery, demand a price reduction or demand the agreement terminated.</p><p>Correction or re-delivery : If the item has a defect, the buyer can demand that the seller correct the defect or re-deliver the corresponding item. The seller may oppose the buyer's claim if the execution of the claim is impossible or the seller causes unreasonable costs.</p><p>The seller must make the correction or replacement within a reasonable time. Correction or re-delivery shall be made at no cost to the buyer, without risk that the buyer will not be reimbursed for his expenses and without significant inconvenience to the buyer. The seller may not make more than two attempts at rectification or re-delivery for the same defect, unless there are special reasons that make further attempts reasonable.</p><p>Even if the buyer does not require correction or replacement, the seller can offer correction or replacement if this happens without delay. If the seller provides for such correction or re-delivery, the buyer can not demand a price reduction or cancellation.</p><p><strong>Price reduction :</strong> If the defect is not corrected or re-delivered, the buyer can demand a proportionate price reduction.</p><p><strong>Cancellation :</strong> Instead of a price reduction, the buyer can cancel the agreement, except when the defect is insignificant.</p><p><strong>Compensation :</strong> The buyer can also claim compensation for financial loss he or she suffers as a result of the item being defective, cf. section 33 of the Consumer Purchase Act.</p><p>The buyer must report a claim to the seller in the event of a complaint, cf. section \"Complaint in the event of defect and deadline for reporting a claim in the event of a delay\".</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_6QgmER"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_g4jX4P": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_chpLbM": {
+          "type": "data_block",
+          "settings": {
+            "title": "SELLER'S RIGHTS IN THE EVENT OF THE BUYER'S DISAPPOINTMENT",
+            "content": "<p>If the buyer does not pay or fulfill the other obligations according to current purchase and sale conditions, and this is not due to the seller or conditions on the seller's part, the seller may, according to the rules in the Consumer Purchase Act chapter 9, withhold the goods, demand fulfillment of the agreement or demand the agreement. raised.</p><p>The seller may also, depending on the circumstances, be able to claim interest in the event of late payment, collection fee and fee for non-prepaid uncollected goods.</p><p><strong>Fulfillment :</strong> If the buyer does not pay, the seller can maintain the purchase and demand that the buyer pays the purchase price (fulfillment). If the item is not delivered, the seller loses his right if the seller waits unreasonably long to advance the claim.</p><p><strong>Termination:</strong> In the event of a material default or other material default by the buyer, the seller may terminate the agreement. However, the seller can not withdraw after the purchase price has been paid.</p><p>The seller can also cancel the purchase if the buyer does not pay within a reasonable additional deadline for fulfillment set by the seller. However, the seller can not withdraw while the additional deadline runs, unless the buyer has said that he or she will not pay.</p><p><strong>Compensation :</strong> The seller can demand compensation from the buyer for financial loss he or she suffers as a result of a breach of contract on the part of the buyer, cf. the Consumer Purchase Act § 46.</p><p><strong>Interest on late payment / collection fee:</strong> If the buyer does not pay the purchase price in accordance with the agreement, the seller can demand interest on the purchase price in accordance with the Act on interest on late payment. In the event of non-payment, the claim may, after prior notice, be sent for collection, and the buyer may then be held liable for fees in accordance with the Debt Collection Act and other collection of overdue monetary claims.</p><p><strong>Fee for uncollected non-prepaid goods:</strong> If the buyer fails to collect unpaid goods, the seller can charge the buyer with a fee of NOK 500 + return shipping. The fee shall cover a maximum of the seller's actual expenses for delivering the goods to the buyer. Such a fee can not be charged to buyers under 18 years of age.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_chpLbM"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_D8E8rL": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_hYXK4z": {
+          "type": "data_block",
+          "settings": {
+            "title": "GUARANTEE",
+            "content": "<p>Warranty given by the seller or manufacturer gives the buyer rights in addition to the rights the buyer already has under mandatory legislation. A guarantee thus does not imply any restrictions on the Buyer's right to complaint and claims in the event of delay or defects pursuant to items \"The Buyer's rights in the event of delay\" and \"The Buyer's rights in the event of a defect\".</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_hYXK4z"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_3x3wnR": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_yFQr6n": {
+          "type": "data_block",
+          "settings": {
+            "title": "PERSONAL INFORMATION",
+            "content": "<p>For processing of personal data, see <a href=\"http://127.0.0.1:5500/privacy.html\">Security and privacy</a></p>",
+            "content_html": ""
+          }
+        },
+        "data_block_Bztmyp": {
+          "type": "data_block",
+          "settings": {
+            "title": "COOKIES",
+            "content": "<p>Our online store contains cookies.</p><p>Read more about cookies under <a href=\"http://127.0.0.1:5500/privacy.html\">Security and privacy</a></p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_yFQr6n",
+        "data_block_Bztmyp"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": true
+      }
+    },
+    "split_section_y4fzhU": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_Y3fFjN": {
+          "type": "data_block",
+          "settings": {
+            "title": "CONFLICT RESOLUTION",
+            "content": "<p>The parties shall endeavor to resolve any disputes amicably. The buyer can contact the Consumer Council to get assistance in a possible dispute with the seller. If an amicable solution is not reached after mediation in the Consumer Council, the parties may request in writing that the Consumer Council submit the dispute to the Consumer Disputes Committee.</p><p>Decisions by the Consumer Disputes Committee are final four weeks after service. Before the decision is final, the parties may, by submitting a summons to the Consumer Disputes Committee, bring the decision before the district court.</p><p>See Act of 28 April 1978 no. 18 on the handling of consumer disputes.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_Y3fFjN"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "split_section_wgtjQM",
+    "split_section_rD8fRb",
+    "split_section_WkDmnK",
+    "split_section_AzPMrh",
+    "split_section_e6r77A",
+    "split_section_xNCzcj",
+    "split_section_hiGpTf",
+    "split_section_rnKbBr",
+    "split_section_9C7HiA",
+    "split_section_kTfEhH",
+    "split_section_3wapbe",
+    "split_section_VHWXyw",
+    "split_section_g4jX4P",
+    "split_section_D8E8rL",
+    "split_section_3x3wnR",
+    "split_section_y4fzhU"
+  ]
+}

@@ -1,0 +1,41 @@
+{% if section.settings.title != blank and section.settings.sub_title != blank %}
+  <section class="our-vision-section">
+    <div class="container">
+      <div class="our-vision-box text-center">
+        <div class="our-vision-inner">
+          <div class="section-title">
+            {% if section.settings.title != blank %}
+              <h2>{{ section.settings.title }}</h2>
+            {% endif %}
+            {% if section.settings.sub_title != blank %}
+              <div class="subtitle">{{ section.settings.sub_title }}</div>
+            {% endif %}
+          </div>
+          {{ section.settings.content }}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+{% schema %}
+{
+  "name": "About Section 2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title",
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+    }
+  ]
+}
+{% endschema %}

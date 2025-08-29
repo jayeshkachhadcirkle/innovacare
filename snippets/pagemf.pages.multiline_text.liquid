@@ -1,0 +1,9 @@
+{% if page.metafields["pagemf"]["multiline_text"] != blank %}
+  <div class="custom-field custom-field__multiline-text custom-field__type--multi-line-text-field">
+    <h3 class="custom-field--title">Multiline Text</h3>
+    <div class="custom-field--value">
+      {{ page.metafields["pagemf"]["multiline_text"] }}
+
+    </div>
+  </div>
+{% endif %}

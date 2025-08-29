@@ -1,0 +1,9 @@
+{% if page.metafields["pagemf"]["number"] != blank %}
+  <div class="custom-field custom-field__number custom-field__type--number-decimal">
+    <h3 class="custom-field--title">Number</h3>
+    <div class="custom-field--value">
+{{ page.metafields["pagemf"]["number"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

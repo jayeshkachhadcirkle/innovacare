@@ -1,0 +1,217 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_b7EqUz": {
+          "type": "data_block",
+          "settings": {
+            "title": "The agreement on membership in Innovacare.no applies between the following parties:",
+            "content": "<p>Innovacare.no org, no. 999 079 938, and the Member.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_b7EqUz"
+      ],
+      "settings": {
+        "title": "Membership Terms",
+        "withbg": false
+      }
+    },
+    "split_section_GfLjii": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_7YhqXz": {
+          "type": "data_block",
+          "settings": {
+            "title": "Registration",
+            "content": "<p>In order to use the customer club's services, you must be registered as a member and accept the membership terms. The age limit for membership is set to 18 years, and you must have a mobile number that is Norwegian registered. The membership can only be used personally for private purchases. You are responsible for the registration, and for keeping us updated on the information provided. You can easily keep us updated on your member page, or contact customer service kundeservice@innovacare.no .</p>",
+            "content_html": ""
+          }
+        },
+        "data_block_rp798z": {
+          "type": "data_block",
+          "settings": {
+            "title": "Privacy",
+            "content": "<p>We at Innovacare.no are concerned about your privacy. We have therefore implemented measures that ensure satisfactory information security with regard to confidentiality, integrity and availability when processing personal data. You can read our privacy statement here</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_7YhqXz",
+        "data_block_rp798z"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_GyaEKa": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_EwbeYq": {
+          "type": "data_block",
+          "settings": {
+            "title": "Information we collect",
+            "content": "<p>We collect and use information about you to tailor good offers based on information we have collected.</p><p>Our basis for registering and processing information about you is based on your consent. By accepting these membership terms, you agree that we process information about you.</p><p>When you join our customer club, we collect the following information:</p><ul><li>First name</li><li>Last name</li><li>Address</li><li>E-mail</li><li>Telephone Number</li><li>Date of Birth</li></ul>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_EwbeYq"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_HJM7gR": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_kNxXpb": {
+          "type": "data_block",
+          "settings": {
+            "title": "Consent to communication",
+            "content": "<p>We communicate with you via phone, sms, email, and social media.</p><p>We ask for your consent so that we can compare personal information with other media to identify you and provide you with customized ads and information. Examples of this can be Instagram and Facebook. We also ask for your consent so that we can use your personal information, click-response, purchase history to provide you with offers, communication and other digital services tailored to you.</p><p>Without terminating your membership, you can easily unsubscribe from this marketing communication. On your customer profile, you can easily manage your consents for marketing communications.</p><p>Our purpose is to process the information provided in a customized communication to provide you with relevant information and offers. It can be anything from offers that are relevant based on your age and birthday greetings, as well as the gifts given by promotion in the levels.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_kNxXpb"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_kDhejt": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_FLgqm3": {
+          "type": "data_block",
+          "settings": {
+            "title": "Member benefits, points accrual and bonus",
+            "content": "<p>In addition to other membership benefits, you earn points every time you shop with us - one point for every kroner you shop for.</p><p>You can also earn points by completing the following activities at <a href=\"http://127.0.0.1:5500/membership-terms.html#\">www.innovacare.no</a>:</p><ul><li>Every 500 points you earn will be converted to a krone value of 10 kroner. For every 5000 points you have earned, you will receive a gift card worth NOK 100 that you can use to shop for in Innovacare.no.<br/></li><li>Gift certificates earned on accrued points have a validity of 12 months from the date of issue. Valid only once and can not be used in combination with other discount codes.<br/></li><li>If you wish to collect more than 5000 points and have a gift card triggered in a larger amount, you must contact us at <a href=\"mailto:kundeservice@innovacare.no\">kundeservice@innovacare.no</a> before the gift card is issued.<br/></li></ul><p>You can follow your accrued points on your member page at any time.</p>",
+            "content_html": ""
+          }
+        },
+        "data_block_zWHhbG": {
+          "type": "data_block",
+          "settings": {
+            "title": "",
+            "content": "",
+            "content_html": "<table>\n                                <thead>\n                                    <tr>\n                                        <th class=\"w-220\">Activity</th>\n                                        <th class=\"w-200\">Point</th>\n                                        <th class=\"w-250\">Terms</th>\n                                    </tr>\n                                </thead>\n                                <tbody>\n                                    <tr>\n                                        <td data-label=\"Activity\">Create account</td>\n                                        <td data-label=\"Point\">100</td>\n                                        <td data-label=\"Terms\">-</td>\n                                    </tr>\n                                    <tr>\n                                        <td data-label=\"Activity\">Complete your profile</td>\n                                        <td data-label=\"Point\">100</td>\n                                        <td data-label=\"Terms\">-</td>\n                                    </tr>\n                                    <tr>\n                                        <td data-label=\"Activity\">Birthday present</td>\n                                        <td data-label=\"Point\">5000</td>\n                                        <td data-label=\"Terms\">-</td>\n                                    </tr>\n                                    <tr>\n                                        <td data-label=\"Activity\">Refer a friend</td>\n                                        <td data-label=\"Point\">250</td>\n                                        <td data-label=\"Terms\">Unlimited</td>\n                                    </tr>\n                                    <tr>\n                                        <td data-label=\"Activity\">Follow us on Instagram</td>\n                                        <td data-label=\"Point\">250</td>\n                                        <td data-label=\"Terms\" class=\"lineheight-20\">Must be linked /<br> followed from Innovacare.no side panel</td>\n                                    </tr>\n                                    <tr>\n                                        <td data-label=\"Activity\">Like us on Facebook</td>\n                                        <td data-label=\"Point\">250</td>\n                                        <td data-label=\"Terms\" class=\"lineheight-20\">Must be linked /<br> followed from Innovacare.no side panel</td>\n                                    </tr>\n                                    <tr>\n                                        <td data-label=\"Activity\">Product reviews</td>\n                                        <td data-label=\"Point\">100</td>\n                                        <td data-label=\"Terms\" class=\"lineheight-20 character-td\">\n                                            My 30 characters per product review.\n                                            <ul>\n                                                <li>Only 1 review per product.</li>\n                                                <li>Only 10 reviews a month.</li>\n                                            </ul>\n                                        </td>\n                                    </tr>\n                                </tbody>\n                            </table>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_FLgqm3",
+        "data_block_zWHhbG"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_4qczCR": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_RThWFG": {
+          "type": "data_block",
+          "settings": {
+            "title": "Storage time",
+            "content": "<p>We will only retain your information for as long as is necessary to perform the services, or as long as the law requires us to retain them. After this, your personal information will be deleted or anonymized.</p><p>You have the right at any time to access, change or delete information we have about you. You have the right to limited processing, to protest against the processing and you have the right to data portability. You have the right to withdraw your consent, and you have the right to complain to the Data Inspectorate.</p><p>If you require deletion of information, you will be automatically notified by the customer club. Here you can read further information about your rights. Link to privacy.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_RThWFG"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_PmiBPB": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_Xf3Qrm": {
+          "type": "data_block",
+          "settings": {
+            "title": "Communication media",
+            "content": "<p>As a member of Innovacare.no you will receive the following marketing communication:</p><ul><li>Campaign communication via eg newsletters and text messages.</li><li>Confirmation of registration via newsletter.</li><li>Customized and personalized offer based on communication we believe is relevant to you based on your purchase history, personal information and preferences.</li></ul><p>Innovacare.no communicates with you through the following social media channels: Instagram and Facebook. Use of these services is not regulated in this agreement, but by the special terms of the service in question.</p>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_Xf3Qrm"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_UkiEcU": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_ABdcDk": {
+          "type": "data_block",
+          "settings": {
+            "title": "Changes to agreements",
+            "content": "<p>Innovacare.no reserves the right to make improvements and / or changes in the service and contract terms. This includes the right to discontinue, temporarily or permanently, all or part of the service without prior notice.</p><p>In the event of major changes, you will be informed so that we receive a new acceptance from you of the new terms that are implemented. Innovacare.no is not responsible in any way in the event of suspension or closure of Innovacare.no. We have the right to delete your profile and terminate the agreement if you violate the terms set. These terms are regulated and interpreted in accordance with Norwegian law.</p>",
+            "content_html": ""
+          }
+        },
+        "data_block_wpV8Nk": {
+          "type": "data_block",
+          "settings": {
+            "title": "Terminate membership",
+            "content": "<p>You can cancel your membership at any time. Termination is sent to <a href=\"mailto:kundeservice@innovacare.no\">kundeservice@innovacare.no</a> , remember to note: Termination member. The agreement runs until terminated by one of the parties or the terms of this agreement are not met. For example. if the terms are not approved or correct. Upon termination, your consent will be withdrawn and accrued benefits will be deleted.</p><p>You can contact us at any time if you have questions about your membership or have other questions.</p><ul><li><strong>E- mail :</strong> kundeservice@innovacare.no</li><li><strong>Phone:</strong> 406 74 440</li></ul>",
+            "content_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "data_block_ABdcDk",
+        "data_block_wpV8Nk"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "split_section_GfLjii",
+    "split_section_GyaEKa",
+    "split_section_HJM7gR",
+    "split_section_kDhejt",
+    "split_section_4qczCR",
+    "split_section_PmiBPB",
+    "split_section_UkiEcU"
+  ]
+}

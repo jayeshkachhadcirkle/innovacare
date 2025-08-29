@@ -1,0 +1,107 @@
+<div class="prod-img-slider-col">
+  <div class="prod-img-slider-col-wrp">
+    {% if product.media.size > 1 %}
+      <div class="prod-slide-nav prod-slide-transform">
+        {% if product.selected_or_first_available_variant.metafields.custom.var_gallary %}
+          {% assign gallary = product.selected_or_first_available_variant.metafields.custom.var_gallary.value %}
+          {% for image in gallary %}
+            <div class="prod-nav-col">
+              <div class="prod-nav-img">
+                {% assign url = image | file_url %}
+                {% assign url2 = url | replace_first: '/files', '' %}
+                {{ url2 | img_tag }}
+                </div>
+                </div>
+              {% endfor %}
+              <div class="is-images-group" is-images-group="true"></div>
+        {% else %}
+        {% for image in product.media %}
+          <div class="prod-nav-col">
+            <div class="prod-nav-img">
+              {{ image | img_url: 'medium' | img_tag: image.alt }}
+              </div>
+              </div>
+            {% endfor %}
+            <div class="is-images-group" is-images-group="false"></div>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="prod-slide-row">
+      {% if product.media.size > 0 %}
+        {% if product.selected_or_first_available_variant.metafields.custom.var_gallary %}
+          {% assign gallary = product.selected_or_first_available_variant.metafields.custom.var_gallary.value %} 
+          {% for image in gallary %}
+            <div class="prod-slide-col">
+              {% assign url = image | file_url %}
+              {% comment %} {{ url }} {% endcomment %}
+              {% assign url2 = url | replace_first: '/files', '' %}
+              <div class="prod-img">
+                <a href="{{ url2 }}" data-fancybox="gallary" data-caption="{{ image.alt }}">
+                  {{ url2 | img_tag: image.alt }}
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for image in product.media %}
+            <div class="prod-slide-col">
+              {% if forloop.first
+                and product.selected_variant
+                and product.selected_or_first_available_variant.featured_image != blank
+              %}
+                <div class="prod-img">
+                  <a
+                    href="{{ product.selected_or_first_available_variant.featured_image.src | img_url: '1000x1000' }}"
+                    data-fancybox="gallary"
+                    data-caption="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+                  >
+                    {{
+                      product.selected_or_first_available_variant.featured_image.src
+                      | img_url: '1000x1000'
+                      | img_tag: image.alt
+                    }}
+                  </a>
+                </div>
+              {% elsif image.media_type == 'image' %}
+                <div class="prod-img">
+                  <a href="{{ image | img_url: '1000x1000' }}" data-fancybox="gallary" data-caption="{{ image.alt }}">
+                    {{ image | img_url: '1000x1000' | img_tag: image.alt }}
+                  </a>
+                </div>
+              {% elsif image.media_type == 'video' %}
+                {% if image.sources[0].format == 'mp4' %}
+                  <div class="prod-img">
+                    <video id="hls-example" class="video-js vjs-default-skin m3u8player" controls loop>
+                      <source type="video/mp4" src="{{ image.sources[0].url }}">
+                    </video>
+                    <img class="video-span" width="50px" height="50px" src="{{ 'vid-play.svg' | asset_url }}">
+                  </div>
+                {% elsif image.sources[0].format == 'm3u8' %}
+                  {% comment %} {{ 'm3u8video.js' | asset_url | script_tag }} {% endcomment %}
+                  <div class="prod-img">
+                    <video id="hls-example" class="video-js vjs-default-skin m3u8player" controls loop>
+                      <source type="application/x-mpegURL" src="{{ image.sources[0].url }}">
+                    </video>
+                    <img class="video-span" width="50px" height="50px" src="{{ 'vid-play.svg' | asset_url }}">
+                  </div>
+                {% endif %}
+              {% elsif image.media_type == 'external_video' %}
+                <div class="prod-img">
+                  {{ image | external_video_url | external_video_tag }}
+                </div>
+              {% elsif image.media_type == 'model' %}
+                <model-viewer
+                  src="{{ image.sources[0].url }}"
+                  alt="{{ image.alt }}"
+                  camera-controls
+                  auto-rotate
+                  ar
+                ></model-viewer>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>

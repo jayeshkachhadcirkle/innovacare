@@ -1,0 +1,9 @@
+{% if page.metafields["pagemf"]["product_ref"] != blank %}
+  <div class="custom-field custom-field__product-ref custom-field__type--product-reference">
+    <h3 class="custom-field--title">Product Ref</h3>
+    <div class="custom-field--value">
+{{ page.metafields["pagemf"]["product_ref"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

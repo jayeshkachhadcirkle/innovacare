@@ -1,0 +1,82 @@
+<section class="recent-products">
+  <div class="container">
+    <div class="section-title flex align-end justify-between">
+      <h2>{{ section.settings.title | default: "Recently Viewed" }}</h2>
+    </div>
+    <div class="product-row recent-row" limit="{{ section.settings.p_limit }}"></div>
+  </div>
+</section>
+{% javascript %}
+  
+  const getCards = localStorage.getItem('recents_p').split(',')  
+  if(getCards.length > 1){
+    document.querySelector('.recent-products').style.display = 'flex';
+  }else{
+    document.querySelector('.recent-products').style.display = 'none';
+  }
+  let rContainer = document.querySelector('.recent-row')
+  let limit = parseInt(rContainer.getAttribute('limit')) + 1;
+    let url_handle = (window.location.pathname).split('/').at(-1)
+
+  let looper = 0;
+  if(getCards.length < limit){
+    looper = getCards.length;
+  }else{
+    looper = limit;
+  }
+
+for (let i = 0; i < looper; i++) {
+    if (url_handle == getCards[i]) {
+        continue;
+    } else {  
+        let cardDiv = document.createElement('div')
+        cardDiv.innerHTML = `
+            <div class="skeleton" style="height:300px;width:250px;margin:10px;"></div>
+            <div class="skeleton" style="height:20px;width:200px;margin:10px;"></div>
+            <div class="skeleton" style="height:20px;width:230px;margin:10px;"></div>
+            <div class="skeleton" style="height:20px;width:150px;margin:10px;"></div>
+        `
+        rContainer.appendChild(cardDiv)
+        fetch("https://jayesh-cirkle.myshopify.com/products/" + getCards[i] + "?view=card2").then(response => response.text()).then(data => {
+            let dom = new DOMParser().parseFromString(data, "text/html");
+            let card = dom.getElementsByClassName('product-widget')[0];
+            cardDiv.replaceWith(card)
+        })
+    }
+}
+
+
+ 
+{% endjavascript %}
+
+{% style %}
+  .recent-products {
+    display:none;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Recently Viewed Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "range",
+      "id": "p_limit",
+      "label": "Recent Products Limit",
+      "min": 3,
+      "max": 10,
+      "default":5
+    }
+  ],
+  "presets": [
+    {
+      "name":"Recently Viewed Products"
+    }
+  ]
+}
+{% endschema %}

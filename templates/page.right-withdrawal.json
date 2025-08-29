@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_w8ae64": {
+          "type": "data_block",
+          "settings": {
+            "title": "RETURN AND RIGHT OF EXCHANGE",
+            "content": "<p>Do you want to return or exchange an item?</p><p>With us, you always have a 14-day right of return or exchange after receiving the order. Please contact us before returning. You will receive a return form by e-mail (the return and complaint form can also be <a href=\"http://127.0.0.1:5500/right-withdrawal.html#\">Downloaded here</a>). You must fill this out and send it with items you return.</p><p><strong>In order to return, the goods must be unopened, unused and the original packaging undamaged.</strong> Make sure that goods are packed properly in original packaging so that they are not damaged during transport to us.</p><p>We refer to the Act on the duty to provide information and the right of withdrawal in the case of distance selling and sales outside permanent business premises <strong>(the Right of Withdrawal Act ) §22, g)</strong>. For reasons of health care and hygiene, the right of withdrawal does not apply to goods where the seal has been broken after delivery.</p><p>You must cover return costs in connection with the return and exchange of goods.</p><p>To return an item, follow the \" <a href=\"http://127.0.0.1:5500/right-withdrawal.html#\">Instructions for return</a> \". If you want to exchange a new item, you can easily order the new item on Innovacare.no.</p><p>The right to return and exchange goods does not affect your rights as a consumer under the Withdrawal Act or the Consumer Purchase Act.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_w8ae64"
+      ],
+      "settings": {
+        "title": "Guidelines for the Right of Withdrawal",
+        "withbg": false
+      }
+    },
+    "split_section_CzUqtR": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_CLczwK": {
+          "type": "data_block",
+          "settings": {
+            "title": "RIGHT OF WITHDRAWAL",
+            "content": "<p>You can cancel the purchase of the item in accordance with the provisions of the Right of Withdrawal Act. Right of withdrawal means that the buyer can return the item to the seller without reason, even if there is no defect in it and even if it has not been delivered. You must notify us of the use of the right of withdrawal within 14 days after the item, the prescribed information about the right of withdrawal and the right of withdrawal form has been received. The form can also be <a href=\"http://127.0.0.1:5500/right-withdrawal.html#\">Downloaded here</a> .</p><p>Notification of the use of the right of withdrawal and the right of withdrawal form must be sent by e-mail, but if this is not possible for you, you can send it by post. The message must contain information about how the buyer will return the item to the seller. The buyer can not regret the purchase of goods that deteriorate rapidly, goods that for reasons of health or hygiene are not suitable for return.</p><p>You must bear the cost of returning the goods if the right of withdrawal is used. You will be reimbursed for the item's cost less shipping costs. Refunds must be made without unnecessary delay, and no later than 14 days from when we received the item in return in approved packaging or from when we were notified that you want to use the right of withdrawal before the item is shipped from our warehouse. Unless otherwise expressly agreed, the refund shall be made using the same means of payment that you used.</p><p>You as the buyer must without undue delay, and no later than 14 days from notification after the right of withdrawal was given to the seller, send the goods back or hand them over to the seller.</p><p>In order to be able to cancel a purchase, it is assumed that the goods are unopened, unused and that the original packaging is undamaged. The buyer must also provide return transport and the cost of this. The shipment must be packed properly and in original packaging so that it is received by the seller without damage to the item or packaging. The seller may demand that the buyer replace the reduction in value as a result of the buyer's improper handling of the goods upon return.</p><p>If you did not receive a right of withdrawal form with the goods, the deadline for being able to cancel the purchase is extended to 3 months. If the buyer has not received information about the right of withdrawal at all, the deadline will be 1 year</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_CLczwK"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_mPDk7H": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_kF8iT8": {
+          "type": "data_block",
+          "settings": {
+            "title": "COMPLAINTS",
+            "content": "<p>When you discover that items you have purchased in our online store have errors or defects, you must within a reasonable time after you discovered the error or defect report us on this <a href=\"http://127.0.0.1:5500/right-withdrawal.html#\">return and complaint form</a> by sending it to us at customer service @ innova-active .no.</p><p>Depending on the circumstances, you can demand correction of the error, replacement of a new similar product or cancellation of the purchase. Innovacare.no can always demand that the purchase be canceled, rather than error correction or replacement. In the event of a complaint about a product, we may have to investigate what is wrong with the product, and in some cases this may have to be done by the manufacturer. If we need the product to do this, you will receive a pre-stamped return slip from us.</p><p>Your right as a customer to complain applies for two years after you took over the product, but the right to claim the defect is lost if you do not complain within a reasonable time after the defect was discovered or should have been discovered.</p><p>The rules on complaints apply in addition to, and independently of, the rules on the right of withdrawal and any guarantees provided by the seller.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_kF8iT8"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": true
+      }
+    },
+    "split_section_htY4bU": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_X6bfcd": {
+          "type": "data_block",
+          "settings": {
+            "title": "INSTRUCTIONS TO RETURN",
+            "content": "<ol><li>Wrap item and return form in original packaging.</li><li>Send the return as a package - not postal order - to this address:</li></ol><p>         Innova Active AS<br/>          Storgaten 32<br/>         0184 OSLO<br/>3. If you want to exchange items, order the new desired items on Innovacare.no.</p>"
+          }
+        },
+        "data_block_xtxEnp": {
+          "type": "data_block",
+          "settings": {
+            "title": "BRAND",
+            "content": "<p><strong>Processing time for returns</strong> The processing of your return takes place step by step. Please expect a total treatment time and refund of 1-3 weeks.</p><p><strong>Damaged shipment, incorrect delivery</strong> Please do not receive a package that is visibly damaged during transport. This will then be sent back to us, and we will send you a new shipment. Should you, contrary to expectation, receive a delivery with content that does not match what you ordered, please contact us.</p><p><strong>Return of discounted products</strong> If you have purchased items with a discount and you are entitled to a refund, it is the price you have actually paid - not the item's normal retail price, that is refunded.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_X6bfcd",
+        "data_block_xtxEnp"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "split_section_CzUqtR",
+    "split_section_mPDk7H",
+    "split_section_htY4bU"
+  ]
+}

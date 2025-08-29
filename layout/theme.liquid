@@ -1,0 +1,111 @@
+<!doctype html>
+<!--[if IE 9]> <html class="ie9 no-js" lang="{{ shop.locale }}"> <![endif]-->
+<!-- [if (gt IE 9)|!(IE)]><! -->
+<html class="no-js" lang="{{ shop.locale }}">
+  <!-- <![endif] -->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    {%- if canonical_url != blank -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {%- endif -%}
+    {%- if settings.favicon != blank -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {%- endif -%}
+    {%- capture seo_title -%}
+  {%- if request.page_type == 'search' and search.performed == true -%}
+  {{ 'general.search.heading' | t: count: search.results_count }} : {{ search.terms }}
+  {%- else -%}
+  {{ page_title }}
+  {%- endif -%}
+
+  {%- assign escaped_page_title = page_title | escape -%}
+  {%- unless escaped_page_title contains shop.name -%}
+  &ndash; {{ shop.name }}
+  {%- endunless -%}
+  {%- endcapture -%}
+
+    <title>{{ seo_title | strip }}</title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% include 'social-meta-tags' %}
+
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+
+    {{ content_for_header }}
+
+    {{ 'jquery.min.js' | asset_url | script_tag }}
+    {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+
+    {%- if template contains 'customers' -%}
+      {{ 'customer.scss' | asset_url | stylesheet_tag }}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script>
+    {%- endif -%}
+    {{ 'slick.min.js' | asset_url | script_tag }}
+    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'slickers.js' | asset_url }}" defer="defer"></script>
+
+    <script src="{{ 'm3u8video.js' | asset_url }}" async></script>
+
+    {% comment %}
+      <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+          <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    {% endcomment %}
+
+    <link href="https://cdn.jsdelivr.net/npm/nouislider@15.8.1/dist/nouislider.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.8.1/dist/nouislider.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" defer></script>
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"
+      defer
+    ></script>
+
+    {{ 'custom-fields.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'custom-fields-widgets.js' | asset_url }}" defer="defer"></script>
+    {% comment %} <script src="{{ 'timesact.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+
+  </head>
+  <body class="template-{{ template | split: '.' | first }} body">
+    {% assign base_template = template | split: '/' | first %}
+
+    {% section 'header' %}
+    <div class="wrapper">
+      {% render 'breadcrumb' %}
+      {{ content_for_layout }}
+    </div>
+
+    <div class="overlay-custome"></div>
+
+    <div class="products-preview">
+      <div class="products-pop">
+        <span class="pro-pop-close"> X </span>
+      </div>
+    </div>
+
+    {% comment %}
+      <div class="products-med-preview">
+        <div class="products-med-pop">
+
+          <div class="images-horizontal"> </div>
+          <span class="pro-med-pop-close"> X </span>
+
+        </div>
+      </div>
+    {% endcomment %}
+
+    {% unless base_template == 'customers' %}
+      {% section 'subscribe-form' %}
+    {% endunless %}
+    {% section 'footer' %}
+    {% section 'cart-drawer' %}
+
+    {% render 'tempcorner' %}
+  </body>
+</html>

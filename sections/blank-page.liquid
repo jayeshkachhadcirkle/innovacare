@@ -1,0 +1,69 @@
+<section class="ethical-trade-section common-content pt-70">
+  <div class="container">
+    <div class="section-title pb-30">
+      <h2>{{ page.title }}</h2>
+    </div>
+    {{ page.content }}
+
+  
+
+<br>
+<br>
+    
+    Date Time:  {{ page.metafields.pagemf.date_time }}<br>-------------------------------------------------------------------------------------<br>
+    Dimension:  {{ page.metafields.pagemf.dimension | metafield_tag }}<br>-------------------------------------------------------------------------------------<br>
+    volume:  {{ page.metafields.pagemf.volume | metafield_tag }}<br>-------------------------------------------------------------------------------------<br>
+    number:  {{ page.metafields.pagemf.number }}<br>-------------------------------------------------------------------------------------<br>
+    rating:  {{ page.metafields.pagemf.rating | metafield_tag }}<br>-------------------------------------------------------------------------------------<br>
+    file_pick:  {{ page.metafields.pagemf.file_pick.value }}<br>-------------------------------------------------------------------------------------<br>
+    Video file_pick:  {{ page.metafields.pagemf.video_mf.value.sources[0].url }}<br>-------------------------------------------------------------------------------------<br>
+    Page Title:  {{ page.metafields.pagemf.page_ref.value.title }}<br>-------------------------------------------------------------------------------------<br>
+    Product :  {{ page.metafields.pagemf.product_ref.value.title }}<br>-------------------------------------------------------------------------------------<br>
+    pro_variant_pick: {{ page.metafields.pagemf.pro_variant_pick.value.product.title }} - {{ page.metafields.pagemf.pro_variant_pick.value.title }}<br>-------------------------------------------------------------------------------------<br>
+    metaobj_ref:  Height = {{ page.metafields.pagemf.metaobj_ref.value.height }}, Width = {{ page.metafields.pagemf.metaobj_ref.value.width }}<br>-------------------------------------------------------------------------------------<br>
+    Collection Title :  {{ page.metafields.pagemf.collection_ref.value.title }}<br>-------------------------------------------------------------------------------------<br>
+    link_to:  {{ page.metafields.pagemf.link_to }}<br>-------------------------------------------------------------------------------------<br>
+    multiline_text:  {{ page.metafields.pagemf.multiline_text }}<br>-------------------------------------------------------------------------------------<br>
+    bool_mf:  {{ page.metafields.pagemf.bool_mf }}<br>-------------------------------------------------------------------------------------<br>
+    json_mf:  {{ page.metafields.pagemf.json_mf }}<br>-------------------------------------------------------------------------------------<br>
+    Mixed Ref:  {{ page.metafields.pagemf.mixed_ref.value }}<br>-------------------------------------------------------------------------------------<br>
+    Rich text Ref:  {{ page.metafields.pagemf.richtext | metafield_tag }}<br>-------------------------------------------------------------------------------------<br>
+      File Multiple :  {% for f in page.metafields.pagemf.file_multi.value %} {{ f }}, {% endfor %}<br>-------------------------------------------------------------------------------------<br>
+    Multi Product :  {% for pro in page.metafields.pagemf.multi_product_select.value %}{{ pro.title }} / {% endfor %}<br>-------------------------------------------------------------------------------------<br>
+    
+    
+<br>
+<br>
+===========================================================================
+
+    {{ section.settings.meta }}
+    {{ section.settings.pro }}
+    
+<br>
+<br>
+
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Blank Page Section",
+  "blocks": [{
+    "type": "@theme"
+  }],
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "meta",
+      "label": "Input"
+    },
+    {
+      "type": "product",
+      "id": "pro",
+      "label": "Product"
+    }
+  ]
+}
+{% endschema %}

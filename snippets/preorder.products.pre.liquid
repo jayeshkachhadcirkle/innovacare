@@ -1,0 +1,9 @@
+{% if product.metafields["preorder"]["pre"] != blank %}
+  <div class="custom-field custom-field__pre custom-field__type--single-line-text-field">
+    <h3 class="custom-field--title">Pre Order Shipping</h3>
+    <div class="custom-field--value">
+      {{ product.metafields["preorder"]["pre"] }}
+
+    </div>
+  </div>
+{% endif %}

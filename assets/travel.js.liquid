@@ -1,0 +1,23 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+
+    if (recentlyViewed.length > 0) {
+        fetch(`/products.json`)
+            .then(response => response.json())
+            .then(data => {
+                const products = data.products.filter(product => recentlyViewed.includes(product.handle));
+                const container = document.querySelector('.recent-row');
+
+                products.forEach(product => {
+                    // Render the product-card snippet for each product
+                    console.log(product);
+                  {% assign p = all_products["klairs-midnight-blue-calming-cream-60-ml-6"] %}
+                  console.log({{ p }})
+                    const productCardHTML = `
+                        {% render 'product', product: all_products["klairs-midnight-blue-calming-cream-60-ml-6"] %}
+                    `;
+                    container.innerHTML += productCardHTML;
+                });
+            });
+    }
+});

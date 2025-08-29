@@ -1,0 +1,117 @@
+{% doc %}
+  Variant card
+
+  @param {object} variant
+  @param {string} form_id
+{% enddoc %}
+
+{% assign pro_from_var = variant.product %}
+
+<div class="product-widget" handle="{{ pro_from_var.handle }}">
+  <div class="product-widget-inner">
+    <div class="product-widget-top">
+      <div class="produt-top-media">
+        <a
+          href="{{ pro_from_var.url | append: '?variant=' | append: variant.id }}"
+          class="product-media"
+          first-image="{{ pro_from_var.featured_image | img_url: "large" }}"
+        >
+          {% if variant.featured_image %}
+            {{ variant.featured_image | img_url: 'large' | img_tag: pro_from_var.title }}
+          {% else %}
+            {% if pro_from_var.featured_image %}
+              {{ pro_from_var.featured_image | img_url: 'medium' | img_tag }}
+            {% else %}
+              <img src="{{ 'placer.svg' | asset_url }}">
+            {% endif %}
+          {% endif %}
+        </a>
+        {% if variant.available %}
+          <span
+            class="pro-cart"
+            variant="{{ variant.id }}"
+            product="{{ pro_from_var.id }}"
+            handle="{{ pro_from_var.handle }}"
+            {% if variant.available %}
+              available="1"
+            {% else %}
+              available="0"
+              disabled
+            {% endif %}
+          >
+            {{ 'cart20.svg' | inline_asset_content }}
+            {% capture form_id %}product-snippet-form-{{ pro_from_var.id }}{% endcapture %}
+            {% form 'product',
+              pro_from_var,
+              id: form_id,
+              class: 'product-snippet-form hidden',
+              novalidate: 'novalidate'
+            %}
+              <input type="hidden" name="form_type" value="{{ pro_from_var }}">
+              <input
+                class="card-variant-id"
+                type="hidden"
+                name="id"
+                value="{{ variant.id }}"
+              >
+              <input
+                type="number"
+                min="1"
+                name="quantity"
+                data-id="{{ variant.id }}"
+                id="{{ variant.id }}"
+                value="1"
+                class="hidden"
+              >
+            {% endform %}
+          </span>
+        {% endif %}
+        {% if settings.quick_view %}
+          <a role="link" aria-disabled="true" class="viewer-eye" pro-handle="{{ pro_from_var.handle }}">
+            {{ 'eye-icon.png' | asset_url | img_tag }}
+          </a>
+        {% endif %}
+        {% if settings.comparison %}
+          <a role="link" aria-disabled="true" class="pro-compare" handle="{{ pro_from_var.handle }}">
+            {% render 'icons', icon_type: 'compare' %}
+          </a>
+        {% endif %}
+        {% if variant.compare_at_price > variant.price %}
+          {% assign pMax = variant.compare_at_price %}
+          {% assign percen = variant.price | times: 100 | divided_by: variant.compare_at_price %}
+          <div class="pro-lbl">
+            {{ '-' -}}
+            {{- 100 | minus: percen }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="product-widget-bottom">
+      <div class="pro-widget-bottom-upper">
+        <div class="pro-title flex align-center justify-between">
+          <h4>
+            <a href="{{ pro_from_var.collections.first.url }}">{{ pro_from_var.collections.first.title }}</a>
+          </h4>
+        </div>
+        <a href="{{ pro_from_var.url | append: '?variant=' | append: variant.id }}" class="card-title">
+          <p>{{ pro_from_var.title }} - {{ variant.title }}</p>
+        </a>
+      </div>
+      <div class="pro-widget-bottom-lower">
+        <div class="price flex align-center">
+          <ins class="var-price" clean-price="{{ variant.price | money_without_currency }}">
+            {{- variant.price | money_with_currency -}}
+          </ins>
+          {% if pMax != 0 %}
+            <del>{{ variant.compare_at_price | money_with_currency }}</del>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+{% endjavascript %}
+
+

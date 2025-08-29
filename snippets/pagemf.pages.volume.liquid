@@ -1,0 +1,9 @@
+{% if page.metafields["pagemf"]["volume"] != blank %}
+  <div class="custom-field custom-field__volume custom-field__type--volume">
+    <h3 class="custom-field--title">Volume</h3>
+    <div class="custom-field--value">
+{{ page.metafields["pagemf"]["volume"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

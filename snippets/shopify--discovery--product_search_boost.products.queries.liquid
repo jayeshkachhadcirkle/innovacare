@@ -1,0 +1,6 @@
+
+<ul>
+{% for item in product.metafields["shopify--discovery--product_search_boost"]["queries"].value %}
+<li><span class="metafield-single-line-text-field">{{ item }}</span></li>
+{% endfor %}
+</ul>

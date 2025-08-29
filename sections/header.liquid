@@ -1,0 +1,520 @@
+<!-- header start here -->
+<header class="innovacare-header header-style-one">
+  {% if section.settings.announcement_bar != blank %}
+    <div class="innovacare-announcebar">
+      <div class="container text-center">
+        <p>{{ section.settings.announcement_bar }}</p>
+      </div>
+    </div>
+  {% endif %}
+  <div class="innovacare-logobar">
+    <div class="container">
+      <div class="innovacare-logobar-row flex align-center">
+        <div class="innovacare-header-left">
+          <div class="flex align-center">
+            <div class="menu-toggle-btn mobile-menu">
+              <div class="hamburger mobile-menu-button" id="hamburger-1">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+              </div>
+            </div>
+
+            {% if section.settings.show_search %}
+              <main-search class="search-form">
+                <form action="{{ routes.search_url }}" method="get" role="search" class="search-form menu-desk-only">
+                  <div class="input-group">
+                    <input
+                      class="search__input field__input placer"
+                      id="Search-In-Template"
+                      type="search"
+                      name="q"
+                      value="{{ search.terms | escape }}"
+                      placeholder="Search..."
+                    >
+                    <label class="field__label " for="Search-In-Template"></label>
+                    <input name="options[prefix]" type="hidden" value="last">
+
+                    <button
+                      type="reset"
+                      class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+                      aria-label="{{ 'b1' }}"
+                    >
+                      <span class="svg-wrapper">
+                        {{- 'search.svg' | asset_url | img_tag -}}
+                      </span>
+                    </button>
+
+                    <button type="submit" class="search__button field__button" aria-label="{{ 'b2' }}">
+                      <span class="svg-wrapper">
+                        {{- 'search.svg' | asset_url | img_tag -}}
+                      </span>
+                    </button>
+                    {% comment %}
+                    {% endcomment %}
+                  </div>
+                </form>
+                <div
+                  class="mini-search"
+                  id="limiter"
+                  limit="{{ section.settings.search_limit }}"
+                  scope="{{ section.settings.limit_scope }}"
+                ></div>
+              </main-search>
+            {% endif %}
+
+            {% if section.settings.show_search %}
+              <div class="menu-mobile-only mobile-search right-list">
+                <a role="link" aria-disabled="true" class="mobile-search-btn searchlink">
+                  {{ 'search.svg' | inline_asset_content }}
+                </a>
+                <form class="search-form" style="display:none;">
+                  <div class="input-group">
+                    <input id="textbox" class="search-mobile" placeholder="Search..." type="text">
+                    <button class="serach_btn">
+                      {{ 'search.svg' | asset_url | img_tag }}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="innovacare-header-center text-center">
+          <div class="innovacare-logo">
+            <a href="{{ routes.root_url }}">
+              {% if settings.favicon != blank %}
+                {{ settings.favicon | img_tag }}
+              {% else %}
+                <h3>{{ shop.name }}</h3>
+              {% endif %}
+            </a>
+          </div>
+        </div>
+        <div class="innovacare-header-right flex align-center justify-end">
+          {% if section.settings.member_text != blank %}
+            <div class="desk-only member-club">
+              <a
+                {% if section.settings.member_link != blank %}
+                  href="{{ section.settings.member_link }}"
+                {% else %}
+                  role="link" aria-disabled="true"
+                {% endif %}
+              >
+                {{- section.settings.member_text -}}
+              </a>
+            </div>
+          {% endif %}
+          <ul class="social-list flex align-center" role="list">
+            <li>
+              <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+                {{ 'accountAvatar.svg' | asset_url | img_tag }}
+              </a>
+            </li>
+            <li style="position: relative;">
+              <a href="/pages/wishlist">
+                {{ 'like20.svg' | asset_url | img_tag }}
+              </a>
+              <span class="count" id="wish-count"> 0 </span>
+            </li>
+            {% comment %}
+                          <li id="wishlist-bt" class="wishlist-con">
+
+                            <a href="{{ routes.root_url }}apps/wishlist"  class="wishlist-btn">
+                              {{ 'like20.svg' | asset_url | img_tag }}
+                              <span class="count noclick" id="wish-count"></span>
+                            </a>
+
+
+              <div class="wishlist-header-link">
+                <a href="/pages/wishlist" class="wkh-button">
+                  <span class="wkh-icon">
+                    <svg viewBox="0 0 64 64">
+                      <path d="M32.012,59.616c-1.119-.521-2.365-1.141-3.707-1.859a79.264,79.264,0,0,1-11.694-7.614C6.316,42,.266,32.6.254,22.076,0.244,12.358,7.871,4.506,17.232,4.5a16.661,16.661,0,0,1,11.891,4.99l2.837,2.889,2.827-2.9a16.639,16.639,0,0,1,11.874-5.02h0c9.368-.01,17.008,7.815,17.021,17.539,0.015,10.533-6.022,19.96-16.312,28.128a79.314,79.314,0,0,1-11.661,7.63C34.369,58.472,33.127,59.094,32.012,59.616Z"><path>
+                    </svg>
+                  </span>
+                  <span class="wkh-counter">0</span>
+                </a>
+              </div>
+
+                              <div class="wishlister">
+                                <div class="product-row flex wish-row"></div>
+                                <span class="wishlist-close"> X </span>
+                              </div>
+
+                          </li>
+            {% endcomment %}
+            <li
+              id="cart_bt"
+              class="cart_bt"
+              offer="{{ settings.offer_active }}"
+              offer-collection="{{ settings.offer_collection }}"
+              offer-product="{{ settings.offer_product }}"
+              offer-product-id="{{ settings.offer_product.first_available_variant.id }}"
+            >
+              <a role="link" aria-disabled="true" class="cart-btn">
+                {{ 'cart20.svg' | asset_url | img_tag }}
+                <span class="count" id="cart-count">
+                  {%- if cart.item_count > 0 %}{{ cart.item_count }}{% endif -%}
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-navbar menu-mobile-only">
+  <div class="mobile-nav-head">
+    <div class="close-menu">
+      {{ 'close-menu-ioc.svg' | asset_url | img_tag }}
+    </div>
+  </div>
+  <div class="mobile-nv-scroller">
+    <div class="accordion-menu">
+      <div class="mobile-menu-bar">
+        <ul>
+          {% for link in linklists['innovacare-main-menu'].links %}
+            <li class="has-children">
+              <a
+                {% if link.url.size > 1 %}
+                  href="{{ link.url }}"
+                {% else %}
+                  role="link" aria-disabled="true"
+                {% endif %}
+                class="acnav__label mobile-link"
+              >
+                {{ link.title }}
+                {% for blk in section.blocks %}
+                  {% assign linker = blk.settings.linkto | handleize %}
+                  {% if link.handle == linker %}
+                    <img src="{{ 'menu-open-arrow.svg' | asset_url }}" class="menu-open-arrow">
+                    <img src="{{ 'close-menu-ioc.svg' | asset_url }}" class="close-menu-ioc">
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+              </a>
+              {% for block in section.blocks %}
+                {% assign linker = block.settings.linkto | handleize %}
+                {% if linker == link.handle %}
+                  {% for cap in (1..6) %}
+                    {% capture menuid %}menu{{ forloop.index }}{% endcapture %}
+                    {% capture menu_link_id %}menu{{ forloop.index }}link{% endcapture %}
+                    {% if block.settings[menuid] != blank %}
+                      <div class="mobile_menu_inner acnav__list">
+                        <div class="menu-h-drop has-children">
+                          <a
+                            {% if block.settings[menu_link_id].size > 1 %}
+                              href="{{ block.settings[menu_link_id] }}"
+                            {% else %}
+                              role="link" aria-disabled="true"
+                            {% endif %}
+                            class="acnav__label"
+                          >
+                            <span>{{ block.settings[menuid].title }}</span>
+                            {% if block.settings[menuid].links.size > 0 %}
+                              <img src="{{ 'menu-open-arrow.svg' | asset_url }}" class="menu-open-arrow">
+                            {% endif %}
+                            <img src="{{ 'close-menu-ioc.svg' | asset_url }}" class="close-menu-ioc">
+                          </a>
+                          <ul class="acnav__list">
+                            {% for link in block.settings[menuid].links %}
+                              <li>
+                                <a
+                                  {% if link.url.size > 1 %}
+                                    href="{{ link.url }}"
+                                  {% else %}
+                                    role="link" aria-disabled="true"
+                                  {% endif %}
+                                >
+                                  {{- link.title -}}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="mobile-link-list">&nbsp</div>
+  </div>
+</div>
+<!-- header end here -->
+
+<!-- Menu Data Get -->
+
+<!-- Menu Data Get End -->
+
+<!-- mega menu start here -->
+<div class="mega-menu menu-desk-only">
+  <div class="mega-menu-wrapper">
+    <div class="mega-menu-category-block">
+      <ul>
+        {% for link in linklists['innovacare-main-menu'].links %}
+          {% assign iscurruntli = '' %}
+          {% if forloop.index == 1 %}
+            {% assign iscurruntli = 'current' %}
+          {% endif %}
+          <li data-tab="{{ link.handle }}" class="{{ iscurruntli }}">
+            <a role="link" aria-disabled="true">
+              {{ link.title | default: 'Empty' }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="mega-menu-category-submenu">
+      {% for link in linklists['innovacare-main-menu'].links %}
+        {% assign iscurrunt = '' %}
+        {% if forloop.index == 1 %}
+          {% assign iscurrunt = 'current' %}
+        {% endif %}
+        {% assign data_id = link.handle %}
+        <div id="{{ data_id }}" class="mega-menu-tabs {{ iscurrunt }}">
+          {% for block in section.blocks %}
+            {% assign linker = block.settings.linkto | handleize %}
+            {% if data_id == linker %}
+              {% for cap in (1..6) %}
+                {% capture menuid %}menu{{ forloop.index }}{% endcapture %}
+                {% if block.settings[menuid].links.size > 9 %}
+                  {% assign classer = 'big-grid-50' %}
+                {% else %}
+                  {% assign classer = '' %}
+                {% endif %}
+                {% if block.settings[menuid] != blank %}
+                  <div class="category-submenu {{ classer }} ">
+                    <div class="category-submenu-title">
+                      {{ block.settings[menuid].title }}
+                    </div>
+                    <ul>
+                      {% for link in block.settings[menuid].links %}
+                        <li>
+                          <a
+                            {% if link.url.size > 1 %}
+                              href="{{ link.url }}"
+                            {% else %}
+                              role="link" aria-disabled="true"
+                            {% endif %}
+                          >
+                            {{ link.title }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endif %}
+              {% endfor %}
+
+              {% break %}
+            {% else %}
+              {% if forloop.last %}
+                <div class="category-submenu-title">{{ link.title }} Tab</div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- mega menu end here -->
+
+<script>
+  const theme_settings = {{ settings | json }}
+</script>
+
+{% stylesheet %}
+  .wishlist-header-link .wkh-button {
+    --icon-size: 22px;
+    --icon-fill: transparent;
+    --icon-stroke: #000000;
+    --icon-stroke-width: 1px;
+    --counter-size: 15px;
+
+    display: flex;
+    position: relative;
+    padding: 16px 12px;
+  }
+
+  .wishlist-header-link .wkh-icon svg {
+    display: block;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .wishlist-header-link .wkh-icon svg path {
+    fill: var(--icon-fill);
+    stroke: var(--icon-stroke);
+    stroke-width: var(--icon-stroke-width);
+    vector-effect: non-scaling-stroke;
+  }
+
+  .wishlist-header-link .wkh-counter {
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--counter-size);
+    height: var(--counter-size);
+    border-radius: calc(var(--counter-size) / 2);
+    font-size: 11px;
+    line-height: 1;
+    background: black;
+    color: white;
+    position: absolute;
+    top: 25px;
+    right: 5px;
+  }
+
+  .wishlist-header-link .wkh-selected .wkh-counter {
+    opacity: 1;
+    transition: 0.2s opacity;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Header",
+  "blocks": [
+    {
+      "type": "add-menus",
+      "name": "Add Menus",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "linkto",
+          "label": "Link Menu To"
+        },
+        {
+          "type": "link_list",
+          "id": "menu1",
+          "label": "Menu 1"
+        },
+        {
+          "type": "url",
+          "id": "menu1link",
+          "label": "Menu 1 Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu2",
+          "label": "Menu 2"
+        },
+        {
+          "type": "url",
+          "id": "menu2link",
+          "label": "Menu 2 Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu3",
+          "label": "Menu 3"
+        },
+        {
+          "type": "url",
+          "id": "menu3link",
+          "label": "Menu 3 Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu4",
+          "label": "Menu 4"
+        },
+        {
+          "type": "url",
+          "id": "menu4link",
+          "label": "Menu 4 Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu5",
+          "label": "Menu 5"
+        },
+        {
+          "type": "url",
+          "id": "menu5link",
+          "label": "Menu 5 Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu6",
+          "label": "Menu 6"
+        },
+        {
+          "type": "url",
+          "id": "menu6link",
+          "label": "Menu 6 Link"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "announcement_bar",
+      "label": "Announcement Bar"
+    },
+
+    {
+      "type": "text",
+      "id": "member_text",
+      "label": "Member Text"
+    },
+    {
+      "type": "url",
+      "id": "member_link",
+      "label": "Member Link"
+    },
+    {
+      "type": "header",
+      "content": "Search Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show Search Option",
+      "default": true
+    },
+    {
+      "type": "radio",
+      "id": "limit_scope",
+      "label": "Apply Search Limit",
+      "options": [
+        {
+          "label": "Total Limit",
+          "value": "all"
+        },
+        {
+          "label": "Per Type Limit",
+          "value": "each"
+        }
+      ],
+      "default": "all"
+    },
+    {
+      "type": "range",
+      "id": "search_limit",
+      "label": "Search Result Limit",
+      "default": 5,
+      "min": 1,
+      "max": 10
+    }
+  ],
+  "presets": []
+}
+{% endschema %}

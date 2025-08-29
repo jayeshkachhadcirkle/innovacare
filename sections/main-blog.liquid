@@ -1,0 +1,131 @@
+{% if section.settings.selected_blog.articles != blank %}
+  
+<section class="articles-section">
+  <div class="container">
+    <h2 class="articles-title">{{ section.settings.selected_blog.title }}</h2>
+    <div class="articles">
+      {% paginate section.settings.selected_blog.articles by 5 %}
+        {% for article in section.settings.selected_blog.articles %}
+          {% render 'article-card', article:article %}
+        {% endfor %}
+
+        <div class="pagination-wrapperjk">
+          {%- if paginate.pages > 1 -%}
+            {% render 'pagination', paginate: paginate, anchor: '' %}
+          {%- endif -%}
+        </div>
+      {% endpaginate %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Blog Section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "selected_blog",
+      "label": "Select Blog"
+    }
+  ],
+  "presets": [
+    {
+      "name":"Blog Section"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+  .articles-title {
+  margin: 5px 5px;
+  padding: 20px 5px;
+  font-weight: 400;
+}
+
+.articles {
+  /* border: 1px solid red; */
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 15px;
+  justify-content: start;
+  position: relative;
+  margin: 10px 0;
+}
+
+.article {
+  height: 100%;
+  gap: 1rem;
+  width: 350px;
+  /* aspect-ratio: 1/ 1; */
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #eee;
+  align-items: center;
+  justify-content: center;
+}
+
+.article .imga {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  object-fit: cover;
+  background-color: #f3f3f3;
+  position: relative;
+}
+
+.counter {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 2px;
+    margin-bottom: 2px;
+    margin-right: 2px;
+    border-radius: 3px;
+}
+
+  .article-title-a {
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .article-title {
+    color: black;
+    border-bottom: 1px solid #bdbdbd;
+    font-weight: 300;
+    padding-bottom: 5px;
+    font-size: 25px;
+  }
+
+.article .imga img {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  object-fit: cover;
+  background-color: #f3f3f3;
+}
+
+.article-click {
+  font-size: 25px;
+  width: 100%;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+  
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,50 @@
+
+{% comment %}
+{% endcomment %}
+
+{% if section.blocks.size > 0 %}
+  <section class="home-slider-subscribe-section pt-70 pb-70">
+      <div class="container">
+          <div class="slider-subscribe-wrap">
+              <div class="slider-subscribe">
+                  {% content_for 'blocks' %}
+              </div>
+              {% if section.settings.title != blank %}
+                <div class="home-slider-btn">
+                    <a class="btn-primary" {% if section.settings.link != blank %}  href="{{ section.settings.link }}" {% else %} role="link" aria-disabled="true" {% endif %}>{{ section.settings.title }}</a>
+                </div>
+              {% endif %}
+          </div>
+      </div>
+  </section>
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Slider Images Section",
+    "blocks": [
+      {
+        "type": "@theme"
+      }
+    ],
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "label": "Slider Title",
+        "id": "title"
+      },
+      {
+        "type": "url",
+        "label": "Slider Link",
+        "id":"link"
+      }
+    ],
+    "presets": [
+      {
+        "name":"Slider Images Section",
+        
+      }
+    ]
+  }
+{% endschema %}

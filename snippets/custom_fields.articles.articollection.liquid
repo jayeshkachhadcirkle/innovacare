@@ -1,0 +1,10 @@
+{% if article.metafields["custom_fields"]["articollection"] != blank %}
+  <div class="custom-field custom-field__articollection custom-field__type--collection-reference">
+    <h3 class="custom-field--title">Article Refer To Our Collection :</h3>
+    <div class="custom-field--value">  
+      {% assign collection_ref = collections[article.metafields["custom_fields"]["articollection"]] %}
+      {{ collection_ref.title | link_to: collection_ref.url }}
+    </div>
+    <br>
+  </div>
+{% endif %}

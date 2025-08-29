@@ -1,0 +1,86 @@
+{% if section.blocks.size == 1 %}
+  {% assign custom-class = 'bigger-banner' %}
+{% endif %}
+
+{% stylesheet %}
+  .bigger-banner {
+    max-width: 100% !important;
+  }
+{% endstylesheet %}
+
+{% if section.blocks.size > 0 %}
+  <section class="innovacare-home-banner-section pt-50 pb-70">
+    <div class="container">
+      <div class="flex media-content-row">
+        {% for block in section.blocks limit: 1 %}
+          <div class="media-content-left {{ custom-class }}" {{ block.shopify_attributes }}>
+            <a
+              {% if block.settings.image_link != blank %}
+                href="{{ block.settings.image_link }}"
+              {% else %}
+                role="link" aria-disabled="true"
+              {% endif %}
+            >
+              {% if block.settings['image-id'] != blank %}
+                 {{ block.settings.image-id | image_url: width: 800, height: 800 | image_tag }}
+              {% else %}
+                {{ 'placer.svg' | asset_url | img_tag }}
+              {% endif %}
+            </a>
+          </div>
+        {% endfor %}
+        <div class="media-content-right flex">
+          {% for block in section.blocks offset: 1 %}
+            <div class="media-right-img ">
+              <a
+                {% if block.settings.image_link != blank %}
+                  href="{{ block.settings.image_link }}"
+                {% else %}
+                  role="link" aria-disabled="true"
+                {% endif %}
+                {{ block.shopify_attributes }}
+              >
+                {% if block.settings['image-id'] != blank %}
+                  {{ block.settings['image-id'] | img_url: '800x800' | img_tag: 'hero rights' }}
+                {% else %}
+                  {{ 'placer.svg' | asset_url | img_tag }}
+                {% endif %}
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Home Banner Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "banner-image",
+      "name": "Banner Image",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image-id",
+          "label": "Pick Image"
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "Image Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Banner Section"
+    }
+  ]
+}
+{% endschema %}

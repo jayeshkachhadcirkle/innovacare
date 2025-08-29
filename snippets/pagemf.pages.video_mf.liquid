@@ -1,0 +1,19 @@
+{% if page.metafields["pagemf"]["video_mf"] != blank %}
+  <div class="custom-field custom-field__video-mf custom-field__type--file-reference">
+    <h3 class="custom-field--title">Video MF</h3>
+    <div class="custom-field--value">
+      {% assign type = page.metafields["pagemf"]["video_mf"].value.media_type %}
+      {% case type %}
+        {% when "image" %}
+          {{ page.metafields["pagemf"]["video_mf"].value | image_url: width: 500 | image_tag }}
+        {% when "video" %}
+          {{ page.metafields["pagemf"]["video_mf"].value | video_tag: image_size: "500x", width: 500, autoplay: false, controls: true }}
+        {% else %}
+          {% assign file_url = page.metafields["pagemf"]["video_mf"].value.url %}
+          <a target="_blank" href="{{ file_url }}">{{ page.metafields["pagemf"]["video_mf"] | media_tag: image_size: "200x" }}</a>
+          <div>{{ file_url | split: '/' | last | split: '?v=' | first }}</div>
+      {% endcase %}
+
+    </div>
+  </div>
+{% endif %}

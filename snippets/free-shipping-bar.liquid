@@ -1,0 +1,24 @@
+{% if settings.show_free_limit %}
+  {% assign limit = settings.free_limit %}
+  {% assign cart_total = cart.total_price | divided_by: 100 %}
+  <div class="free-shipping-limit" limit="{{ settings.free_limit }}">
+    {% assign limit_diff = limit | minus: cart_total | times: 100 %}
+    {% assign limit_diff2 = limit_diff | money %}
+    {% assign diff_span = "<span id='limit-filled'>" | append: limit_diff2 | append: "</span>" %}
+    {% assign ttt = settings.free_title %}
+    {% assign conve = ttt | replace_first: "$$", diff_span %}
+    {% assign limitmoney = limit | times: 100 | money %}
+    {% assign conve2 = conve | replace_first: "%%", limitmoney  %}
+    {% if limit_diff > 1 %}
+      <label for="freelimit"
+        >{{ conve2 }}
+      </label>
+      <progress id="freelimit" value="{{ cart.total_price | divided_by: 100 }}" max="{{ settings.free_limit }}">
+        {{ cart.total_price | divided_by: 100 }}
+      </progress>
+    {% else %}
+      <label for="freelimit">{{ settings.limit_reach }}</label>
+      <progress id="freelimit" value="100" max="100">100</progress>
+    {% endif %}
+  </div>
+{% endif %}

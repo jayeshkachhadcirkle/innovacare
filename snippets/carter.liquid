@@ -1,0 +1,13 @@
+{% comment %}
+  prameters to pass : (section_id, product, )
+
+<div class="carter" onclick="carter()" variant="{{ product.variants.first.id }}">
+  {{ 'cart20.svg' | inline_asset_content }}
+</div>
+{% endcomment %}
+
+{% javascript %}
+  function carter(){
+    console.log("Craterd v f h")
+  }
+{% endjavascript %}

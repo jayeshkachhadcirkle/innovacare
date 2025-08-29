@@ -1,0 +1,108 @@
+{% assign timestamp = 'now' | date: '%N' | handleize %}
+{%- assign product_form_id = 'product-form-'
+  | append: section.id
+  | append: '-'
+  | append: product.id
+  | append: '-'
+  | append: timestamp
+-%}
+{% capture allVarQtyData %}[{% for vSelectedOrFirst in product.variants %}{"id":"{{ vSelectedOrFirst.id }}","available":"{{ vSelectedOrFirst.available }}","qty":"{{ vSelectedOrFirst.inventory_quantity }}","invpolicy":"{{ vSelectedOrFirst.inventory_policy }}"}{% if forloop.last %}{% else %},{% endif %}{% endfor %}]{% endcapture %}
+{% assign pro_sfv = product.selected_or_first_available_variant %}
+
+<div class="compare-prod">
+  <div
+    class="product-info-wrap conmpare-wrap"
+    section="{{ product_form_id }}"
+    product-id="{{ product.id }}"
+    handle="{{ product.handle }}"
+    time="{{ timestamp }}"
+    data-title="{{ product.title }}"
+  >
+    <div class="product-json-full" id="product-json-full" style="display:none;">{{ product | json }}</div>
+    <div class="product-json" id="product-json" style="display:none;">{{ product.variants | json }}</div>
+    <div class="variants-json" id="variants-json" style="display:none;">{{ allVarQtyData }}</div>
+
+    <div class="pro-img">
+      {% if product.featured_image %}
+        {{ product.featured_image | img_url: 'large' | img_tag: product.title }}
+      {% else %}
+        <img src="{{ 'placer.svg' | asset_url }}">
+      {% endif %}
+    </div>
+
+    <!-- name -->
+    <h3
+      class="pb-10 fonter pro-name"
+    >
+      {% if product.selected_variant %}
+        {{ product.title }} - {{ pro_sfv.title }}
+      {% else %}
+        {{ product.title }}
+      {% endif %}
+    </h3>
+
+    <!-- Collection -->
+    {% if product.collections.size > 0 %}
+      <h5 class="pb-10 pdp-title" {{ block.shopify_attributes }}>
+        {{ product.collections[0].title | upcase }}
+      </h5>
+    {% endif %}
+
+    <!-- price -->
+
+    <ins class="pb-10">
+      {{- shop.currency }}
+      <ins class="variant-price ">
+        {{- pro_sfv.price | money_without_currency -}}
+      </ins>
+      {% if pro_sfv.compare_at_price > pro_sfv.price %}
+        <del style="color: {{ block.settings.p_2_color }}">
+          {{- shop.currency }}
+          {{ pro_sfv.compare_at_price | money_without_currency -}}
+        </del>
+      {% endif %}
+    </ins>
+
+    <!-- rating -->
+    <div class="jdgm-widget jdgm-preview-badge pb-10" data-id="{{ product.id }}">
+      {{ product.metafields.judgeme.badge }}
+    </div>
+
+    {% if product.description != blank %}
+      <div class="pb-10">
+      {% assign desc = product.description | replace: '<p>' | replace: '</p>' %}
+        <p>Desc: {{ desc }}</p>
+      </div>
+    {% endif %}
+
+    {% if product.metafields.custom.meta_object_ref.value %}
+      <div class="dive pb-10">
+        {% assign spec = product.metafields.custom.meta_object_ref.value %}
+        {% if spec.height != blank %}
+          <p>Height : {{ spec.height }}</p>
+        {% endif %}
+        {% if spec.width != blank %}
+          <p>Width : {{ spec.width }}</p>
+        {% endif %}
+        {% if spec.weight != blank %}
+          <p>Weight : {{ spec.weight }}</p>
+        {% endif %}
+        {% if spec.color != blank %}
+          <p>Packing : <span style="background-color:{{ spec.color }}; padding:5px 10px;">.</span></p>
+        {% endif %}
+        {% if spec.user_manual_link != blank %}
+          <p>Manual: {{ spec.user_manual_link -}}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <a class=" pb-10" style="margin: 10px;"  href="{{ product.url }}"><button>View</button></a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Compare Products",
+  "settings": []
+}
+{% endschema %}

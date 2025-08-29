@@ -1,0 +1,143 @@
+{% comment %}
+  pass arguments:
+    product,
+{% endcomment %}
+{% if product != blank %}
+  <div class="product-widget" handle="{{ product.handle }}">
+    <div class="card-var-json" style="display:none;">{{ product.variants | json }}</div>
+    <div class="product-widget-inner">
+      <div class="product-widget-top">
+        <div class="produt-top-media">
+          <a
+            href="{{ product.url | within: collection }}"
+            class="product-media"
+            first-image="{{ product.featured_image | img_url: "large" }}"
+          >
+            {% if product.featured_image %}
+              {{ product.featured_image | img_url: 'large' | img_tag: product.title }}
+            {% else %}
+              <img src="{{ 'placer.svg' | asset_url }}">
+            {% endif %}
+          </a>
+          {% if product.available %}
+            <span
+              class="pro-cart"
+              variant="{{ product.variants.first.id }}"
+              product="{{ product.id }}"
+              handle="{{ product.handle }}"
+              {% if product.variants.first.available %}
+                available="1"
+              {% else %}
+                available="0"
+                disabled
+              {% endif %}
+            >
+              {{ 'cart20.svg' | inline_asset_content }}
+              {% capture form_id %}product-snippet-form-{{ product.id }}{% endcapture %}
+              {% form 'product', product, id: form_id, class: 'product-snippet-form hidden', novalidate: 'novalidate' %}
+                <input type="hidden" name="form_type" value="{{ product }}">
+                <input
+                  class="card-variant-id"
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}"
+                >
+                <input
+                  type="number"
+                  min="1"
+                  name="quantity"
+                  data-id="{{ product.selected_or_first_available_variant.id }}"
+                  id="{{ product.selected_or_first_available_variant.id }}"
+                  value="1"
+                  class="hidden"
+                >
+              {% endform %}
+            </span>
+            <input type="checkbox" class="selected-pro" name="properties[_isrecommended]" form="{{ form_id }}" checked>
+          {% endif %}
+          <like-button  data-variant="{{ product.selected_or_first_available_variant.id }}" data-product="{{ product.id }}">
+            <a role="link" aria-disabled="true" class="pro-like" handle="{{ product.handle }}">
+              {{ 'like20.svg' | inline_asset_content }}
+            </a>
+          </like-button>
+          {% comment %}
+          {% endcomment %}
+          {% if settings.quick_view %}
+            <a role="link" aria-disabled="true" class="viewer-eye" pro-handle="{{ product.handle }}">
+              {{ 'eye-icon.png' | asset_url | img_tag }}
+            </a>
+          {% endif %}
+          {% if settings.comparison %}
+            <a role="link" aria-disabled="true" class="pro-compare" handle="{{ product.handle }}">
+              {% render 'icons', icon_type: 'compare' %}
+            </a>
+          {% endif %}
+          {% if product.compare_at_price > product.price %}
+            {% assign pMax = product.compare_at_price %}
+            {% assign percen = product.price | times: 100 | divided_by: product.compare_at_price %}
+            <div class="pro-lbl">
+              {{ '-' -}}
+              {{- 100 | minus: percen }}%
+            </div>
+          {% endif %}
+          {% if product.variants.size > 1 %}
+            <my-ops>
+              <div class="pro-colors flex align-center justify-end">
+                {% for option in product.options_with_values %}
+                  <div class="option-parent" selected="{{ option.values.first }}">
+                    {% if option.name == 'Color' %}
+                      {%- for value in option.values -%}
+                        <div
+                          id="{{ value }}"
+                          data-variant="{{ value }}"
+                          class="pro-color tilli"
+                          style="background: {{ value.swatch.color }};"
+                        ></div>
+                      {% endfor %}
+                    {% else %}
+                      {%- for value in option.values -%}
+                        <div id="{{ value }}" data-variant="{{ value }}" class="var-box tilli">{{ value }}</div>
+                      {% endfor %}
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+            </my-ops>
+          {% endif %}
+        </div>
+      </div>
+      <div class="product-widget-bottom">
+        <div class="pro-widget-bottom-upper">
+          <div class="pro-title flex align-center justify-between">
+            <h4>
+              <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a>
+            </h4>
+            <div class="review-block flex align-center">
+              <!-- Start of Judge.me code -->
+              <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                {{ product.metafields.judgeme.badge }}
+              </div>
+              <!-- End of Judge.me code -->
+            </div>
+          </div>
+          <a href="{{ product.url }}" class="card-title">
+            <p>{{ product.title }}</p>
+          </a>
+        </div>
+        <div class="pro-widget-bottom-lower">
+          <div class="price flex align-center">
+            <ins class="var-price" clean-price="{{ product.price | money_without_currency }}">
+              {{- product.variants.first.price | money_with_currency -}}
+            </ins>
+            {% if pMax != 0 %}
+              <del>{{ product.compare_at_price | money_with_currency }}</del>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% javascript %}
+{% endjavascript %}

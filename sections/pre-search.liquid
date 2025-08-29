@@ -1,0 +1,129 @@
+<div class="predictive-search-results-replace" limit="{{ section.settings.search_limit }}" scope="{{ section.settings.limit_scope }}"></div>
+<!-- {{ predictive_search.performed }} -->
+{%- if predictive_search.performed -%}
+  <div class="container">
+    <div id="predictive-search-results" class="predictive-search-results">
+      {%- if predictive_search.resources.products.size > 0 -%}
+        <h3>Products</h3>
+        <div class="product-row" style="flex-wrap:wrap;">
+          {%- for product in predictive_search.resources.products -%}
+            {% render 'product', product: product %}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      <br>
+      <br>
+      {%- if predictive_search.resources.collections.size > 0 -%}
+        <h3>Collections</h3>
+        <div class="collections">
+          {% for collection in predictive_search.resources.collections %}
+            {% render 'collection-card', collection: collection %}
+          {% endfor %}
+        </div>
+      {%- endif -%}
+      <br>
+      <br>
+      {%- if predictive_search.resources.articles.size > 0 -%}
+        <h3>Articles</h3>
+        <div class="product-row" style="flex-wrap:wrap; gap: 20px">
+          {% for article in predictive_search.resources.articles %}
+            {% render 'article-card', article: article %}
+          {% endfor %}
+        </div>
+      {%- endif -%}
+      <br>
+      <br>  
+      <br>
+      {%- if predictive_search.resources.pages.size > 0 -%}
+        <h3>Pages</h3>
+        {%- for page in predictive_search.resources.pages -%}
+          <a id="{{ page.id }}" class="article-template__comments-comment each-comment" href="{{ page.url }}">
+            <h4>{{ page.title }}</h4>
+            <footer-c class="comment-meta">
+              <span class="caption-with-letter-spacing">
+                Published On:
+                {{- page.published_at | time_tag: format: 'date' -}}
+              </span>
+            </footer-c>
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% javascript %}
+  const predictiveSearchSection = document.querySelector('.predictive-search-results-replace');
+var requestResponse;
+
+  const urlString = window.location.search; 
+    const searchParams = new URLSearchParams(urlString);
+    const term = searchParams.get('q');
+
+  let limit = predictiveSearchSection.getAttribute('limit');
+  let scope = predictiveSearchSection.getAttribute('scope');
+  // console.log(limit + " = = " + scope);
+  let url = window.Shopify.routes.root + "search/suggest?q=" + term + "&resources[limit]=" + limit + "&resources[limit_scope]=" + scope + "&section_id=pre-search"
+  
+fetch(url)
+  .then((response) => {
+    requestResponse = response;
+    return response.text();
+   })
+  .then((text) => {
+    if (!requestResponse.ok) {
+      throw new Error(`${requestResponse.status}: ${text}`);
+    }
+    // console.log(text)
+    const resultsMarkup = new DOMParser()
+      .parseFromString(text, 'text/html')
+      .querySelector('#shopify-section-pre-search').innerHTML;
+    // console.log(resultsMarkup)
+    predictiveSearchSection.innerHTML = resultsMarkup;
+    let proCards = document.querySelectorAll('.pro-cart')
+    proCards.forEach(function (p) {
+        p.addEventListener('click', function(){
+            let var_id = p.getAttribute('variant')
+            // console.log(var_id);
+            sendToCartSingle(var_id);
+        })
+    })
+      
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Predictive Search Old",
+  "settings": [
+    {
+        "type": "radio",
+        "id": "limit_scope",
+        "label": "Apply Search Limit",
+        "options": [
+          {
+            "label": "Total Limit",
+            "value": "all"
+          },
+          {
+            "label": "Per Type Limit",
+            "value": "each"
+          }
+        ],
+        "default": "each"
+      },
+      {
+        "type": "range",
+        "id": "search_limit",
+        "label": "Search Result Limit",
+        "default":5,
+        "min": 1,
+        "max": 10,
+      }
+  
+  ]
+}
+{% endschema %}

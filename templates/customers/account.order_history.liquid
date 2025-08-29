@@ -1,0 +1,72 @@
+<section class="user-section">
+  <div class="container">
+<div class="account-section">
+  <div class="account-navigation">
+    <ul>
+      <li><a href="/account">My Account</a></li>
+      <li><a href="/account/addresses">My Addresses</a></li>
+      <li class="active"><a href="/account?view=order_history">Order History</a></li>
+      {% if customer %}<li>{{ 'layout.customer.log_out' | t | customer_logout_link }}</li>{% endif %}
+    </ul>
+  </div>
+  <div class="account-content">
+      <div class="account-cover">
+        <div class="order-history bg-white">
+
+          <h2 class="account-title">{{ 'customer.orders.title' | t }}</h2>
+
+          {% comment %}
+          If we have past orders, loop through each one
+          {% endcomment %}
+
+          {% paginate customer.orders by 20 %}
+
+          {% if customer.orders.size != 0 %}
+
+          <div class="order-list">
+            <table class="full table table-no-more">
+              <thead>
+                <tr>
+                  <th class="or-id">{{ 'customer.orders.order_number' | t }}</th>
+                  <th class="or-date">{{ 'customer.orders.date' | t }}</th>
+                  <th class="orpro-detail">{{ 'customer.orders.product_name' | t }}</th>
+                  <th class="pay-status">{{ 'customer.orders.payment_status' | t }}</th>
+                  <th class="ff-status">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th class="or-total">{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                <tr>
+                  <td class="or-id">{{ order.name | link_to: order.customer_url }}</td>
+                  <td class="or-date">{{ order.created_at | date: " %d-%m-%Y"}}</td>
+                  <td class="orpro-detail">{% for line_item in order.line_items %}{{ line_item.title | link_to: line_item.product.url }}{% endfor %}</td>
+                  <td class="pay-status">{{ order.financial_status_label }}</td>
+                  <td class="ff-status">{{ order.fulfillment_status_label }}</td>
+                  <td class="or-total">{{ order.total_price | money }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          {% else %}
+
+          <p>{{ 'customer.orders.none' | t }}</p>
+
+          {% endif %}
+
+          {% if paginate.pages > 1 %}
+          <div class="text-center">
+            {% include 'pagination-custom' %}
+          </div>
+          {% endif %}
+
+          {% endpaginate %}
+
+        </div>
+      </div>
+  </div>
+</div>
+  </div>
+</section>

@@ -1,0 +1,9 @@
+{% if page.metafields["pagemf"]["bool_mf"] != blank %}
+  <div class="custom-field custom-field__bool-mf custom-field__type--boolean">
+    <h3 class="custom-field--title">Bool MF</h3>
+    <div class="custom-field--value">
+{{ page.metafields["pagemf"]["bool_mf"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

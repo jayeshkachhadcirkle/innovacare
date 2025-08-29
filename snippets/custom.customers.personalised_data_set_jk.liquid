@@ -1,0 +1,9 @@
+{% if customer.metafields["custom"]["personalised_data_set_jk"] != blank %}
+  <div class="custom-field custom-field__personalised-data-set-jk custom-field__type--multi-line-text-field">
+    <h3 class="custom-field--title">Personalised Data Set JK</h3>
+    <div class="custom-field--value">
+      {{ customer.metafields["custom"]["personalised_data_set_jk"] }}
+
+    </div>
+  </div>
+{% endif %}

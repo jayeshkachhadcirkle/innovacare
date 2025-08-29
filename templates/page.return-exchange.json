@@ -1,0 +1,119 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_ifcfjH": {
+          "type": "data_block",
+          "settings": {
+            "title": "",
+            "content": "<p>If you regret a purchase with us, the Right of Withdrawal Act applies. The right of withdrawal is valid for 14 days from the time you received the item. We want the handling to be as simple as possible for you as a customer.</p><p>Hygiene products are exempt from the right of withdrawal. For reasons of health care and hygiene, the right of withdrawal does not apply to goods where the seal has been broken after delivery. It is important that the original packaging and seal are intact if you want to return the item.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_ifcfjH"
+      ],
+      "settings": {
+        "title": "Return, Exchange and Complaint",
+        "withbg": false
+      }
+    },
+    "split_section_qDzpTN": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_9KTNyG": {
+          "type": "data_block",
+          "settings": {
+            "title": "Here is a description of how to exercise the right of withdrawal:",
+            "content": "<ol><li>Contact us before you return, send an e-mail to kundeservice@innovacare.no. The e-mail is marked with \"RETURN\" followed by the order number. Or download the return form directly here.</li><li>You will receive a return form by e-mail within 48 hours. Print out the return form and fill it out.</li><li>Send with completed return form together with items you return. Send the return as a package and not postal order to this address:<a href=\"http://127.0.0.1:5500/return.html#\">innovacare.no</a> (unless it concerns a return as a result of a complaint).<br/><br/>   Innovacare.no<br/>c / o Stjerneapotek Paleet, Karl Johansgate 37, 0164 Oslo<br/>Return costs are not covered by<a href=\"http://127.0.0.1:5500/return.html#\">innovacare.no</a>(unless it concerns a return as a result of a complaint).<br/><br/></li><li>You take care of the entire return process yourself. Make sure the item is packed in proper packaging when returning to us.</li></ol>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_9KTNyG"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_6UEr79": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_Qzzh7m": {
+          "type": "data_block",
+          "settings": {
+            "title": "Do you want to exchange an item?",
+            "content": "<ol><li>Return the item.</li><li>Reorder.</li><li>After we have received your return and approved this, it will take approx. 2-3 weeks before you get your money back.</li></ol>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_Qzzh7m"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_zKKgHJ": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_4fxacb": {
+          "type": "data_block",
+          "settings": {
+            "title": "Return in case of complaint:",
+            "content": "<ol><li>If an item is damaged when you receive it, please contact us at kundeservice@innovacare.no. Note “Complaint”</li><li>Write a complementary error description, attach the image and order number.</li><li>We will resolve the matter with the supplier as soon as possible. Waiting time will vary from case to case. A waiting time of? is not abnormal.</li></ol><p>A damaged item that is considered damaged upon return due to a user error will not be refunded.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_4fxacb"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_UbbBJA": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_Br8Txp": {
+          "type": "data_block",
+          "settings": {
+            "title": "Uncollected package:",
+            "content": "<p>If you do not pick up the package, it will be returned to us. When the package is returned as uncollected, it will be credited and the goods returned to stock. We will deduct for uncollected fee nominal NOK.<br/>149, to cover our handling costs.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_Br8Txp"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "split_section_qDzpTN",
+    "split_section_6UEr79",
+    "split_section_zKKgHJ",
+    "split_section_UbbBJA"
+  ]
+}

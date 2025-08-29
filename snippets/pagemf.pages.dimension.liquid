@@ -1,0 +1,9 @@
+{% if page.metafields["pagemf"]["dimension"] != blank %}
+  <div class="custom-field custom-field__dimension custom-field__type--dimension">
+    <h3 class="custom-field--title">Dimension</h3>
+    <div class="custom-field--value">
+{{ page.metafields["pagemf"]["dimension"] | metafield_tag }}
+
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,119 @@
+<br>
+<br>
+<br>
+<div class="{% if section.settings.withbg %}full-column-withbg {% endif %}">
+<div class="container"  >
+  <section class="common-content  ">
+    {% if section.settings.title != blank %}
+      <div class="section-title">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="two-column-wrap  flex">
+      {% for block in section.blocks %}
+        {% if forloop.length > 1 %}
+        {% endif %}
+        <div
+          class="common-content-column"
+          {% if forloop.length > 1 %}
+            style="width: 50%; "
+          {% endif %}
+          {{ block.shopify_attributes }}
+        >
+          {% if block.settings.title != blank %}
+          <div class="subtitle">{{ block.settings.title }}</div>
+          {% endif %}
+          {{ block.settings.content }}
+          {% if block.settings.content_html != blank %}
+            {{ block.settings.content_html }}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+</div>
+{% comment %}
+  
+<div class="container" {% if section.settings.withbg %} {% endif %} >
+  <section class="common-content {% if section.settings.withbg %}two-column-withbg {% else %}two-column-withoutbg{% endif %} ">
+    {% if section.settings.title != blank %}
+      <div class="section-title">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="two-column-wrap  flex">
+      {% for block in section.blocks %}
+        {% if forloop.length > 1 %}
+        {% endif %}
+        <div
+          class="common-content-column"
+          {% if forloop.length > 1 %}
+            style="width: 50%; "
+          {% endif %}
+
+        >
+          <div class="subtitle">{{ block.settings.title }}</div>
+          {{ block.settings.content }}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+{% endcomment %}
+
+{% javascript %}
+  // function change(e){
+  //   e.parentElement.style.backgroundColor = "black"
+  // }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Detail Split Section",
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "data_block",
+      "name": "Data Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Block Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "html",
+          "id": "content_html",
+          "label":"Custom HTML"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "withbg",
+      "label": "Section Background"
+    }
+
+  ],
+  "presets": [
+    {
+      "name":"Detail Split Section"
+    }
+  ]
+}
+{% endschema %}

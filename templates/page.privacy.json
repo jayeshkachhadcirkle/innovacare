@@ -1,0 +1,148 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_Rp9KpB": {
+          "type": "data_block",
+          "settings": {
+            "title": "SECURITY AND PRIVACY",
+            "content": "<p>We appreciate your visit to our websites, and that you show interest in our products. We want you to feel safe when you visit our sites, and make sure that personal information is processed in a secure way by us as the data controller. We are committed to protecting your privacy.</p><p>This privacy statement describes our processing and use of the data collected.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_Rp9KpB"
+      ],
+      "settings": {
+        "title": "Privacy Statement",
+        "withbg": false
+      }
+    },
+    "split_section_V6rt3j": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_iG8GEw": {
+          "type": "data_block",
+          "settings": {
+            "title": "PERSONAL INFORMATION",
+            "content": "<p>Unless you agree to something else, we can only collect and store the personal information that is necessary for us to be able to implement the obligations under applicable law when purchasing from consumers in the online store. The personal information of the buyer under the age of 15 can not be obtained unless we have the consent of parents or guardians. The buyer's personal information shall only be disclosed to others if it is necessary for us to complete the transaction with the buyer, or in statutory cases. We can only obtain the buyer's social security number if there is a factual need for secure identification and such collection is necessary.</p><p>If we want to use the buyer's personal information for other purposes, for example to send you advertising or information beyond what is necessary to complete the transaction, we must obtain your consent at the conclusion of the agreement. We must provide the buyer with information about what the personal information is to be used for and about who is to use the personal information. The buyer's consent must be voluntary and given by active action, for example by ticking.</p><p>You as the buyer should be able to easily contact us, for example by phone or e-mail if you have questions about our use of personal information or if you want us to delete or change the personal information.</p>"
+          }
+        },
+        "data_block_e34yrt": {
+          "type": "data_block",
+          "settings": {
+            "title": "COLLECTION OF PERSONAL INFORMATION",
+            "content": "<p>All customers with us must create a user account. For this you need a valid e-mail address. You register a password for this page.</p><p>The information that is registered in connection with the creation of a user profile with us is stored even if you terminate your user profile with us. We are required to do this by the authorities in connection with e.g. accounting, and also ensures efficient handling of any returns / complaints.</p><p>All information in your user profile is stored securely and confidentially, and you have no purchase obligations even if you have a user profile with us. A prerequisite for delivery to take place without delays or problems, is that we have your full name and correct telephone number, address and postcode. When you order in the online store, it is your responsibility to ensure that we always have your correct address where you can receive a shipment.</p><p>In addition to personal information, we also collect certain information about your hardware and software. This information can be: IP address, Web browser type, operating system, domain name, access time and referring Web site addresses. This information is used to operate the service, maintain the quality of the service and provide general statistics for the use of our website.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_iG8GEw",
+        "data_block_e34yrt"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_JAE4Me": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_zjJQg7": {
+          "type": "data_block",
+          "settings": {
+            "title": "COOKIES",
+            "content": "<p>Our online store contains cookies.</p><p>You can look around the online store without cookies, but you can not shop. We use cookies to manage the contents of your shopping cart. It is a text file that is stored on your computer.</p><p>The vast majority of websites use cookies to a greater or lesser extent, and they are used for various reasons; blue. for the website to work, for it to work optimally, and for the website owners to receive information so that they can develop the website and adapt it to the user's needs.</p><p>Preset in the browser that you accept cookies (most modern browsers are automatically set to accept cookies), is considered a consent to us leaving cookies on your PC. As a user of the online store, you have at any time the opportunity to withdraw this consent by selecting and rejecting cookies.</p><p>If your browser or firewall is set to prevent the storage of cookies, the website may stop working or you may have problems completing a sale.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_zjJQg7"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_y4hDdY": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_VYNhm8": {
+          "type": "data_block",
+          "settings": {
+            "title": "COLLECTION OF PERSONAL INFORMATION",
+            "content": "<p>We use the personal information for the following purposes:</p><ul><li>To ensure that the online store meets your needs.</li><li>To deliver products and services, such as newsletters, special offers and other information that you request or purchase.</li><li>To help us create and publish content that is relevant to you.</li><li>To notify you of new items, special offers, updated information and other new services from us, if you request it.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_VYNhm8"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": true
+      }
+    },
+    "split_section_WVqVx7": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_tPxEc3": {
+          "type": "data_block",
+          "settings": {
+            "title": "CONTROL OF PERSONAL INFORMATION",
+            "content": "<p>When you register, or otherwise provide us with personal information, we will not share this information with third parties without your permission, except for the limited exceptions already mentioned. The information will only be used for the purposes mentioned above and will be processed in accordance with the legislation and guidelines given by the Norwegian Data Protection Authority. Innova Active AS does not sell personal information to third parties, and we do not exchange or pass on such information with third parties.</p><p>The information registered in connection with a request will only be used in connection with the follow-up of your request and will not be stored beyond the time it takes to process it. If the content of the email is a question that may be useful to others, we may allow ourselves and publish the question on our website under \"questions and answers\", but the content will of course be completely anonymized.</p><p>If you register, you also tell us how and if you want us to communicate with you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_tPxEc3"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    },
+    "split_section_tbbeV8": {
+      "type": "split-section",
+      "blocks": {
+        "data_block_7BEqxN": {
+          "type": "data_block",
+          "settings": {
+            "title": "ACCESS TO THE PERSONAL INFORMATION",
+            "content": "<p>We give you access to ensure that your personal information is correct and up to date. If you register on our website, you will have a full overview of your order at all times.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "data_block_7BEqxN"
+      ],
+      "name": "Detail Split Section",
+      "settings": {
+        "title": "",
+        "withbg": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "split_section_V6rt3j",
+    "split_section_JAE4Me",
+    "split_section_y4hDdY",
+    "split_section_WVqVx7",
+    "split_section_tbbeV8"
+  ]
+}

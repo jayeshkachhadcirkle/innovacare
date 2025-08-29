@@ -1,0 +1,20 @@
+{% comment %}
+  give object: collection
+{% endcomment %}
+
+<div class="collection">
+  <a class="imga" href="{{ collection.url }}">
+    {% if collection.featured_image %}
+      {{ collection.featured_image | img_url: 'large' | img_tag: collection.title }}
+    {% else %}
+      {{ 'collection-4' | placeholder_svg_tag }}
+    {% endif %}
+    {% if section.settings.show_count %}
+      <span class="counter">Products: {{ collection.all_products_count }}</span>
+    {% endif %}
+  </a>
+  <a class="collection-click" href="{{ collection.url }}">
+    <h4 style="font-weight: 300;">{{ collection.title }}</h4>
+    {{ 'arrowright.svg' | asset_url | img_tag }}
+  </a>
+</div>

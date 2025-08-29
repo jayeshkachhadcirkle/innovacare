@@ -1,0 +1,92 @@
+{% if section.settings['hero-image'] != blank
+  or section.settings['hero-title'] != blank
+  or section.settings['hero-desc'] != blank
+%}
+  <section class="innovacare-home-skincare-section">
+    <img
+      src="{{ section.settings.right-back | image_url: width: 800, height: 800 }}"
+      class="skincare-right-bg desk-only"
+      alt="skincare-right-bg"
+    >
+    <div class="container">
+      <div class="skincare-inner-area pt-50 pb-50">
+        {% if section.settings['hero-image'] != blank %}
+          <a
+            {% if section.settings.link != blank %}
+              href="{{ section.settings.link }}"
+            {% else %}
+              role="link" aria-disabled="true"
+            {% endif %}
+            ><img src="{{ section.settings.hero-image | image_url: width: 1500, height: 1000 }}" class="skincare-banner"
+          ></a>
+        {% else %}
+          {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% comment %}
+            <img src="{{ 'photos-icon.svg' | asset_url }}" height="500px" width="1200px">
+          {% endcomment %}
+        {% endif %}
+        <div class="skincare-title">
+          <div class="section-title text-center">
+            <h2 class="mb-10" style="font-weight: 400;">{{ section.settings['hero-title'] }}</h2>
+            <h5>{{ section.settings['hero-desc'] }}</h5>
+          </div>
+        </div>
+        {% if section.settings['show-discount'] %}
+          <div class="sale-content">
+            {{ section.settings.badge_image | img_tag }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Hero Image Section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "hero-title",
+      "label": "Hero Title",
+    },
+    {
+      "type": "text",
+      "id": "hero-desc",
+      "label": "Hero Description",
+      "default":"Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero-image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Redirect To Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "right-back",
+      "label": "Right Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_image",
+      "label": "Select Discount Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show-discount",
+      "label": "Show Discount %",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name":"Hero Image Section"
+    }
+  ]
+}
+{% endschema %}
