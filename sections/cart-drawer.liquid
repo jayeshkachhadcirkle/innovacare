@@ -1,17 +1,16 @@
 {{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
 
-
-{% assign all_discounted = "true" %}
+{% assign all_discounted = 'true' %}
 {% for i in cart.items %}
   {% if i.variant.compare_at_price == blank %}
-    {% assign all_discounted = "false" %}
+    {% assign all_discounted = 'false' %}
   {% endif %}
 {% endfor %}
 
-{% assign all_subs = "true" %}
-  {% for i in cart.items %}
+{% assign all_subs = 'true' %}
+{% for i in cart.items %}
   {% if i.selling_plan_allocation.selling_plan.name == blank %}
-    {% assign all_subs = "false" %}
+    {% assign all_subs = 'false' %}
   {% endif %}
 {% endfor %}
 
@@ -20,12 +19,16 @@
   id="mini-cart"
   data-shipping-charge="{{ settings.shipping_charge }}"
   data-shipping-charge-pro="{{ settings.shipping_charge_pro.first_available_variant.id }}"
-  data-auto-charge="{{ settings.shipping_auto }}">
+  data-auto-charge="{{ settings.shipping_auto }}"
+>
   <div class="overlay" id="cart_overlay"></div>
   <div class="mini_cart_wp">
     <div class="mini_cart_main" id="mini_cart_main">
       {% if cart.item_count > 0 %}
-        <div class="mini_cart_title" data-in-cart-vars="0,{% for i in cart.items %}{{ i.variant_id }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}">
+        <div
+          class="mini_cart_title"
+          data-in-cart-vars="0,{% for i in cart.items %}{{ i.variant_id }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}"
+        >
           <div class="mini-cart_heding text-center">
             <h4>{{ 'cart.general.basket' | t }}</h4>
           </div>
@@ -35,14 +38,19 @@
           action="{{ routes.cart_url }}"
           id="Cart-DrawerForm"
           class="cart__contents cart-drawer__form"
-          method="post">
+          method="post"
+        >
           <div
             class="mini_cart_body"
             count="{{ cart.item_count }}"
-            total="{{ cart.total_price }}">
+            total="{{ cart.total_price }}"
+          >
             <div class="mini_cart_body_inner">
               {% for item in cart.items %}
-                <div class="mini_cart_item all-items-cart" collection="{% for collection in item.product.collections %}{{ collection.handle }},{% endfor %}">
+                <div
+                  class="mini_cart_item all-items-cart"
+                  collection="{% for collection in item.product.collections %}{{ collection.handle }},{% endfor %}"
+                >
                   <div class="mini_cart_card flex ">
                     <div class="mini_cart_product">
                       <a href="{{ item.product.url }}" class="cart_product_media">
@@ -61,12 +69,13 @@
                             {%- if item.properties._instruction.size > 0 -%}
                               -({{ item.properties._instruction }})
                             {%- endif %}
-
                           </h5>
                         </div>
                         <div class="product_price">
                           <span>{{ item.price | money }}</span>
-                          <span><del>{{ item.variant.compare_at_price | money }}</del></span>
+                          <span
+                            ><del>{{ item.variant.compare_at_price | money }}</del></span
+                          >
                         </div>
                       </div>
                       <p style="color: blue; font-size: small;">
@@ -80,11 +89,13 @@
                             <div
                               class="cart-qntty-col"
                               data-id="{{ item.key }}"
-                              data-variant="{{ item.variant_id }}">
+                              data-variant="{{ item.variant_id }}"
+                            >
                               <div
                                 class="qtyAdjust {% if item.variant_id == settings.offer_product.first_available_variant.id %} hidden {% endif %}"
                                 bundled="{{ item.properties['_isRecommended'] }}"
-                                bundleId="{{ item.properties['_bundleId'] }}">
+                                bundleId="{{ item.properties['_bundleId'] }}"
+                              >
                                 <input
                                   type="number"
                                   min="01"
@@ -94,20 +105,21 @@
                                   name="updates[]"
                                   class="tc item-quantity get-qty-dr"
                                   data-discounted="{% if item.variant.price < item.variant.compare_at_price %}true{% else %}false{% endif %}"
-                                  data-index="{{ forloop.index }}">
+                                  data-index="{{ forloop.index }}"
+                                >
                                 <button
                                   type="submit"
                                   class="adjust dr-minus drawer nostyle-bt"
-                                  name="minus">
-                                  {% render 'icons'
-                                    , icon_type: 'minus' %}
+                                  name="minus"
+                                >
+                                  {% render 'icons', icon_type: 'minus' %}
                                 </button>
                                 <button
                                   type="submit"
                                   class="adjust dr-plus drawer nostyle-bt"
-                                  name="plus">
-                                  {% render 'icons'
-                                    , icon_type: 'plus' %}
+                                  name="plus"
+                                >
+                                  {% render 'icons', icon_type: 'plus' %}
                                 </button>
                               </div>
                             </div>
@@ -115,9 +127,9 @@
                               <div
                                 class="item-remove-btn-dr remove-btn"
                                 handle="{{ item.product.handle }}"
-                                product="{{ item.product.id }}">
-                                {% render 'icons'
-                                  , icon_type: 'delete_btn' %}
+                                product="{{ item.product.id }}"
+                              >
+                                {% render 'icons', icon_type: 'delete_btn' %}
                               </div>
                             </div>
                             <div class="qty-error"></div>
@@ -137,32 +149,34 @@
         {% assign reco_pro_sort = reco_pros | split: ',' %}
         {% assign final_reco_product = reco_pro_sort.first %}
 
-        {% render 'cart-recommendation'
-          , product_id: final_reco_product
-          , limit: 10
-          , frm: 'drawer' %}
+        {% render 'cart-recommendation', product_id: final_reco_product, limit: 10, frm: 'drawer' %}
 
-          <div class="mini_cart_footer">
+        <div class="mini_cart_footer">
           {% comment %}  {% endcomment %}
           <div class="subscribe-options" style="display: flex;">
             <label style="width: 125px;">
               {% if all_discounted == 'true' %}
                 Already Getting Max Discount Click To subscribe
               {% else %}
-                Autoship this order and save 10%{% endif %}
+                Autoship this order and save 10%
+              {%- endif %}
             </label>
             <label class="switchShip">
               <input
                 type="checkbox"
                 id="subscribe-toggle"
                 all-subs="{{ all_subs }}"
-                class="shipping-plus">
+                class="shipping-plus"
+              >
               <span class="sliderShip round"></span>
             </label>
             <select
-              name="sub_select" id="sub_select" class="sub_select">
+              name="sub_select"
+              id="sub_select"
+              class="sub_select"
+            >
               <option value="">Select Frequancy</option>
-              <option value="1920139402,1920303242">Every 2 week </option>
+              <option value="1920139402,1920303242">Every 2 week</option>
               <option value="1920172170,1920336010">Every 1 Month</option>
               <option value="1920204938,1920368778">Every 2 Month</option>
             </select>
@@ -185,15 +199,17 @@
                     class="shipping-plus"
                     data-pro="{{ settings.shipping_charge_pro.first_available_variant.id }}"
                     {% if cart_vars contains settings.shipping_charge_pro.first_available_variant.id %}
-                    checked
-                    {% endif %}>
+                      checked
+                    {% endif %}
+                  >
                   <span class="sliderShip round"></span>
                 </label>
               {% endif %}
             </div>
             <div class="mini_cart_total flex align-center justify-between">
               <h5>{{ 'cart.general.cart_summary' | t }}</h5>
-              <span>Subtotal:
+              <span
+                >Subtotal:
                 <span id="cart-subtotal-dr" data-total="{{ cart.original_total_price }}">
                   {{ cart.total_price | money -}}
                 </span>
@@ -206,7 +222,8 @@
                 href="/checkout"
                 class="cart_payment checkout-bt-dr"
                 all-subs="{{ all_subs }}"
-                alldiscounted="{{ all_discounted }}">
+                alldiscounted="{{ all_discounted }}"
+              >
                 {{ 'cart.general.checkout' | t }}
               </a>
             </div>
@@ -230,7 +247,10 @@
                 <button
                   class="btn-primary"
                   id="close-popup-subscribe-confirmation-btn"
-                  onclick='applySellingPlanToCart("1920172170,1920336010")'>Subscribe</button>
+                  onclick='applySellingPlanToCart("1920172170,1920336010")'
+                >
+                  Subscribe
+                </button>
                 <button class="btn-primary" id="close-popup-subscribe-confirmation-btn">
                   <a href="/checkout">Skip</a>
                 </button>
@@ -283,13 +303,14 @@
           }
         </style>
 
-
         <div class="cart_colse_icon" id="cart_colse_icon">
-          {% render 'icons'
-            , icon_type: 'cart_close' %}
+          {% render 'icons', icon_type: 'cart_close' %}
         </div>
       {% else %}
-        <div class="mini_cart_title" data-in-cart-vars="0,{% for i in cart.items %}{{ i.variant_id }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}">
+        <div
+          class="mini_cart_title"
+          data-in-cart-vars="0,{% for i in cart.items %}{{ i.variant_id }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}"
+        >
           <div class="mini-cart_heding text-center">
             <h4>{{ 'cart.general.basket' | t }}</h4>
             .........................................
@@ -315,8 +336,7 @@
           </div>
         </div>
         <div class="cart_colse_icon" id="cart_colse_icon">
-          {% render 'icons'
-            , icon_type: 'cart_close' %}
+          {% render 'icons', icon_type: 'cart_close' %}
         </div>
       {% endif %}
     </div>
@@ -326,22 +346,22 @@
 </div>
 
 {% javascript %}
-  document.querySelectorAll('.get-qty-dr').forEach(function(e) {
-    e.addEventListener('click', function(event) {
+  document.querySelectorAll('.get-qty-dr').forEach(function (e) {
+    e.addEventListener('click', function (event) {
       event.preventDefault();
     });
   });
 {% endjavascript %}
 
 {% schema %}
-  {
-    "name": "Cart drawer",
-    "settings": [
-      {
-        "type": "url",
-        "label": "Continue To",
-        "id": "continue_btn"
-      }
-    ]
-  }
+{
+  "name": "Cart drawer",
+  "settings": [
+    {
+      "type": "url",
+      "label": "Continue To",
+      "id": "continue_btn"
+    }
+  ]
+}
 {% endschema %}

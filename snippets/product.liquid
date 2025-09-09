@@ -2,7 +2,7 @@
   pass arguments:
   product,
 {% endcomment %}
-{% if product != blank %}
+{% if product != blank and product.metafields.seo.hidden != 1 %}
   <div class="product-widget" handle="{{ product.handle }}">
     <div class="card-var-json" style="display:none;">{{ product.variants | json }}</div>
     <div class="product-widget-inner">
@@ -106,7 +106,7 @@
             {% assign percen = product.price | times: 100 | divided_by: product.compare_at_price %}
             <div class="pro-lbl">
               {{ '-' -}}
-              {{- 100 | minus: percen }}%
+              {{- 100 | minus: percen }}
             </div>
           {% endif %}
           {% if product.variants.size > 1 %}

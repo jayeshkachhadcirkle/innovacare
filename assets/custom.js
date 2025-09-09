@@ -741,7 +741,7 @@ mobile_search.addEventListener("input", function (event) {
     let limit_scope = document.getElementById("limiter").getAttribute("scope");
     timer2 = setTimeout(function () {
       let isDone = setPredictiveSearch(event.target.value, limit, limit_scope);
-      let runner = setInterval(function () {
+      let runner = setInterval(function () {  
         if (isDone) {
           let overlay = document.getElementsByClassName("overlay-custome")[0];
           overlay.innerHTML = "";
@@ -753,7 +753,7 @@ mobile_search.addEventListener("input", function (event) {
           clearInterval(runner);
         }
       }, 500);
-    }, 700);
+    }, 700);  
   } else {
     let searchPopup = (document.getElementsByClassName("mini-search")[0].style.display = "none");
   }
@@ -887,7 +887,7 @@ function openProductPopUp(eye) {
 
 // == Variants code Start =================================================================
 
-function variantPerform(wrap) {
+function variantPerform(wrap) { 
   setTimeout(function () {
     let secId = wrap.getAttribute('section');
     let options = parseInt(wrap.getElementsByClassName('option-size')[0].getAttribute('option-size'))
