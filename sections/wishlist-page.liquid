@@ -9,33 +9,9 @@
 
 {%  javascript  %} 
 
-  let wishlist = JSON.parse(localStorage.getItem('likedProducts')).reverse();
-  let wContainer = document.querySelector('.product-row')
-  console.log(wishlist)
-
-  if(wishlist.length){
-
-    for (let i = 0; i < wishlist.length; i++) {
-      let cardDiv = document.createElement('div')
-      cardDiv.innerHTML = `
-            <div class="skeleton" style="height:300px;width:250px;margin:10px;"></div>
-            <div class="skeleton" style="height:20px;width:200px;margin:10px;"></div>
-            <div class="skeleton" style="height:20px;width:230px;margin:10px;"></div>
-            <div class="skeleton" style="height:20px;width:150px;margin:10px;"></div>
-      `
-      wContainer.appendChild(cardDiv)
-      fetch("https://jayesh-cirkle.myshopify.com/products/" + wishlist[i] + "?view=card2").then(response => response.text()).then(data => {
-          let dom = new DOMParser().parseFromString(data, "text/html");
-          let card = dom.getElementsByClassName('product-widget')[0];
-          cardDiv.replaceWith(card)
-
-      })
-    }
-
-  }else{
-    wContainer.innerHTML = `<p> &nbsp&nbsp&nbsp Wishlist Empty </p>`;
-  }
-
+document.addEventListener('DOMContentLoaded', function() {
+  loadWishlistProducts();
+}); 
 {% endjavascript %}
 
 {% schema %}

@@ -1,9 +1,22 @@
 <div class="container">
   <h2>Its A Test Section</h2>
 
+  {% assign onecoll = collections.garden.products %}
+
+  {% assign newcoll = collections.apparel.products %}
+
+  {% assign bothcoll = onecoll | concat: newcoll %}
+
+  //{{ bothcoll.size }}//
+
+  {% paginate bothcoll.products by 10 %}
+    {% render 'facets', results: bothcoll, enable_filtering: true, enable_sorting: true, paginate: paginate %}
+    {% for pro in bothcoll.products %}
+      {{ pro.title }}-- <br>
+    {% endfor %}
+  {% endpaginate %}
 </div>
 {% stylesheet %}
-
 {% endstylesheet %}
 
 {% javascript %}

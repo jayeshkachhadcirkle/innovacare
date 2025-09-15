@@ -741,7 +741,7 @@ mobile_search.addEventListener("input", function (event) {
     let limit_scope = document.getElementById("limiter").getAttribute("scope");
     timer2 = setTimeout(function () {
       let isDone = setPredictiveSearch(event.target.value, limit, limit_scope);
-      let runner = setInterval(function () {  
+      let runner = setInterval(function () {
         if (isDone) {
           let overlay = document.getElementsByClassName("overlay-custome")[0];
           overlay.innerHTML = "";
@@ -753,7 +753,7 @@ mobile_search.addEventListener("input", function (event) {
           clearInterval(runner);
         }
       }, 500);
-    }, 700);  
+    }, 700);
   } else {
     let searchPopup = (document.getElementsByClassName("mini-search")[0].style.display = "none");
   }
@@ -887,7 +887,7 @@ function openProductPopUp(eye) {
 
 // == Variants code Start =================================================================
 
-function variantPerform(wrap) { 
+function variantPerform(wrap) {
   setTimeout(function () {
     let secId = wrap.getAttribute('section');
     let options = parseInt(wrap.getElementsByClassName('option-size')[0].getAttribute('option-size'))
@@ -1304,13 +1304,13 @@ function createCompareBox() {
           let price = Shopify.formatMoney(product['price'])
           newTile.classList.add('smally')
           newTile.innerHTML = `
-        <img class="smally-img" src="${product['featured_image']}">
-        <div class="smally-data">
-        <h4>${product['title']}</h4>
-        <h5>${price}</h5>
-        </div>
-        <span style="cursor:pointer;" class="remove-compare" handle="${product['handle']}"> X </span>
-        `
+          <img class="smally-img" src="${product['featured_image']}">
+          <div class="smally-data">
+          <h4>${product['title']}</h4>
+          <h5>${price}</h5>
+          </div>
+          <span style="cursor:pointer;" class="remove-compare" handle="${product['handle']}"> X </span>
+          `
         });
     }
   } else {
@@ -1377,7 +1377,7 @@ class MySubscribe extends HTMLElement {
 }
 customElements.define("subscribe-jk", MySubscribe);
 
-// ========================== Wishlist Start ============================
+// ========================== Custom Wishlist Start ============================
 document.getElementById('wish-count').innerText = localStorage.getItem("likedProducts") && JSON.parse(localStorage.getItem("likedProducts")).length > 0 ? JSON.parse(localStorage.getItem("likedProducts")).length : '';
 
 class MyLike extends HTMLElement {
@@ -1425,9 +1425,12 @@ class MyLike extends HTMLElement {
         let liked = JSON.parse(localStorage.getItem("likedProducts") || "[]");
         document.getElementById('wish-count').innerText = liked.length || '';
 
+        loadWishlistProducts();
+
       }
     });
   }
+
   refreshLikeStatus() {
     let liked = JSON.parse(localStorage.getItem("likedProducts") || "[]");
     const likeBtn = this.querySelector('.pro-like');
@@ -1441,10 +1444,41 @@ class MyLike extends HTMLElement {
 }
 customElements.define("like-button", MyLike);
 
-// ========================== Wishlist End ============================
+// load wishlist products on wishlist page
+function loadWishlistProducts() {
+  let wishlist = JSON.parse(localStorage.getItem('likedProducts')).reverse();
+  let wContainer = document.querySelector('.wish-grid-custom')
+  // console.log(wishlist)
+  wContainer.innerHTML = "";
+  if (wishlist.length) {
+
+    for (let i = 0; i < wishlist.length; i++) {
+      let cardDiv = document.createElement('div')
+      cardDiv.innerHTML = `
+            <div class="skeleton" style="height:300px;width:250px;margin:10px;"></div>
+            <div class="skeleton" style="height:20px;width:200px;margin:10px;"></div>
+            <div class="skeleton" style="height:20px;width:230px;margin:10px;"></div>
+            <div class="skeleton" style="height:20px;width:150px;margin:10px;"></div>
+      `
+      wContainer.appendChild(cardDiv)
+      fetch("https://jayesh-cirkle.myshopify.com/products/" + wishlist[i] + "?view=card2")
+        .then(response => response.text())
+        .then(data => {
+          let dom = new DOMParser().parseFromString(data, "text/html");
+          let card = dom.getElementsByClassName('product-widget')[0];
+          cardDiv.replaceWith(card)
+        })
+    }
+
+  } else {
+    wContainer.innerHTML = `<p> &nbsp&nbsp&nbsp Wishlist Empty </p>`;
+  }
+}
+
+// ========================== Custom Wishlist End ============================
 
 
-//================= apply  selling plan  on cart ==========================
+// ===========  Custome Subscribe With Dynamic Discount Start ========================
 
 localStorage.setItem("checkout-clicked", false);
 async function applySellingPlanToCart(planId) {
@@ -1473,7 +1507,7 @@ async function applySellingPlanToCart(planId) {
           quantity: item.value,
           selling_plan: sellingPlan
         })
-      }).then(res => res.json());   
+      }).then(res => res.json());
     }
 
     updateCartDrawer();
@@ -1513,7 +1547,8 @@ document.body.addEventListener("change", async function (e) {
   }
 })
 
+//  Custome Subscribe With Dynamic Discount End ========================
 
-console.log("CLI 28082025");
+console.log("CLI 12092025");
 
- 
+
