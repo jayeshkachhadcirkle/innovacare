@@ -24,6 +24,7 @@
   <div class="overlay" id="cart_overlay"></div>
   <div class="mini_cart_wp">
     <div class="mini_cart_main" id="mini_cart_main">
+      <h1 class="percent">{{ free_shipping_percentage }}</h1>
       {% if cart.item_count > 0 %}
         <div
           class="mini_cart_title"
@@ -45,7 +46,7 @@
             count="{{ cart.item_count }}"
             total="{{ cart.total_price }}"
           >
-            <div class="mini_cart_body_inner">
+            <div class="mini_cart_body_inner"> 
               {% for item in cart.items %}
                 <div
                   class="mini_cart_item all-items-cart"
@@ -258,7 +259,6 @@
             </div>
           </div>
         </duv>
-
 
         <div class="cart_colse_icon" id="cart_colse_icon">
           {% render 'icons', icon_type: 'cart_close' %}

@@ -1436,7 +1436,6 @@ class MyLike extends HTMLElement {
     const likeBtn = this.querySelector('.pro-like');
     const handle = likeBtn?.getAttribute('handle');
     const path = likeBtn?.querySelector('path');
-
     if (handle && path) {
       this.getElementsByTagName('path')[0].setAttribute('fill', liked.includes(handle) ? 'red' : 'black');
     }
@@ -1455,10 +1454,10 @@ function loadWishlistProducts() {
     for (let i = 0; i < wishlist.length; i++) {
       let cardDiv = document.createElement('div')
       cardDiv.innerHTML = `
-            <div class="skeleton" style="height:300px;width:250px;margin:10px;"></div>
-            <div class="skeleton" style="height:20px;width:200px;margin:10px;"></div>
-            <div class="skeleton" style="height:20px;width:230px;margin:10px;"></div>
-            <div class="skeleton" style="height:20px;width:150px;margin:10px;"></div>
+        <div class="skeleton" style="height:300px;width:250px;margin:10px;"></div>
+        <div class="skeleton" style="height:20px;width:200px;margin:10px;"></div>
+        <div class="skeleton" style="height:20px;width:230px;margin:10px;"></div>
+        <div class="skeleton" style="height:20px;width:150px;margin:10px;"></div>
       `
       wContainer.appendChild(cardDiv)
       fetch("https://jayesh-cirkle.myshopify.com/products/" + wishlist[i] + "?view=card2")
@@ -1477,7 +1476,7 @@ function loadWishlistProducts() {
 
 // ========================== Custom Wishlist End ============================
 
-
+ 
 // ===========  Custome Subscribe With Dynamic Discount Start ========================
 
 localStorage.setItem("checkout-clicked", false);
@@ -1508,6 +1507,7 @@ async function applySellingPlanToCart(planId) {
           selling_plan: sellingPlan
         })
       }).then(res => res.json());
+      
     }
 
     updateCartDrawer();
@@ -1547,8 +1547,7 @@ document.body.addEventListener("change", async function (e) {
   }
 })
 
-//  Custome Subscribe With Dynamic Discount End ========================
+// Custome Subscribe With Dynamic Discount End ========================
 
-console.log("CLI 12092025");
-
+console.log("CLI 22092025");
 

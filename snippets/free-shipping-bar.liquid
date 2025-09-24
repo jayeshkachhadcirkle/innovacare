@@ -4,15 +4,13 @@
   <div class="free-shipping-limit" limit="{{ settings.free_limit }}">
     {% assign limit_diff = limit | minus: cart_total | times: 100 %}
     {% assign limit_diff2 = limit_diff | money %}
-    {% assign diff_span = "<span id='limit-filled'>" | append: limit_diff2 | append: "</span>" %}
+    {% assign diff_span = "<span id='limit-filled'>" | append: limit_diff2 | append: '</span>' %}
     {% assign ttt = settings.free_title %}
-    {% assign conve = ttt | replace_first: "$$", diff_span %}
+    {% assign conve = ttt | replace_first: '$$', diff_span %}
     {% assign limitmoney = limit | times: 100 | money %}
-    {% assign conve2 = conve | replace_first: "%%", limitmoney  %}
+    {% assign conve2 = conve | replace_first: '%%', limitmoney %}
     {% if limit_diff > 1 %}
-      <label for="freelimit"
-        >{{ conve2 }}
-      </label>
+      <label for="freelimit">{{ conve2 }} </label>
       <progress id="freelimit" value="{{ cart.total_price | divided_by: 100 }}" max="{{ settings.free_limit }}">
         {{ cart.total_price | divided_by: 100 }}
       </progress>
@@ -22,3 +20,17 @@
     {% endif %}
   </div>
 {% endif %}
+
+{% comment %} calculate free shipping limit percentage {% endcomment %}
+{% comment %}
+  {% assign free_shipping_limit = settings.free_limit %}
+  {% assign free_shipping_limit = free_shipping_limit | times: 100 %}
+  <h1>limit: {{ free_shipping_limit }}</h1>
+  {% assign cart_total = cart.total_price %}
+  <p>cart total: {{ cart_total }}</p>
+  {% if cart_total >= free_shipping_limit %}
+    {% assign free_shipping_percentage = 100 %}
+  {% else %}
+    {% assign free_shipping_percentage = cart_total | times: 100 | divided_by: free_shipping_limit | round %}
+  {% endif %}
+{% endcomment %}
