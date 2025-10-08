@@ -791,6 +791,7 @@ button,
   width: 100%;
   letter-spacing: 0.4px;
   background: var(--white);
+  border-radius: 20px;
   border: 1px solid var(--lightgray);
 }
 
@@ -814,7 +815,7 @@ button,
 
 .header-style-one .search-form button {
   position: absolute;
-  right: 8px;
+  right: 14px;
   background: 0 0;
   border: 0;
   top: 50%;
@@ -835,14 +836,14 @@ button,
 
 .hamburger {
   cursor: pointer;
-  background-color: var(--white);
+  /* background-color: var(--white); */
   padding: 5px 0;
 }
 
 .hamburger .line {
   width: 20px;
   height: 2px;
-  background-color: var(--theme-color1);
+  background-color: white;
   display: block;
   margin: 7px 0;
   -webkit-transition: all 0.3s ease-in-out;
@@ -5219,8 +5220,8 @@ facet-remove {
 }
 
 .var-box {
-  padding: 2px 5px;
-  margin: 2px;
+  padding: 2px 5px; 
+  margin: 2px; 
   background-color: white;
   color: black;
   border-radius: 2px;
@@ -5766,14 +5767,14 @@ model-viewer {
   margin-left: 29px;
 }
 
-.rad-con .pricer { 
-  position: absolute; 
-  right: 11px; 
-} 
+.rad-con .pricer {
+  position: absolute;
+  right: 11px;
+}
 
-.frequency { 
+.frequency {
   display: flex;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
 }
 
@@ -5933,7 +5934,7 @@ model-viewer {
   cursor: pointer;
 }
 
-.close-popup-subscribe-confirmation:hover, 
+.close-popup-subscribe-confirmation:hover,
 .close-popup-subscribe-confirmation:focus {
   color: black;
   text-decoration: none;
@@ -5942,9 +5943,10 @@ model-viewer {
 
 .innova-header-container {
   background-color: #fff;
-  padding: 10px 40px;  
+  padding: 10px 40px;
   box-shadow: 0 0 20px #ddd;
   border-radius: 38px;
   margin: 0 15px;
   width: calc(100% - 30px);
+  background: linear-gradient(to right, rgb(48, 67, 82), rgb(215, 210, 204));
 }

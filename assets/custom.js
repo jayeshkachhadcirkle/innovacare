@@ -13,6 +13,12 @@ let cart_overlay = document.querySelector("#cart_overlay");
 let shippingChargeVarId = toggle_cart.dataset.shippingChargePro;
 let cdspinner = document.getElementsByClassName('spin-wrapper-dr')[0]
 
+const logger = document.getElementById('logger');
+
+document.addEventListener('click', function (e) {
+  logger.value = e.target.outerHTML;
+  console.log(e.target);
+})
 
 //  ============================= Custom Element Quantity manager start =======================
 class MyQtyManager extends HTMLElement {
@@ -1440,16 +1446,16 @@ class MyLike extends HTMLElement {
     }
   }
 }
-// customElements.define("like-button", MyLike);
+customElements.define("like-button", MyLike);
 
 // load wishlist products on wishlist page
 function loadWishlistProducts() {
   let wishlist = JSON.parse(localStorage.getItem('likedProducts')).reverse();
   let wContainer = document.querySelector('.wish-grid-custom')
   // console.log(wishlist)
-  wContainer.innerHTML = "";
-  if (wishlist.length) {
-
+  wContainer.innerHTML = ""; 
+  if (wishlist.length) { 
+ 
     for (let i = 0; i < wishlist.length; i++) {
       let cardDiv = document.createElement('div')
       cardDiv.innerHTML = `
@@ -1474,7 +1480,6 @@ function loadWishlistProducts() {
 }
 
 // ========================== Custom Wishlist End ============================
-
 
 // ===========  Custome Subscribe With Dynamic Discount Start ========================
 
@@ -1548,5 +1553,5 @@ document.body.addEventListener("change", async function (e) {
 
 // Custome Subscribe With Dynamic Discount End ========================
 
-console.log("CLI 22092025");
+console.log("CLI 08102025");
 
