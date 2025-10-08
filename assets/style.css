@@ -158,6 +158,12 @@ body {
   padding: 0;
 }
 
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
 .home-subscribe-inner {
   position: relative;
 }
@@ -690,7 +696,7 @@ button,
   top: 0px;
   z-index: 3;
   width: 100%;
-  background-color: var(--white);
+  /* background-color: var(--white); */
   transition: all ease-in-out 0.2s;
 }
 
@@ -708,9 +714,11 @@ button,
 
 .header-style-one .innovacare-logobar {
   padding: 30px 0;
-  border-top: 1px solid var(--lightgray);
-  border-bottom: 1px solid var(--lightgray);
-  transition: all ease-in-out 0.4s;
+  transition: all ease-in-out .4s;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
 }
 
 .header-style-one .innovacare-logobar .innovacare-header-left,
@@ -1046,7 +1054,7 @@ button,
 /***************** HEAD STRAT STICKY CSS ***************/
 
 .head-sticky {
-  background-color: var(--white);
+  /* background-color: var(--white); */
 }
 
 .head-sticky .innovacare-announcebar {
@@ -5758,14 +5766,14 @@ model-viewer {
   margin-left: 29px;
 }
 
-.rad-con .pricer {
-  position: absolute;
-  right: 11px;
-}
+.rad-con .pricer { 
+  position: absolute; 
+  right: 11px; 
+} 
 
-.frequency {
+.frequency { 
   display: flex;
-  justify-content: center;
+  justify-content: center;  
   align-items: center;
 }
 
@@ -5925,9 +5933,18 @@ model-viewer {
   cursor: pointer;
 }
 
-.close-popup-subscribe-confirmation:hover,
+.close-popup-subscribe-confirmation:hover, 
 .close-popup-subscribe-confirmation:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.innova-header-container {
+  background-color: #fff;
+  padding: 10px 40px;  
+  box-shadow: 0 0 20px #ddd;
+  border-radius: 38px;
+  margin: 0 15px;
+  width: calc(100% - 30px);
 }

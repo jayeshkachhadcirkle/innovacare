@@ -132,7 +132,7 @@ document.body.addEventListener('click', function (e) {
     toggle_cart.classList.remove("active");
   }
   else if (targetElement.matches('.overlay')) {
-    toggle_cart.classList.remove("active");
+    toggle_cart.classList.remove("act ive");
   }
   else if (targetElement.matches('.pro-pop-close')) {
     popper.classList.remove('active');
@@ -884,7 +884,6 @@ function openProductPopUp(eye) {
     });
 }
 
-
 // == Variants code Start =================================================================
 
 function variantPerform(wrap) {
@@ -1441,7 +1440,7 @@ class MyLike extends HTMLElement {
     }
   }
 }
-customElements.define("like-button", MyLike);
+// customElements.define("like-button", MyLike);
 
 // load wishlist products on wishlist page
 function loadWishlistProducts() {
@@ -1476,7 +1475,7 @@ function loadWishlistProducts() {
 
 // ========================== Custom Wishlist End ============================
 
- 
+
 // ===========  Custome Subscribe With Dynamic Discount Start ========================
 
 localStorage.setItem("checkout-clicked", false);
@@ -1507,7 +1506,7 @@ async function applySellingPlanToCart(planId) {
           selling_plan: sellingPlan
         })
       }).then(res => res.json());
-      
+
     }
 
     updateCartDrawer();

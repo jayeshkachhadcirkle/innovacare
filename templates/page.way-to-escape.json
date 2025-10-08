@@ -9,23 +9,16 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "collection",
+    "way_to_escape_hqFpyY": {
+      "type": "way-to-escape",
+      "name": "Way to Escape",
       "settings": {
-        "product_toshow": 10,
-        "infinite_scroll": true,
-        "enable_sorting": true,
-        "enable_filtering": true
+        "title": "Hellll",
+        "image": "shopify://shop_images/PA1-01-Blue-1600x1200.jpg"
       }
-    },
-    "variants_pagination_iiPYzP": {
-      "type": "variants-pagination",
-      "name": "Variants Pagination",
-      "settings": {}
     }
   },
   "order": [
-    "main",
-    "variants_pagination_iiPYzP"
+    "way_to_escape_hqFpyY"
   ]
 }

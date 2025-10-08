@@ -90,13 +90,7 @@
                   {{ image | external_video_url | external_video_tag }}
                 </div>
               {% elsif image.media_type == 'model' %}
-                <model-viewer
-                  src="{{ image.sources[0].url }}"
-                  alt="{{ image.alt }}"
-                  camera-controls
-                  auto-rotate
-                  ar
-                ></model-viewer>
+                {{ image | model_viewer_tag: alt: image.alt, ar: true, camera_controls: true, auto_rotate: true }}
               {% endif %}
             </div>
           {% endfor %}
