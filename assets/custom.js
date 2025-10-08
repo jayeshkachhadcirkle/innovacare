@@ -123,6 +123,7 @@ document.body.addEventListener('click', function (e) {
   }
   else if (targetElement.parentElement.matches('.cart-btn')) {
     toggle_cart.classList.add("active");
+    document.body.classList.add("no-scroll");
     setTimeout(function () {
       console.log("reaching update Time");
       updateCartDrawer();
@@ -237,7 +238,7 @@ document.body.addEventListener('click', function (e) {
     // cart_btn.click();
   }
   // recommendation grid checkboxes
-  else if (targetElement.matches('.selected-pro')) {
+  else if (targetElement.matches('.selected-pro')) {  
     console.log('bundle slect', targetElement.checked);
     let recoGrid = targetElement.closest('.buy-it-section')
     let pros = Array.from(recoGrid.getElementsByClassName('product-widget'));
@@ -249,8 +250,8 @@ document.body.addEventListener('click', function (e) {
       let availability = parseInt(i.getElementsByClassName('pro-cart')[0].getAttribute('available'))
       let price = i.getElementsByClassName('var-price')[0].innerText
       let price2 = price.replace('$', '')
-      let price3 = price2.replace('USD', '')
-      let priceClean = parseFloat(price3.trim())
+      let price3 = price2.replace('USD', '') 
+      let priceClean = parseFloat(price3.trim()) 
       if (check.checked && availability) {
         console.log(perId, " price: ", priceClean);
         setPrice += priceClean
@@ -267,9 +268,9 @@ document.body.addEventListener('click', function (e) {
 
   }
   else {
-    // console.log("click else")
-    // console.log(targetElement);
-  }
+    // console.log("click else")  
+    // console.log(targetElement); 
+  } 
 })
 
 function bundleQtyUpdate(bundleId, upQty) {
@@ -290,7 +291,7 @@ function bundleQtyUpdate(bundleId, upQty) {
   console.log(ups);
   callForUpdate(ups)
 }
-
+ 
 
 // add multiple products to cart provide array of objects
 function addMultiplePros(Array) {
@@ -884,7 +885,6 @@ function openProductPopUp(eye) {
     });
 }
 
-
 // == Variants code Start =================================================================
 
 function variantPerform(wrap) {
@@ -1316,7 +1316,7 @@ function createCompareBox() {
   } else {
     box.innerHTML = "<br><br><h5> Add Products To Compare.</h5>"
   }
-}
+} 
 // ========================== Compare End ============================
 
 // ========================== Sunscribe ============================
@@ -1408,7 +1408,7 @@ class MyLike extends HTMLElement {
         }
       } else {
         path.setAttribute('fill', 'red');
-        liked.push(handle);
+        liked.push(handle); 
       }
       document.getElementById('wish-count').innerText = liked.length || '';
       localStorage.setItem("likedProducts", JSON.stringify(liked));
@@ -1476,7 +1476,7 @@ function loadWishlistProducts() {
 
 // ========================== Custom Wishlist End ============================
 
- 
+
 // ===========  Custome Subscribe With Dynamic Discount Start ========================
 
 localStorage.setItem("checkout-clicked", false);
@@ -1507,7 +1507,7 @@ async function applySellingPlanToCart(planId) {
           selling_plan: sellingPlan
         })
       }).then(res => res.json());
-      
+
     }
 
     updateCartDrawer();
@@ -1549,5 +1549,5 @@ document.body.addEventListener("change", async function (e) {
 
 // Custome Subscribe With Dynamic Discount End ========================
 
-console.log("CLI 22092025");
+console.log("CLI 01102025");
 

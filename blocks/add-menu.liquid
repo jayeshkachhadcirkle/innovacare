@@ -1,0 +1,29 @@
+{% if section.settings.menu != blank %}
+  <nav class="add-menu-block">
+    <ul class="add-menu-list">
+      {% for link in linklists[section.settings.menu].links %}
+        <li class="add-menu-item">
+          <a href="{{ link.url }}" class="add-menu-link">{{ link.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Add Menu",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Add Menu Block"
+    }
+  ]
+}
+{% endschema %}

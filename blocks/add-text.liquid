@@ -1,0 +1,27 @@
+<li data-tab="{{ block.settings.text_content | downcase  }}" class="">
+  <a role="link" aria-disabled="true"> {{ block.settings.text_content }} </a>
+</li>
+
+{% for blk in block.blocks %}
+  /=={{ blk.type }}==/
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Add Text",
+  "blocks": [{ "type": "@theme" }],
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_content",
+      "label": "Text Content",
+      "default": "Your text here"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Add Text Block"
+    }
+  ]
+}
+{% endschema %}

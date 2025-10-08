@@ -8,6 +8,27 @@
 -%}
 {% capture allVarQtyData %}[{% for v in product.variants %}{"id":"{{ v.id }}","available":"{{ v.available }}","qty":"{{ v.inventory_quantity }}","invpolicy":"{{ v.inventory_policy }}"}{% if forloop.last %}{% else %},{% endif %}{% endfor %}]{% endcapture %}
 {% assign current_variant = product.selected_or_first_available_variant %}
+{% assign current_variant_json = current_variant | json %}
+
+<script>
+  let cvj = {{ current_variant_json }}
+  console.log("Current Var JSON:  ", cvj)
+  cvj.var_qty ={{  current_variant.inventory_quantity }}
+  console.log("Current Var JSON 2:  ", cvj)
+
+  let allVars = {{ product.variants | json }}
+
+  let allVarQtyData = []
+  for (let index = 0; index < allVars.length; index++) {
+    {% comment %} let variantObj = {
+      id: allVars[index].id,
+      qty: {{  product.variants[index].inventory_quantity }}
+    }
+    console.log(variantObj) {% endcomment %}
+    console.log(" fdgewf hjd:L " , index)
+  }
+</script>
+
 {% comment %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js" defer></script>
@@ -44,6 +65,7 @@
         <div class="product-json-full" id="product-json-full" style="display:none;">{{ product | json }}</div>
         <div class="var-json" id="var-json" style="display:none;">{{ product.variants | json }}</div>
         <div class="variants-json" id="variants-json" style="display:none;">{{ allVarQtyData }}</div>
+        <div class="hidden selected_var_json">{{ current_variant_json }}</div>
         {% render 'pdp-media' %}
         <div
           class="prod-content-col select-none"
@@ -61,12 +83,12 @@
                     </h5>
                   {% endif %}
                 {% when 'p_name' %}
-                  {% assign font_family = block.settings.p_name_font.family | remove: '"' %}
-                  {% capture font %}font-family:{{ font_family }}{% endcapture %}
+                  {% assign font_family = block.settings.p_name_font.family %}
                   <h3
                     class="pb-30 fonter pro-name"
+                    data-font-family="{{ font_family }}"
                     {{ block.shopify_attributes }}
-                    style=" font-weight: {{ block.settings.p_name_weight }}; font-size: {{ block.settings.p_name_fontsize }}px; "
+                    style=" font-weight: {{ block.settings.p_name_weight }}; font-size: {{ block.settings.p_name_fontsize }}px; font-family:{{ font_family }}"
                   >
                     {% if product.selected_variant %}
                       {{ product.title }} - {{ current_variant.title }}
@@ -178,9 +200,13 @@
                                 data-variant="{{ value }}"
                               >
                                 {% if value.swatch.color %}
-                                  &nbsp
+                                  {{
+                                    value.variant.featured_image
+                                    | image_url: width: 100, height: 100, crop: 'center'
+                                    | image_tag: alt: value, class: 'var-image'
+                                  }}
                                 {% else %}
-                                  {{ value }}
+                                  {{ value }} -
                                 {% endif %}
                               </label>
                             {%- endfor -%}

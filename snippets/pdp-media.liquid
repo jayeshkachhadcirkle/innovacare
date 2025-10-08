@@ -10,26 +10,26 @@
                 {% assign url = image | file_url %}
                 {% assign url2 = url | replace_first: '/files', '' %}
                 {{ url2 | img_tag }}
-                </div>
-                </div>
-              {% endfor %}
-              <div class="is-images-group" is-images-group="true"></div>
+              </div>
+            </div>
+          {% endfor %}
+          <div class="is-images-group" is-images-group="true"></div>
         {% else %}
-        {% for image in product.media %}
-          <div class="prod-nav-col">
-            <div class="prod-nav-img">
-              {{ image | img_url: 'medium' | img_tag: image.alt }}
+          {% for image in product.media %}
+            <div class="prod-nav-col">
+              <div class="prod-nav-img">
+                {{ image | img_url: 'medium' | img_tag: image.alt }}
               </div>
-              </div>
-            {% endfor %}
-            <div class="is-images-group" is-images-group="false"></div>
+            </div>
+          {% endfor %}
+          <div class="is-images-group" is-images-group="false"></div>
         {% endif %}
       </div>
     {% endif %}
     <div class="prod-slide-row">
       {% if product.media.size > 0 %}
         {% if product.selected_or_first_available_variant.metafields.custom.var_gallary %}
-          {% assign gallary = product.selected_or_first_available_variant.metafields.custom.var_gallary.value %} 
+          {% assign gallary = product.selected_or_first_available_variant.metafields.custom.var_gallary.value %}
           {% for image in gallary %}
             <div class="prod-slide-col">
               {% assign url = image | file_url %}
@@ -90,13 +90,18 @@
                   {{ image | external_video_url | external_video_tag }}
                 </div>
               {% elsif image.media_type == 'model' %}
-                <model-viewer
-                  src="{{ image.sources[0].url }}"
-                  alt="{{ image.alt }}"
-                  camera-controls
-                  auto-rotate
-                  ar
-                ></model-viewer>
+                {% comment %}
+                  <model-viewer
+                    src="{{ image.sources[0].url }}"
+                    alt="{{ image.alt }}"
+                    camera-controls
+                    auto-rotate
+                    ar
+                  ></model-viewer>
+                {% endcomment %}
+
+                {% comment %} liquid 3d model tag {% endcomment %}
+                {{ image | model_viewer_tag: alt: image.alt, ar: true, camera_controls: true, auto_rotate: true }}
               {% endif %}
             </div>
           {% endfor %}

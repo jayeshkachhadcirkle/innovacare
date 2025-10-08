@@ -1,0 +1,25 @@
+==<h1>{{ section.settings.title }}</h1>
+{{ section.settings.image | image_url: width: 400, height: 400 | image_tag: alt: section.settings.image.alt }}
+
+{% schema %}
+{
+  "name": "Way to Escape",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Way to Escape"
+    }
+  ]  
+}
+{% endschema %}

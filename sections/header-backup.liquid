@@ -8,7 +8,7 @@
     </div>
   {% endif %}
   <div class="innovacare-logobar">
-    <div class="container innova-header-container">
+    <div class="container">
       <div class="innovacare-logobar-row flex align-center">
         <div class="innovacare-header-left">
           <div class="flex align-center">
@@ -115,7 +115,7 @@
               </a>
               <span class="count" id="wish-count"> 0 </span>
             </li>
-
+            
             <li
               id="cart_bt"
               class="cart_bt"
@@ -361,7 +361,80 @@
 {% schema %}
 {
   "name": "Header",
-  "blocks": [{ "type": "@theme" }],
+  "blocks": [
+    {
+      "type": "add-menus",
+      "name": "Add Menus",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "linkto",
+          "label": "Link Menu To"
+        },
+        {
+          "type": "link_list",
+          "id": "menu1",
+          "label": "Menu 1"
+        },
+        {
+          "type": "url",
+          "id": "menu1link",
+          "label": "Menu 1 Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu2",
+          "label": "Menu 2"
+        },
+        {
+          "type": "url",
+          "id": "menu2link",
+          "label": "Menu 2 Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu3",
+          "label": "Menu 3"
+        },
+        {
+          "type": "url",
+          "id": "menu3link",
+          "label": "Menu 3 Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu4",
+          "label": "Menu 4"
+        },
+        {
+          "type": "url",
+          "id": "menu4link",
+          "label": "Menu 4 Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu5",
+          "label": "Menu 5"
+        },
+        {
+          "type": "url",
+          "id": "menu5link",
+          "label": "Menu 5 Link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu6",
+          "label": "Menu 6"
+        },
+        {
+          "type": "url",
+          "id": "menu6link",
+          "label": "Menu 6 Link"
+        }
+      ]
+    }
+  ],
   "settings": [
     {
       "type": "textarea",
