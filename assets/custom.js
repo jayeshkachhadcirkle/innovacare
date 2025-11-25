@@ -1064,40 +1064,36 @@ function applyVariantCheck(element, Data, opParent, op) {
 // =====Variants code End ==========================================================================
 
 // =====Filters & Sorting code Start ==========================================================================
-
 function applyFilter(query) {
-  let sortBy = document.getElementById('SortBy').value;
-  let url = window.location.pathname + query
-  setTimeout(function () {
-    window.history.replaceState({}, `Filter`, `${window.location.pathname}${query}`)
-    fetch(url).then(response => response.text()).then(data => {
-      let doc = new DOMParser().parseFromString(data, "text/html")
-      console.log(doc)
-      if (document.getElementsByClassName("AjaxinateContainer")[0]) { document.getElementsByClassName("AjaxinateContainer")[0].setAttribute('hasmore', 1) }
-      document.getElementsByClassName('pro-grid-wrapper')[0].innerHTML = doc.getElementsByClassName('pro-grid-wrapper')[0].innerHTML
-      document.getElementsByClassName('product-count__text')[0].innerHTML = doc.getElementsByClassName('product-count__text')[0].innerHTML
-      document.getElementsByClassName('active-facets')[0].innerHTML = doc.getElementsByClassName('active-facets')[0].innerHTML
-      try {
-        document.getElementsByClassName('AjaxinateContainer')[0].innerHTML = doc.getElementsByClassName('AjaxinateContainer')[0].innerHTML
-      } catch {
-        console.log("Got Catch ajaxi 1")
-      }
-      try {
-        document.getElementsByClassName('AjaxinatePagination')[0].innerHTML = doc.getElementsByClassName('AjaxinatePagination')[0].innerHTML
-      } catch {
-        console.log("Got Catch ajaxi 2")
-      }
-      try {
-        document.getElementsByClassName('pagination-wrapper')[0].innerHTML = doc.getElementsByClassName('pagination-wrapper')[0].innerHTML
-      } catch {
-        console.log("Got Catch pagi")
-        try {
-          document.getElementsByClassName('pagination-wrapper')[0].innerHTML = ""
-        } catch { }
-      }
+  const url = window.location.pathname + query;
+
+  console.log("Applying New Filter");
+  fetch(url)
+    .then(res => {
+      if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+      return res.text();
     })
-  }, 100)
+    .then(html => {
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const update = selector => {
+        const target = document.querySelector(selector);
+        const source = doc.querySelector(selector);
+        if (target && source) target.innerHTML = source.innerHTML;
+      };
+
+      update('.pro-grid-wrapper');
+      update('.product-count__text');
+      update('.active-facets');
+      update('.AjaxinateContainer');
+      update('.AjaxinatePagination');
+      update('.pagination-wrapper');
+
+      // Update history only after successful DOM update
+      window.history.replaceState({}, 'Filter', url);
+    })
+    .catch(err => console.error(err));
 }
+
 
 // =====Filters & Sorting code End ==========================================================================
 
@@ -1453,9 +1449,9 @@ function loadWishlistProducts() {
   let wishlist = JSON.parse(localStorage.getItem('likedProducts')).reverse();
   let wContainer = document.querySelector('.wish-grid-custom')
   // console.log(wishlist)
-  wContainer.innerHTML = ""; 
-  if (wishlist.length) { 
- 
+  wContainer.innerHTML = "";
+  if (wishlist.length) {
+
     for (let i = 0; i < wishlist.length; i++) {
       let cardDiv = document.createElement('div')
       cardDiv.innerHTML = `
@@ -1553,5 +1549,5 @@ document.body.addEventListener("change", async function (e) {
 
 // Custome Subscribe With Dynamic Discount End ========================
 
-console.log("CLI 08102025");
+console.log("CLI 25112025");
 
