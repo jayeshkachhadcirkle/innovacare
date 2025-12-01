@@ -1066,8 +1066,6 @@ function applyVariantCheck(element, Data, opParent, op) {
 // =====Filters & Sorting code Start ==========================================================================
 function applyFilter(query) {
   const url = window.location.pathname + query;
-
-  console.log("Applying New Filter");
   fetch(url)
     .then(res => {
       if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
@@ -1088,14 +1086,13 @@ function applyFilter(query) {
       update('.AjaxinatePagination');
       update('.pagination-wrapper');
 
-      // Update history only after successful DOM update
       window.history.replaceState({}, 'Filter', url);
     })
     .catch(err => console.error(err));
 }
 
 
-// =====Filters & Sorting code End ==========================================================================
+// ===== Filters & Sorting code End ==========================================================================
 
 function callForUpdate(updates) {
   fetch(window.Shopify.routes.root + 'cart/update.js', {
