@@ -52,13 +52,23 @@
                           <!-- placeholder — no image configured for this block -->
                           {{
                             'collection-1'
-                            | placeholder_svg_tag:
-                              class: 'xx t4s-lz--fadeIn t4s-obj-eff lazyautosizes ls-is-cached lazyloadt4sed snipcss0-10-16-17',
-                              loading: 'lazy'
+                            | placeholder_svg_tag: 'xx t4s-lz--fadeIn t4s-obj-eff lazyautosizes ls-is-cached lazyloadt4sed snipcss0-10-16-17'
                           }}
                         {% endif %}
 
-                        <p>ABC</p>
+                        <a
+                          href="{{ block.settings.link }}"
+                          style="
+                            position: absolute;
+                            top: 90%;
+                            left: 10%;
+                            height: auto;
+                            width: auto;
+                            z-index: 100000;
+                          "
+                        >
+                          {{ block.settings.alt }}
+                        </a>
                       </div>
                     </a>
                   </div>
@@ -517,7 +527,7 @@
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "collection", "id": "collection", "label": "Collection (optional)" },
         { "type": "url", "id": "link", "label": "Custom link (optional)" },
-        { "type": "text", "id": "alt", "label": "Alt text" },
+        { "type": "text", "id": "alt", "label": "Label text" },
         { "type": "checkbox", "id": "open_in_new", "label": "Open link in new window", "default": false },
         {
           "type": "range",
