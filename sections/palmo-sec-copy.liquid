@@ -56,19 +56,24 @@
                           }}
                         {% endif %}
 
-                        <a
+                        <p
                           href="{{ block.settings.link }}"
                           style="
                             position: absolute;
-                            top: 90%;
+                            top: 88%;
                             left: 10%;
                             height: auto;
                             width: auto;
-                            z-index: 100000;
+                            border-bottom: 2px solid #000;
+                            color: #000;
+                            line-height: initial;
+                            font-weight: bold;
+                            font-size: 10px;
+                            text-transform: uppercase;
                           "
                         >
                           {{ block.settings.alt }}
-                        </a>
+                        </p>
                       </div>
                     </a>
                   </div>
@@ -85,8 +90,6 @@
 </section>
 
 {% stylesheet %}
-  @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&display=swap');
-
   @media all {
     * {
       -webkit-box-sizing: border-box;
@@ -257,7 +260,7 @@
       position: relative;
     }
 
-    .t4s-eff:before {
+    /* .t4s-eff:before {
       content: '';
       z-index: 1;
       pointer-events: none;
@@ -267,7 +270,7 @@
       content: 'ABC';
       z-index: 1;
       pointer-events: none;
-    }
+    } */
 
     .palmo-sec a {
       margin: 0;
@@ -295,10 +298,6 @@
   }
 
   @media all {
-    .palmo-sec a {
-      font-family: Nunito Sans !important;
-    }
-
     .t4s-d-block {
       display: block !important;
     }
@@ -383,14 +382,14 @@
 
     .palmo-sec img {
       max-width: 100%;
-      height: auto;
+      height: 100%;
       border: 0;
       vertical-align: middle;
     }
   }
 
   .palmo-sec img {
-    height: auto;
+    height: 100%;
     max-width: 100%;
   }
 
@@ -498,7 +497,7 @@
 
 {% schema %}
 {
-  "name": "Palmo Section 2",
+  "name": "Multi Images Section",
   "settings": [
     {
       "type": "range",
@@ -544,9 +543,18 @@
   "max_blocks": 12,
   "presets": [
     {
-      "name": "Palmo - Collections Section",
-      "category": "Palmo Sections 2",
-      "blocks": [{ "type": "item", "settings": { "image": "", "collection": "", "link": "", "alt": "" } }]
+      "name": "Multi Images Section",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "collection": "",
+            "link": "",
+            "alt": ""
+          }
+        }
+      ]
     }
   ]
 }
