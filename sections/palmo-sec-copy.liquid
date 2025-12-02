@@ -2,88 +2,90 @@
   id="{{ section.id }}"
   class="palmo-sec shopify-section t4s-section t4s_bk_flickity t4s-section-all t4s_tp_cdt t4s-featured-collections t4s-oh snipcss-pfzxQ"
 >
-  <div
-    class="t4s-section-inner t4s-section-inline-false t4s_se_template--20310120530177__collections_list_knKAxB t4s-container-fluid style-WwmOq"
-    id="style-WwmOq"
-  >
-    <div class="t4s-head-slide-nav-false t4s-hidden-head-btn-mb-false style-EnGov" id="style-EnGov">
-      <div class="t4s-section-head style-AdwRK" id="style-AdwRK"></div>
-      <div
-        class="t4s-section-content t4s-box-shadow-hover__false t4s-list-collections t4s-collection-des-12 t4s-collection-pos-4 t4s_ratioadapt t4s_position_8 t4s_cover t4s-row  t4s-justify-content-center {% if section.settings.columns_desktop %}t4s-row-cols-lg-{{ section.settings.columns_desktop }}{% else %}t4s-row-cols-lg-6{% endif %} {% if section.settings.columns_mobile %}t4s-row-cols-md-{{ section.settings.columns_mobile }}{% else %}t4s-row-cols-md-2{% endif %} t4s-row-cols-2 t4s-gx-lg-4 t4s-gy-lg-4 t4s-gx-md-4 t4s-gy-md-4 t4s-gx-4 t4s-gy-4 style-dZqzY"
-        id="style-dZqzY"
-      >
-        {% if section.blocks.size > 0 %}
-          {% for block in section.blocks %}
-            {% assign col = collections[block.settings.collection] %}
-            <div
-              class="t4s-col-item t4s-collection-item t4s-text-center"
-              id="block_{{ block.id }}"
-              data-select-flickity
-              {{ block.shopify_attributes }}
-            >
-              <div class="t4s-collection-item__wrap">
-                <div data-cacl-slide class="t4s-collection-content t4s-pr t4s-eff-img-none">
-                  <div class="t4s-coll-img t4s-pr t4s-oh t4s-eff t4s-eff-none">
-                    <a
-                      class="t4s_collection_item_link t4s-img-wrap t4s-d-block"
-                      href="{% if col %}{{ col.url }}{% elsif block.settings.link != blank %}{{ block.settings.link }}{% else %}#{% endif %}"
-                      {% if block.settings.open_in_new %}
-                        target="_blank" rel="noopener"
-                      {% else %}
-                        target="_self"
-                      {% endif %}
-                    >
-                      {%- assign img_url = block.settings.image | image_url: '1600x' -%}
-                      <div
-                        class="t4s_ratio t4s-bg-11"
-                        id="style-{{ block.id }}"
-                        style="--aspect-ratioapt:{{ block.settings.aspect_ratio | default: 0.8 }}; --max-width:1080px; background-image: url('{{ img_url }}')"
-                      >
-                        {% if block.settings.image %}
-                          {{
-                            block.settings.image
-                            | image_url: width: 1000, height: 1250
-                            | image_tag:
-                              alt: block.settings.alt,
-                              class: 'xx t4s-lz--fadeIn t4s-obj-eff lazyautosizes ls-is-cached lazyloadt4sed snipcss0-10-16-17',
-                              loading: 'lazy'
-                          }}
+  <div class="container">
+    <div
+      class="t4s-section-inner t4s-section-inline-false t4s_se_template--20310120530177__collections_list_knKAxB t4s-container-fluid style-WwmOq"
+      id="style-WwmOq"
+    >
+      <div class="t4s-head-slide-nav-false t4s-hidden-head-btn-mb-false style-EnGov" id="style-EnGov">
+        <div class="t4s-section-head style-AdwRK" id="style-AdwRK"></div>
+        <div
+          class="t4s-section-content t4s-box-shadow-hover__false t4s-list-collections t4s-collection-des-12 t4s-collection-pos-4 t4s_ratioadapt t4s_position_8 t4s_cover t4s-row  t4s-justify-content-center t4s-row-cols-lg-6 t4s-row-cols-md-2 t4s-row-cols-2 t4s-gx-lg-4 t4s-gy-lg-4 t4s-gx-md-4 t4s-gy-md-4 t4s-gx-4 t4s-gy-4 style-dZqzY"
+          id="style-dZqzY"
+        >
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              {% assign col = collections[block.settings.collection] %}
+              <div
+                class="t4s-col-item t4s-collection-item t4s-text-center"
+                id="block_{{ block.id }}"
+                data-select-flickity
+                {{ block.shopify_attributes }}
+              >
+                <div class="t4s-collection-item__wrap">
+                  <div data-cacl-slide class="t4s-collection-content t4s-pr t4s-eff-img-none">
+                    <div class="t4s-coll-img t4s-pr t4s-oh t4s-eff t4s-eff-none">
+                      <a
+                        class="t4s_collection_item_link t4s-img-wrap t4s-d-block"
+                        href="{% if col %}{{ col.url }}{% elsif block.settings.link != blank %}{{ block.settings.link }}{% else %}#{% endif %}"
+                        {% if block.settings.open_in_new %}
+                          target="_blank" rel="noopener"
                         {% else %}
-                          <!-- placeholder — no image configured for this block -->
-                          {{
-                            'collection-1'
-                            | placeholder_svg_tag: 'xx t4s-lz--fadeIn t4s-obj-eff lazyautosizes ls-is-cached lazyloadt4sed snipcss0-10-16-17'
-                          }}
+                          target="_self"
                         {% endif %}
-
-                        <p
-                          href="{{ block.settings.link }}"
-                          style="
-                            position: absolute;
-                            top: 88%;
-                            left: 10%;
-                            height: auto;
-                            width: auto;
-                            border-bottom: 2px solid #000;
-                            color: #000;
-                            line-height: initial;
-                            font-weight: bold;
-                            font-size: 10px;
-                            text-transform: uppercase;
-                          "
+                      >
+                        {%- assign img_url = block.settings.image | image_url: '1600x' -%}
+                        <div
+                          class="t4s_ratio t4s-bg-11"
+                          id="style-{{ block.id }}"
+                          style="--aspect-ratioapt:{{ block.settings.aspect_ratio | default: 0.8 }}; --max-width:1080px; background-image: url('{{ img_url }}')"
                         >
-                          {{ block.settings.alt }}
-                        </p>
-                      </div>
-                    </a>
+                          {% if block.settings.image %}
+                            {{
+                              block.settings.image
+                              | image_url: width: 1000, height: 1250
+                              | image_tag:
+                                alt: block.settings.alt,
+                                class: 'xx t4s-lz--fadeIn t4s-obj-eff lazyautosizes ls-is-cached lazyloadt4sed snipcss0-10-16-17',
+                                loading: 'lazy'
+                            }}
+                          {% else %}
+                            <!-- placeholder — no image configured for this block -->
+                            {{
+                              'collection-1'
+                              | placeholder_svg_tag: 'xx t4s-lz--fadeIn t4s-obj-eff lazyautosizes ls-is-cached lazyloadt4sed snipcss0-10-16-17'
+                            }}
+                          {% endif %}
+
+                          <p
+                            href="{{ block.settings.link }}"
+                            style="
+                              position: absolute;
+                              top: 88%;
+                              left: 10%;
+                              height: auto;
+                              width: auto;
+                              border-bottom: 2px solid #000;
+                              color: #000;
+                              line-height: initial;
+                              font-weight: bold;
+                              font-size: 10px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ block.settings.alt }}
+                          </p>
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          {% endfor %}
-        {% else %}
-          <h2>Add Blocks</h2>
-        {% endif %}
+            {% endfor %}
+          {% else %}
+            <h2>Add Blocks</h2>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
@@ -498,26 +500,7 @@
 {% schema %}
 {
   "name": "Multi Images Section",
-  "settings": [
-    {
-      "type": "range",
-      "id": "columns_desktop",
-      "label": "Columns (desktop)",
-      "default": 6,
-      "min": 1,
-      "max": 6,
-      "step": 1
-    },
-    {
-      "type": "range",
-      "id": "columns_mobile",
-      "label": "Columns (mobile)",
-      "default": 2,
-      "min": 1,
-      "max": 6,
-      "step": 1
-    }
-  ],
+  "settings": [],
   "blocks": [
     {
       "type": "item",
